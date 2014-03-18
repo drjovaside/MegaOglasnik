@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: MyString
+  integer: MyString
+  ip: MyString
+  string: MyString
+  timestamp: 2014-03-18 11:44:25
+
+two:
+  user_id: MyString
+  integer: MyString
+  ip: MyString
+  string: MyString
+  timestamp: 2014-03-18 11:44:25
