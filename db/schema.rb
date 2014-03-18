@@ -11,12 +11,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318104840) do
+ActiveRecord::Schema.define(:version => 20140318153732) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ads", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "timestamp"
+    t.datetime "expirytime"
+    t.boolean  "sold"
+    t.decimal  "rating"
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "title"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "ad_id"
+    t.integer  "user_id"
+    t.datetime "timestamp"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.integer  "ad_id"
+    t.integer  "shopping_cart_id"
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "logs", :force => true do |t|
@@ -38,6 +75,38 @@ ActiveRecord::Schema.define(:version => 20140318104840) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "user_sender_id"
+    t.integer  "reciever_sender_id"
+    t.string   "title"
+    t.text     "contents"
+    t.datetime "timestamp"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "parameter_types", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "parameters", :force => true do |t|
+    t.integer  "parameter_type_id"
+    t.integer  "item_id"
+    t.string   "value"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "ad_id"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "role_has_actions", :force => true do |t|
     t.integer  "role_id"
     t.integer  "action_id"
@@ -47,6 +116,15 @@ ActiveRecord::Schema.define(:version => 20140318104840) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "shopping_carts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "timestamp"
+    t.boolean  "payed"
+    t.boolean  "saved"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
