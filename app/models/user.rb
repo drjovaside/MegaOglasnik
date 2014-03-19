@@ -5,4 +5,8 @@ has_many :user_has_roles
 has_and_belongs_to_many :roles
 has_many :roles, :through => :user_has_roles
 has_many :medals
+has_many :comments
+has_many :ads
+has_many :messages
+has_many :shopping_carts
 end
