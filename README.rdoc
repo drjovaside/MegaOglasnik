@@ -262,3 +262,4 @@ vendor
 
   nedim more da komita
   Valjda moree
+  Edin - Test1
