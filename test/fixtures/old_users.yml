@@ -2,24 +2,36 @@
 
 one:
   username: MyString
-  firstname: MyString
+  string: MyString
+  name: MyString
+  string: MyString
   lastname: MyString
-  adress: MyString
-  city: MyString
+  string: MyString
   email: MyString
+  string: MyString
+  adress: MyString
+  string: MyString
+  city: MyString
+  string: MyString
   tel_num: MyString
   password: MyString
   banned: false
-  lastlogin: 2014-03-20 11:35:50
+  lastlogin: 2014-03-18 11:41:55
 
 two:
   username: MyString
-  firstname: MyString
+  string: MyString
+  name: MyString
+  string: MyString
   lastname: MyString
-  adress: MyString
-  city: MyString
+  string: MyString
   email: MyString
+  string: MyString
+  adress: MyString
+  string: MyString
+  city: MyString
+  string: MyString
   tel_num: MyString
   password: MyString
   banned: false
-  lastlogin: 2014-03-20 11:35:50
+  lastlogin: 2014-03-18 11:41:55

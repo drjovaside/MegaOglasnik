@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318153732) do
+ActiveRecord::Schema.define(:version => 20140320103550) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
@@ -85,6 +85,22 @@ ActiveRecord::Schema.define(:version => 20140318153732) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "old_users", :force => true do |t|
+    t.string   "username"
+    t.string   "string"
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "adress"
+    t.string   "city"
+    t.string   "tel_num"
+    t.string   "password"
+    t.boolean  "banned"
+    t.datetime "lastlogin"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "parameter_types", :force => true do |t|
     t.integer  "category_id"
     t.string   "name"
@@ -139,12 +155,11 @@ ActiveRecord::Schema.define(:version => 20140318153732) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "string"
-    t.string   "name"
+    t.string   "firstname"
     t.string   "lastname"
-    t.string   "email"
     t.string   "adress"
     t.string   "city"
+    t.string   "email"
     t.string   "tel_num"
     t.string   "password"
     t.boolean  "banned"

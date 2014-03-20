@@ -1,9 +1,12 @@
 MegaOglasnik::Application.routes.draw do
+  resources :users
+
+
   #get "sessions/new"
   #get "users/new"
 
-  resources :users
-  match '/register' => 'users#new'
+  #resources :users
+  #match '/register' => 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
