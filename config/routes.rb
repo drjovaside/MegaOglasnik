@@ -1,6 +1,8 @@
 MegaOglasnik::Application.routes.draw do
   resources :users
 
+  get 'home' => 'application#index', as: 'application'
+
 
   #get "sessions/new"
   #get "users/new"

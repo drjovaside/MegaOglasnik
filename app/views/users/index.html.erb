@@ -1,41 +1,59 @@
-<h1>Lista korisnika</h1>
+<!doctype html>
+<html>
+    <head>
+        <title>Korisnici MegaOglasnika</title>
+        <link rel="stylesheet" href="stylesheets/users.css">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    </head>
+
+<body>
 
 <table>
-  <tr>
-    <th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Adress</th>
-    <th>City</th>
-    <th>Email</th>
-    <th>Tel num</th>
-    <th>Password</th>
-    <th>Banned</th>
-    <th>Lastlogin</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr class="row">
+    <th class="darkerBG col-xs-1">Username</th>
+    <th class="darkerBG col-xs-1">Firstname</th>
+    <th class="darkerBG col-xs-1">Lastname</th>
+    <th class="darkerBG col-xs-1">Adress</th>
+    <th class="darkerBG col-xs-1">City</th>
+    <th class="darkerBG col-xs-1">Email</th>
+    <th class="darkerBG col-xs-1">Tel num</th>
+    <th class="darkerBG col-xs-1">Password</th>
+    <th class="darkerBG col-xs-1">Banned</th>
+    <th class="darkerBG col-xs-1">Lastlogin</th>
+    <th class="darkerBG col-xs-1"></th> <br/>
+    <th class="darkerBG col-xs-1"></th>  <br/>
+    <th class="darkerBG col-xs-1"></th> <br/>
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.adress %></td>
-    <td><%= user.city %></td>
-    <td><%= user.email %></td>
-    <td><%= user.tel_num %></td>
-    <td><%= user.password %></td>
-    <td><%= user.banned %></td>
-    <td><%= user.lastlogin %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <tr class="row">
+    <td class="darkBG col-xs-1"><%= user.username %></td>
+    <td class="darkBG col-xs-1"><%= user.firstname %></td>
+    <td class="darkBG col-xs-1"><%= user.lastname %></td>
+    <td class="darkBG col-xs-1"><%= user.adress %></td>
+    <td class="darkBG col-xs-1"><%= user.city %></td>
+    <td class="darkBG col-xs-1"><%= user.email %></td>
+    <td class="darkBG col-xs-1"><%= user.tel_num %></td>
+    <td class="darkBG col-xs-1"><%= user.password %></td>
+    <td class="darkBG col-xs-1"><%= user.banned %></td>
+    <td class="darkBG col-xs-1"><%= user.lastlogin %></td>
+    <td class="darkBG col-xs-1"><%= link_to 'Pogledaj', user %></td>
+    <td class="darkBG col-xs-1"><%= link_to 'Promijeni', edit_user_path(user) %></td>
+    <td class="darkBG col-xs-1"><%= link_to 'Obrisi', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+<button type="button" class="btn btn-primary" onclick="window.location.href='/users/new'">Dodaj novog korisnika</button>
 
-<%= link_to 'New User', new_user_path %>
+<!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
