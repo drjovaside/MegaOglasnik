@@ -8,6 +8,7 @@ resources :sessions, :only => [:new, :create, :destroy]
 match 'login' => 'sessions#new'
 match 'logout' => 'sessions#destroy'
 get 'login' => 'sessions#new'
+get 'registration' => 'application#registration', as: 'application'
 get 'sessions' => 'sessions#new'
 
 #match '/login', :controller => 'sessions', :action => 'new'

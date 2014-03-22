@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
   	
   	
   end
+
+  def registration
+  	
+  end
+  
 end
