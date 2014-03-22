@@ -7,8 +7,10 @@ MegaOglasnik::Application.routes.draw do
 resources :sessions, :only => [:new, :create, :destroy]
 match 'login' => 'sessions#new'
 match 'logout' => 'sessions#destroy'
+get 'login' => 'sessions#new'
+get 'sessions' => 'sessions#new'
 
-
+#match '/login', :controller => 'sessions', :action => 'new'
   #get "sessions/new"
   #get "users/new"
 

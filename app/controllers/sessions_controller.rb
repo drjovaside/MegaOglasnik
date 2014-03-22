@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-  def new
-  end
+ def new
+ end
 
-  def create
+ def create
   	user = User.validate_login(
   		params[:session][:email],
   		params[:session][:password]
@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
   	if user
   		session[:user_id] = user.id
   		redirect_to :controller => 'users'
-  		
+  	else
+
   		flash[:status] = FALSE
   		flash[:alert] = 'Invalid username and password'
   		redirect_to login_path
