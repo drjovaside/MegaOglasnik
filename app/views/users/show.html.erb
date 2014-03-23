@@ -1,4 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  </head>
+<body>
+<div class="container">
+
 <p id="notice"><%= notice %></p>
+
+<% if @user.avatar_url==nil %>
+<%= image_tag("default.jpg") %>
+<% else %>
+<%= image_tag(@user.avatar_url) %>
+<% end %>
 
 <p>
   <b>Username:</b>
@@ -50,7 +69,11 @@
   <%= @user.lastlogin %>
 </p>
 
-
 <%= link_to 'Promijeni', edit_user_path(@user) %> |
-<%= link_to 'Nazad', users_path %>
-<%= link_to 'Glavna', '/home'%>
+<%= link_to 'Korisnici', users_path %> |
+<%= link_to 'Glavna', '/home' %> |
+<%= link_to 'Logout', '/logout' %> 
+
+</div>
+</body>
+</html>

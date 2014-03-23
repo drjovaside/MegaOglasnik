@@ -4,16 +4,29 @@ class SessionsController < ApplicationController
  end
 
  def create
-  	user = User.validate_login(params[:session][:email],params[:session][:password])
-  	if user
-  		session[:user_id] = user.id
-  		redirect_to user
-  	else
-  		flash[:status] = FALSE
-  		flash[:alert] = 'Invalid username and password'
+  	#user = User.validate_login(params[:session][:email],params[:session][:password])
+  	#if user
+     # user.update_attribute(:lastlogin, Time.now)
+     # user.save
+  		#session[:user_id] = user.id
+  		#redirect_to user
+  	#else
+  	#	flash[:status] = FALSE
+  	#	flash[:alert] = 'Invalid username and password'
+  	#	redirect_to login_path
+  	#end
 
-  		redirect_to login_path
-  	end
+    #novi login
+    user = User.validate_login(params[:session][:email],params[:session][:password])
+    if user
+      session[:user_id] = user.id
+      user.update_attribute(:lastlogin, Time.now)
+      user.save
+      redirect_to user
+    else
+      redirect_to users_path, :alert => "Invalid user/password combination"
+    end
+
   end
 
 
