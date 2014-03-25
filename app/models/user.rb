@@ -1,5 +1,6 @@
 require 'digest/sha2'
 class User < ActiveRecord::Base
+    attr_accessible :adress,:avatar_url, :banned, :city, :email, :firstname,:lastlogin, :lastname, :name, :password,:salt, :tel_num, :username
 	 validates :username, :presence => true, :uniqueness => true
 	 validates :password, :confirmation => true
 	 validates :email, :presence => true, :uniqueness => true , :format => {
@@ -12,46 +13,28 @@ class User < ActiveRecord::Base
  	validates :lastname, :presence => true
  	validates :adress, :presence => true
  	validates :city, :presence => true
- 	
-	attr_accessor :password_confirmation
 
-	attr_accessible :adress, :banned, :city, :email, :firstname, :lastlogin, :lastname, :password, :tel_num, :username
+	has_many :sessions
 
-	validates_confirmation_of :password
+    before_save :encrypt_password
+
+    
+	#validates_confirmation_of :password
      
     ENCRYPT = Digest::SHA256
-    has_many :sessions, :dependent => :destroy
-	before_save :scrub_email
-	after_save :flush_passwords
 
-	def self.find_by_email_and_password(email,password)
-	user = self.find_by_email(email)
-	if user and user.endcrypted_password == ENCRYPT.hexdigest(password + user.salt)
-    return user
-	end
-	end
-
-	def password=(password)
-		@password = password
-		unless password_is_not_being_updated?
-	    self.salt = [Array.new(9){rand(256).chr}.join].pack('m').chomp
-        self.password = ENCRYPT.hexdigest(password + self.salt)
-			
-		end
-	end
-
-	private
-
-    def scrub_email
-    self.email.downcase!
+    def encrypt_password
+    	self.password=ENCRYPT.hexdigest(password)
     end
 
-    def flush_passwords
-    @password = @password_confirmation = nil
-    end
-
-    def password_is_not_being_updated?
-    self.id and self.password.blank?
+    def self.validate_login(email,password)
+    	user = User.find_by_email(email)
+    	if user && user.password == ENCRYPT.hexdigest(password)
+    		user
+    	else 
+    		nil
+    	end
+    	
     end
 
 end
