@@ -2,8 +2,17 @@ require 'digest'
 class User < ActiveRecord::Base
  validates :username, :presence => true, :uniqueness => true
  validates :password, :confirmation => true
-
- attr_accessor :password_confirmation
+ validates :email, :presence => true, :uniqueness => true , :format => {
+   :with => /@/,
+   :with => /./,
+   :message => 'Morate unijeti validnu email adresu!'
+ }
+ validates :firstname, :presence => true
+ validates :lastname, :presence => true
+ validates :adress, :presence => true
+ validates :city, :presence => true
+ 
+attr_accessor :password_confirmation
 
 attr_accessible :adress, :banned, :city, :email, :firstname, :lastlogin, :lastname, :password, :tel_num, :username
 
