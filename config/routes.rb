@@ -1,15 +1,17 @@
 MegaOglasnik::Application.routes.draw do
   resources :users
+  resources :sessions
 
   get 'home' => 'application#index', as: 'application'
+  get 'login' => 'sessions#new'
 
 #Ruta za sessije
-resources :sessions, :only => [:new, :create, :destroy]
-match 'login' => 'sessions#new'
-match 'logout' => 'sessions#destroy'
-get 'login' => 'sessions#new'
-get 'registration' => 'application#registration', as: 'application'
-get 'sessions' => 'sessions#new'
+#resources :sessions, :only => [:new, :create, :destroy]
+#match 'login' => 'sessions#new'
+#match 'logout' => 'sessions#destroy'
+#get 'login' => 'sessions#new'
+#get 'registration' => 'application#registration', as: 'application'
+#get 'sessions' => 'sessions#new'
 
 #match '/login', :controller => 'sessions', :action => 'new'
   #get "sessions/new"

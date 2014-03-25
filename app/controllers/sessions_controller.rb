@@ -1,37 +1,32 @@
 class SessionsController < ApplicationController
- 
- def new
- end
 
- def create
-  	#user = User.validate_login(params[:session][:email],params[:session][:password])
-  	#if user
-     # user.update_attribute(:lastlogin, Time.now)
-     # user.save
-  		#session[:user_id] = user.id
-  		#redirect_to user
-  	#else
-  	#	flash[:status] = FALSE
-  	#	flash[:alert] = 'Invalid username and password'
-  	#	redirect_to login_path
-  	#end
+	before_filter :ensure_login, :only => :destroy
+	before_filter :ensure_logout, :only => [:new, :create]
 
-    #novi login
-    user = User.validate_login(params[:session][:email],params[:session][:password])
-    if user
-      session[:user_id] = user.id
-      user.update_attribute(:lastlogin, Time.now)
-      user.save
-      redirect_to user
-    else
-      redirect_to users_path, :alert => "Invalid user/password combination"
-    end
+	def index
+		redirect_to (new_session_path)
+	end
 
-  end
+	def new
+		@session = Session.new
+	end
 
+	def create
+		@session= Session.new(params[:session])
 
-  def destroy
-  	session[:user_id] = nil
-  	redirect_to login_path
-  end
+		if @session.save
+        session[:id] = @session.id
+        flash[:notice] = "Hello #{@session.person.name}, you are now logged in"
+        redirect_to(root_url)
+        else
+        render(:action => 'new') 
+		end
+	end
+
+	def destroy
+	Session.destroy(@application_session)
+	session[:id] = @user = nil
+    flash[:notice] = "You are now logged out"
+    redirect_to(root_url)
+	end
 end

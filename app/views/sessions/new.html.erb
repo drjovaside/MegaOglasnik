@@ -1,16 +1,13 @@
-<h1>Login</h1>
+  <legend>Login</legend>
 
+    <% form_for (@session) do |f| %>
+    <label for="session_email">Email</label><br />
+    <%= f.text_field :email %><br />
+   
+    <label for="session_password">Password</label><br />
+    <%= f.password_field :password %><br />
 
-<%= form_for :session, :url => {:action => :create} do |f| %>
-<p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p><%= f.submit "Login" %></p>
-  <p><%= link_to "Glavna", 'home' %></p>
+    <%= submit_tag "login" %>
+
+  <% end %>
   
-<% end %>

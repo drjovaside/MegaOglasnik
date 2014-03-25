@@ -1,61 +1,58 @@
-require 'digest'
+require 'digest/sha2'
 class User < ActiveRecord::Base
- validates :username, :presence => true, :uniqueness => true
- validates :password, :confirmation => true
- validates :email, :presence => true, :uniqueness => true , :format => {
-   :with => /@/,
-   :with => /./,
-   :message => 'Morate unijeti validnu email adresu!'
- }
- validates :firstname, :presence => true
- validates :lastname, :presence => true
- validates :adress, :presence => true
- validates :city, :presence => true
- 
-attr_accessor :password_confirmation
+	 validates :username, :presence => true, :uniqueness => true
+	 validates :password, :confirmation => true
+	 validates :email, :presence => true, :uniqueness => true , :format => {
+	   :with => /@/,
+	   :with => /./,
+	   :message => 'Morate unijeti validnu email adresu!'
+	 }
 
-attr_accessible :adress, :banned, :city, :email, :firstname, :lastlogin, :lastname, :password, :tel_num, :username
+ 	validates :firstname, :presence => true
+ 	validates :lastname, :presence => true
+ 	validates :adress, :presence => true
+ 	validates :city, :presence => true
+ 	
+	attr_accessor :password_confirmation
 
-def password=(password)
-@password = password
-if password.present?
-generate_salt self.hashed_password = self.class.encrypt_password(password, salt)
-end
-end
+	attr_accessible :adress, :banned, :city, :email, :firstname, :lastlogin, :lastname, :password, :tel_num, :username
 
-def encrypt_password(password,salt)
-	Digest::SHA2.hexdigest(password + "wibble" + salt)
-	#self.password = Digest::MDS.hexdigest(password,salt)
-end
+	validates_confirmation_of :password
+     
+    ENCRYPT = Digest::SHA256
+    has_many :sessions, :dependent => :destroy
+	before_save :scrub_email
+	after_save :flush_passwords
 
-def generate_salt
-	self.salt= self.object_id.to_s + rand.to_s
-	
-end
-
-
-def self.validate_login(email, password)
-	user = User.find_by_email(email)
-    if user && user.password == Digest::MDS.hexdigest(password)
-		user
-	else
-		user=User.find_by_id(2)
+	def self.find_by_email_and_password(email,password)
+	user = self.find_by_email(email)
+	if user and user.endcrypted_password == ENCRYPT.hexdigest(password + user.salt)
+    return user
 	end
-end
+	end
 
-def self.authenticate(email, password)
-	if user = User.find_by_email(email)
-		if user.hashed_password == encrypt_password(password, user.salt)
-			user
-		else 
-			User.find_by_id(2)
+	def password=(password)
+		@password = password
+		unless password_is_not_being_updated?
+	    self.salt = [Array.new(9){rand(256).chr}.join].pack('m').chomp
+        self.password = ENCRYPT.hexdigest(password + self.salt)
+			
 		end
-	else 
-		User.find_by_id(2)
 	end
-end
 
+	private
 
+    def scrub_email
+    self.email.downcase!
+    end
+
+    def flush_passwords
+    @password = @password_confirmation = nil
+    end
+
+    def password_is_not_being_updated?
+    self.id and self.password.blank?
+    end
 
 end
 
