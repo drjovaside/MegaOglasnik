@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	   :message => 'Morate unijeti validnu email adresu!'
 	 }
 
+
  	validates :firstname, :presence => true
  	validates :lastname, :presence => true
  	validates :adress, :presence => true
