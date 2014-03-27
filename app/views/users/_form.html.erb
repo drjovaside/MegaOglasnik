@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+<p id="error"><%= flash[:error] %></p>
+
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
@@ -43,14 +45,10 @@
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </div>
-  <div class="field">
-    <%= f.label :banned %><br />
-    <%= f.check_box :banned %>
-  </div>
-  <div class="field">
-    <%= f.label :lastlogin %><br />
-    <%= f.datetime_select :lastlogin %>
-  </div>
+
+
+
+  <%= recaptcha_tags %>
   <div class="actions">
     <%= f.submit %>
   </div>
