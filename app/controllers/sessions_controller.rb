@@ -7,10 +7,13 @@ class SessionsController < ApplicationController
   def create
      	user = User.validate_login(params[:session][:email],params[:session][:password])
       if user
-        session=Session.new
-        session.user_id=user.id
-        session.save
+        #session=Session.new
+        #session.user_id=user.id
+        #session.save
         #if verify_recaptcha
+        #user.lastlogin=Time.now
+        #user.save
+        session[:user_id]=user.id
           redirect_to user
           flash[:notice] = 'Successfully logged in!'
         #else
@@ -30,6 +33,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
+    session[:user_id]=nil
   	redirect_to login_path
   end
 end

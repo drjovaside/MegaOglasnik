@@ -23,7 +23,6 @@
     <th class="darkerBG col-xs-1">City</th>
     <th class="darkerBG col-xs-1">Email</th>
     <th class="darkerBG col-xs-1">Tel num</th>
-    <th class="darkerBG col-xs-1">Password</th>
     <th class="darkerBG col-xs-1">Banned</th>
     <th class="darkerBG col-xs-1">Lastlogin</th>
     <th class="darkerBG col-xs-1"></th> <br/>
@@ -40,8 +39,7 @@
     <td class="darkBG col-xs-1"><%= user.city %></td>
     <td class="darkBG col-xs-1"><%= user.email %></td>
     <td class="darkBG col-xs-1"><%= user.tel_num %></td>
-    <td class="darkBG col-xs-1"><%= user.password %></td>
-    <td class="darkBG col-xs-1"><%= user.banned %></td>
+   <td class="darkBG col-xs-1"><%= user.banned %></td>
     <td class="darkBG col-xs-1"><%= user.lastlogin %></td>
     <td class="darkBG col-xs-1"><%= link_to 'Pogledaj', user %></td>
     <td class="darkBG col-xs-1"><%= link_to 'Promijeni', edit_user_path(user) %></td>

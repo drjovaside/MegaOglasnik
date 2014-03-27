@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  #before_filter :ensure_login, :only => [:edit, :update, :destroy]
-  #before_filter :ensure_logout, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:index,:edit,:destroy]
   # GET /users
   # GET /users.json
   def index
@@ -45,6 +44,7 @@ class UsersController < ApplicationController
   def create
     if verify_recaptcha
     @user = User.new(params[:user])
+    #@user.banned = false
     respond_to do |format|
       if @user.save 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
