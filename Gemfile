@@ -27,6 +27,7 @@ gem 'jquery-rails'
 #gem 'rack-recaptcha', :require => 'rack/recaptcha'
 gem "recaptcha", :require => "recaptcha/rails"
 
+#gem "mail", "2.5.4"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

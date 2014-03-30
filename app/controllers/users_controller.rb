@@ -46,7 +46,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     #@user.banned = false
     respond_to do |format|
-      if @user.save 
+      if @user.save
+        #dodano
+      UserMailer.registration_confirmation(@user).deliver  
+      
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else  
