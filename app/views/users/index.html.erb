@@ -12,19 +12,19 @@
 
     </head>
 
-<body>
+<body >
 
 <table>
   <tr class="row">
-    <th class="darkerBG col-xs-1">Username</th>
-    <th class="darkerBG col-xs-1">Firstname</th>
-    <th class="darkerBG col-xs-1">Lastname</th>
-    <th class="darkerBG col-xs-1">Adress</th>
-    <th class="darkerBG col-xs-1">City</th>
+    <th class="darkerBG col-xs-1"><%= t :username %></th>
+    <th class="darkerBG col-xs-1"><%= t :firstname %></th>
+    <th class="darkerBG col-xs-1"><%= t :lastname %></th>
+    <th class="darkerBG col-xs-1"><%= t :adress %></th>
+    <th class="darkerBG col-xs-1"><%= t :city %></th>
     <th class="darkerBG col-xs-1">Email</th>
-    <th class="darkerBG col-xs-1">Tel num</th>
-    <th class="darkerBG col-xs-1">Banned</th>
-    <th class="darkerBG col-xs-1">Lastlogin</th>
+    <th class="darkerBG col-xs-1"><%= t :tel_num %></th>
+    <th class="darkerBG col-xs-1"><%= t :banned %></th>
+    <th class="darkerBG col-xs-1"><%= t :lastlogin %></th>
     <th class="darkerBG col-xs-1"></th> <br/>
     <th class="darkerBG col-xs-1"></th>  <br/>
     <th class="darkerBG col-xs-1"></th> <br/>
@@ -39,17 +39,17 @@
     <td class="darkBG col-xs-1"><%= user.city %></td>
     <td class="darkBG col-xs-1"><%= user.email %></td>
     <td class="darkBG col-xs-1"><%= user.tel_num %></td>
-   <td class="darkBG col-xs-1"><%= user.banned %></td>
+   <td class="darkBG col-xs-1"><%=  user.banned %></td>
     <td class="darkBG col-xs-1"><%= user.lastlogin %></td>
-    <td class="darkBG col-xs-1"><%= link_to 'Pogledaj', user %></td>
-    <td class="darkBG col-xs-1"><%= link_to 'Promijeni', edit_user_path(user) %></td>
-    <td class="darkBG col-xs-1"><%= link_to 'Obrisi', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="darkBG col-xs-1"><%= link_to (t :show), user %></td>
+    <td class="darkBG col-xs-1"><%= link_to (t :edit), edit_user_path(user) %></td>
+    <td class="darkBG col-xs-1"><%= link_to (t :destroy), user, method: :delete, data: { confirm: ((t :you_sure) + "?" )} %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-<button type="button" class="btn btn-primary" onclick="window.location.href='/users/new'">Dodaj novog korisnika</button>
+<button type="button" class="btn btn-primary" onclick="window.location.href='/users/new'"><%= t :add_user %></button>
 
 <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

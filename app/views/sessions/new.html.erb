@@ -1,6 +1,7 @@
-<h1>Login</h1>
+<h1><%= t :login%></h1>
 
 <p id="error"><%= flash[:error] %></p>
+<p id="notice"><%= notice %></p>
 
 <%= form_for :session, :url => sessions_path do |f| %>
 <p>
@@ -13,7 +14,7 @@
   </p>
 
 
-  <p><%= f.submit "Login" %></p>
-  <p><%= link_to "Glavna", 'home' %></p>
+  <p><%= f.submit 'Prijavi se' %></p>
+  <p><%= link_to "Glavna", '/home' %></p>
   
 <% end %>

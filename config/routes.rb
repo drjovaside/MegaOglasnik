@@ -1,6 +1,5 @@
 MegaOglasnik::Application.routes.draw do
   get "sessions/new"
-
   resources :users
   resources :sessions
   match '/login' => 'sessions#new'

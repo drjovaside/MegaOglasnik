@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     if verify_recaptcha
     @user = User.new(params[:user])
     #@user.banned = false
+    @user.banned=false
     respond_to do |format|
       if @user.save 
         format.html { redirect_to @user, notice: 'User was successfully created.' }

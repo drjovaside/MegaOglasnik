@@ -20,27 +20,27 @@
 <% end %>
 
 <p>
-  <b>Username:</b>
+  <b><%= t :username %>:</b>
   <%= @user.username %>
 </p>
 
 <p>
-  <b>Firstname:</b>
+  <b><%= t :firstname %></b>
   <%= @user.firstname %>
 </p>
 
 <p>
-  <b>Lastname:</b>
+  <b><%= t :lastname %>:</b>
   <%= @user.lastname %>
 </p>
 
 <p>
-  <b>Adress:</b>
+  <b><%= t :adress %>:</b>
   <%= @user.adress %>
 </p>
 
 <p>
-  <b>City:</b>
+  <b><%= t :city %></b>
   <%= @user.city %>
 </p>
 
@@ -50,25 +50,25 @@
 </p>
 
 <p>
-  <b>Tel num:</b>
+  <b><%= t :tel_num %></b>
   <%= @user.tel_num %>
 </p>
 
 
 <p>
-  <b>Banned:</b>
+  <b><%= t :banned %></b>
   <%= @user.banned %>
 </p>
 
 <p>
-  <b>Lastlogin:</b>
+  <b><%= t :lastlogin %></b>
   <%= @user.lastlogin %>
 </p>
 
-<%= link_to 'Promijeni', edit_user_path(@user) %> |
-<%= link_to 'Korisnici', users_path %> |
-<%= link_to 'Glavna', '/home' %> |
-<%= link_to 'Logout', '/logout' %> 
+<%= link_to (t :edit), edit_user_path(@user) %> |
+<%= link_to (t :users), users_path %> |
+<%= link_to (t :home), '/home' %> |
+<%= link_to (t :logout), '/logout' %> 
 
 </div>
 </body>

@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  add_user: "Add user"
+  editing_user: "Editing user"
+  you_sure: "Are you sure"
+  welcome_to_megamarket: "Welcome to MegaMarket"
+  choose_language: "Choose language"
+  bosnian: "Bosnian"
+  english: "English"

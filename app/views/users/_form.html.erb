@@ -14,23 +14,23 @@
 <p id="error"><%= flash[:error] %></p>
 
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label t :username %><br />
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :firstname %><br />
+    <%= f.label t :firstname %><br />
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br />
+    <%= f.label t :lastname %><br />
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label :adress %><br />
+    <%= f.label t :adress %><br />
     <%= f.text_field :adress %>
   </div>
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label t :city %><br />
     <%= f.text_field :city %>
   </div>
   <div class="field">
@@ -38,7 +38,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :tel_num %><br />
+    <%= f.label t :tel_num %><br />
     <%= f.text_field :tel_num %>
   </div>
   <div class="field">
@@ -50,6 +50,6 @@
 
   <%= recaptcha_tags %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Dalje" %>
   </div>
 <% end %>

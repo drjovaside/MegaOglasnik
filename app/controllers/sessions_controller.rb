@@ -7,33 +7,21 @@ class SessionsController < ApplicationController
   def create
      	user = User.validate_login(params[:session][:email],params[:session][:password])
       if user
-        #session=Session.new
-        #session.user_id=user.id
-        #session.save
-        #if verify_recaptcha
-        #user.lastlogin=Time.now
-        #user.save
-        session[:user_id]=user.id
+        user.lastlogin=Time.now
+        user.save
+          session[:user_id]=user.id
           redirect_to user
-          flash[:notice] = 'Successfully logged in!'
-        #else
-        # flash[:error] = 'Error with reCAPTCHA!'
-        # redirect_to login_path
-        #end
-
+          flash[:notice] = 'Uspjesno ste se prijavili.'          
       else 
-        flash[:error] = 'The email address or password you entered is not valid. Please try again.'
+        flash[:error] = 'Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo.'
         redirect_to login_path
       end
-      end
-    
-      #flash[:error] = 'Error with reCAPTCHA!'
-      #redirect_to login_path
-    
+  end
 
 
   def destroy
     session[:user_id]=nil
-  	redirect_to login_path
+    flash[:notice] = 'Uspjesno ste se odjavili.' 
+    redirect_to login_path
   end
 end

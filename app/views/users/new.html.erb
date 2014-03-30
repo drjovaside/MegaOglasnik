@@ -10,10 +10,10 @@
 	
 </head>
 <body>
-<h1>New user</h1>
-<p id="error"><%= flash[:error] %></p>
+<h1><%=t 'new_user' %></h1>
+
 <%= render 'form' %>
 
-<button type="button" class="btn btn-success" onclick="window.location.href='/users'"> Natrag </button>
+<button type="button" class="btn btn-success" onclick="window.location.href='/users'"><%= t :back %></button>
 </body>
 </html>
