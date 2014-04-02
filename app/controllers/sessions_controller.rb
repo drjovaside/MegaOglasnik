@@ -4,9 +4,14 @@ class SessionsController < ApplicationController
   	
   end
 
+#def aktiviraj
+#  self.aktiviraj ||= false
+#end
+  
   def create
      	user = User.validate_login(params[:session][:email],params[:session][:password])
-      if user
+     #if (aktiviraj==true)
+      if user 
         user.lastlogin=Time.now
         user.save
           session[:user_id]=user.id
@@ -16,6 +21,11 @@ class SessionsController < ApplicationController
         flash[:error] = 'Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo.'
         redirect_to login_path
       end
+    #else
+    #redirect_to login_path
+    #flash[:error] = "Email has not been Verified!"
+    #end
+
   end
 
 
@@ -24,4 +34,14 @@ class SessionsController < ApplicationController
     flash[:notice] = 'Uspjesno ste se odjavili.' 
     redirect_to login_path
   end
+
+
+#dodano
+  def activate
+
+  @user.update_attribute(banned: true)
+  redirect_to login_path
+  flash[:notice] = "Email has been Verified."
+end
+
 end

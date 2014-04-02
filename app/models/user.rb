@@ -35,9 +35,7 @@ class User < ActiveRecord::Base
     	else 
     		nil
     	end
-    	
     end
 
+#dodano
 end
-
-

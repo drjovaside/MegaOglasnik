@@ -1,9 +1,13 @@
 MegaOglasnik::Application.routes.draw do
+  #get "activations/new"
+  #get "activations/create"
+
   get "sessions/new"
   resources :users
   resources :sessions
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
+  match '/activate' => 'sessions#activate'
 
   get 'home' => 'application#index', as: 'application'
   get 'login' => 'sessions#new'
