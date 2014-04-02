@@ -1,6 +1,6 @@
 require 'digest/sha2'
 class User < ActiveRecord::Base
-    attr_accessible :adress,:avatar_url, :banned, :city, :email, :firstname,:lastlogin, :lastname, :name, :password,:salt, :tel_num, :username
+    attr_accessible :adress,:avatar_url, :banned, :city, :email, :firstname,:lastlogin, :lastname, :name, :password,:salt, :tel_num, :username, :active
 	 validates :username, :presence => true, :uniqueness => true
 	 validates :password, :confirmation => true
 	 validates :email, :presence => true, :uniqueness => true , :format => {

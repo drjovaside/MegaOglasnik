@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     #@user.banned = false
     @user.banned=false
+    @user.active=false
     respond_to do |format|
       if @user.save
         #dodano
@@ -92,5 +93,15 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+#dodano
+  def activate
+  @user = User.find(10)
+  @user.active=true
+  @user.save
+  redirect_to login_path
+  flash[:notice] = "Email has been Verified."
+end
+
 
 end
