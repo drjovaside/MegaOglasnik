@@ -50,9 +50,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #dodano
+      session[:user_id]=@user.id
       UserMailer.registration_confirmation(@user).deliver  
       
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to '/login', notice: 'User was successfully created. Please verify your email adress to complete the sign up process!' }
         format.json { render json: @user, status: :created, location: @user }
       else  
         format.html { render action: "new" }
@@ -69,7 +70,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -96,7 +97,7 @@ class UsersController < ApplicationController
 
 #dodano
   def activate
-  @user = User.find(params[:id])
+  @user = User.find(session[:user_id])
   @user.active=true
   @user.save
   redirect_to login_path
