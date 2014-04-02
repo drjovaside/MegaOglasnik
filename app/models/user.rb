@@ -16,12 +16,7 @@ class User < ActiveRecord::Base
  	validates :city, :presence => true
 
 	has_many :sessions
-
-    before_save :encrypt_password
-
-    
-	#validates_confirmation_of :password
-     
+ 
     ENCRYPT = Digest::SHA256
 
     def encrypt_password
@@ -30,7 +25,7 @@ class User < ActiveRecord::Base
 
     def self.validate_login(email,password)
     	user = User.find_by_email(email)
-    	if user && user.password == ENCRYPT.hexdigest(password)
+    	if user && user.password == password
     		user
     	else 
     		nil

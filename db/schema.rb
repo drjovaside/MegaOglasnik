@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20140331025048) do
     t.datetime "updated_at",                    :null => false
     t.string   "avatar_url"
     t.string   "salt"
-    t.boolean  "active" , :default => false, :null => false
+    t.boolean  "active",     :default => false, :null => false
+  end
 
 end

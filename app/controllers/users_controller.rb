@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 
 #dodano
   def activate
-  @user = User.find(10)
+  @user = User.find(params[:id])
   @user.active=true
   @user.save
   redirect_to login_path
