@@ -12,6 +12,10 @@ MegaOglasnik::Application.routes.draw do
   get 'home' => 'application#index', as: 'application'
   get 'login' => 'sessions#new'
 
+  get '/home/language/bosnian' => 'users#change_to_bosnian'
+  get '/home/language/english' => 'users#change_to_english'
+  get '/home/language/default' => 'users#change_to_default'
+
 resources :dashboard
 match '/dashboards' => 'dashboard#new'
    

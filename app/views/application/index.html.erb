@@ -28,12 +28,13 @@
   <button type="button" class="btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
     <%= t :choose_language %> <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="/home"><%= t :bosnian %></a></li>
-    <li><a href="/users"><%= t :english %></a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
+  
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="/home/language/bosnian" ><%= t :bosnian %></a></li>
+        <li><a href="/home/language/english" ><%= t :english %></a></li>
+        <li class="divider"></li>
+        <li><a href="/home/language/default"><%= t :default_language %></a></li>
+      </ul>
 </div>
 </form>
 

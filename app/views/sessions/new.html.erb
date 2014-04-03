@@ -14,8 +14,7 @@
     <%= f.password_field :password %>
   </p>
 
-
-  <p><%= f.submit 'Prijavi se' %></p>
-  <p><%= link_to "Glavna", '/home' %></p>
+  <button type="submit" class="btn btn-primary"> <%= t :login %></button>
+  <p><%= link_to (t :home), '/home' %></p>
   
 <% end %>

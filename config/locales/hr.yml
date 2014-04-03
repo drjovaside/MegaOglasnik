@@ -32,9 +32,8 @@ hr:
     - Subota
     formats:
       default: ! '%d.%m.%Y.'
-      long: ! '%B %e %Y'
+      long: ! '%B %e, %Y'
       short: ! '%e %b'
-
     month_names:
     -
     - Siječanj
@@ -92,25 +91,25 @@ hr:
         many: preko %{count} godina
         other: preko %{count} godina
       x_days:
-        one: ! %{count} dan
-        few: ! %{count} dana
-        many: ! %{count} dana
-        other: ! %{count} dana
+        one: ! '%{count} dan'
+        few: ! '%{count} dana'
+        many: ! '%{count} dana'
+        other: ! '%{count} dana'
       x_minutes:
-        one: ! %{count} minuta
-        few: ! %{count} minute
-        many: ! %{count} minuta
-        other: ! %{count} minuta
+        one: ! '%{count} minuta'
+        few: ! '%{count} minute'
+        many: ! '%{count} minuta'
+        other: ! '%{count} minuta'
       x_months:
-        one: ! %{count} mjesec
-        few: ! %{count} mjeseca
-        many: ! %{count} mjeseci
-        other: ! %{count} mjeseci
+        one: ! '%{count} mjesec'
+        few: ! '%{count} mjeseca'
+        many: ! '%{count} mjeseci'
+        other: ! '%{count} mjeseci'
       x_seconds:
-        one: ! %{count} sekunda
-        few: ! %{count} sekunde
-        many: ! %{count} sekundi
-        other: ! %{count} sekundi
+        one: ! '%{count} sekunda'
+        few: ! '%{count} sekunde'
+        many: ! '%{count} sekundi'
+        other: ! '%{count} sekundi'
     prompts:
       day: Dan
       hour: Sat
@@ -119,7 +118,7 @@ hr:
       second: Sekunde
       year: Godina
   errors: &errors
-    format: ! %{attribute} %{message}
+    format: ! '%{attribute} %{message}'
     messages:
       accepted: mora biti prihvaćen
       blank: ne smije biti prazan
@@ -138,7 +137,7 @@ hr:
       not_a_number: nije broj
       not_an_integer: nije cijeli broj
       odd: mora biti neparan
-      record_invalid: ! Validacija nije uspjela: %{errors}
+      record_invalid: ! 'Validacija nije uspjela: %{errors}'
       restrict_dependent_destroy:
         one: "Nije moguće izbrisati zapis jer postoji ovisan %{record}"
         many: "Nije moguće izbrisati zapis jer postoje ovisni %{record}"
@@ -162,10 +161,10 @@ hr:
     template:
       body: ! 'Sljedeća polja su neispravno popunjena:'
       header:
-        one: ! %{count} greška je spriječila %{model} da se spremi
-        few: ! %{count} greške su spriječile %{model} da se spremi
-        many: ! %{count} grešaka je spriječilo %{model} da se spremi
-        other: ! %{count} grešaka je spriječilo %{model} da se spremi
+        one: ! '%{count} greška je spriječila %{model} da se spremi'
+        few: ! '%{count} greške su spriječile %{model} da se spremi'
+        many: ! '%{count} grešaka je spriječilo %{model} da se spremi'
+        other: ! '%{count} grešaka je spriječilo %{model} da se spremi'
   helpers:
     select:
       prompt: Izaberite
@@ -176,7 +175,7 @@ hr:
   number:
     currency:
       format:
-        delimiter: ! ,
+        delimiter: ! ','
         format: ! '%n %u'
         precision: 2
         separator: .
@@ -186,7 +185,7 @@ hr:
     format:
       delimiter: .
       precision: 3
-      separator: ! ,
+      separator: ! ','
       significant: false
       strip_insignificant_zeros: false
     human:
@@ -225,17 +224,16 @@ hr:
         delimiter: ''
   support:
     array:
-      last_word_connector: !  i 
-      two_words_connector: !  i 
+      last_word_connector: ! ', i '
+      two_words_connector: ! ' i '
       words_connector: ! ', '
   time:
     am: AM
     formats:
-      default: ! %a %b %d %H:%M:%S %Z %Y
-      long: ! %B %d, %Y %H:%M
-      short: ! '%d %b %H:%M
+      default: ! '%a %b %d %H:%M:%S %Z %Y'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
     pm: PM
-
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
@@ -244,7 +242,7 @@ hr:
     errors:
       <<: *errors
 
-hr:
+      
   you_sure: "Da"
   edit: "Promijeni"
   you_sure: "Da"
@@ -306,4 +304,3 @@ hr:
   choose_language: "Odaberite jezik"
   bosnian: "Bosanski"
   english: "Engleski"
-  

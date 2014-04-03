@@ -258,6 +258,7 @@ en:
   bosnian: "Bosnian"
   english: "English"
   next: "Next"
+  default_language: "Default language"
 
 hr:
   you_sure: "Da"
@@ -292,6 +293,7 @@ hr:
   choose_language: "Odaberite jezik"
   bosnian: "Bosanski"
   english: "Engleski"
+  default_language: "Automatski prepoznaj"
 
 bs:
   user: "korisnik"
@@ -323,3 +325,4 @@ bs:
   choose_language: "Odaberite jezik"
   bosnian: "Bosanski"
   english: "Engleski"
+  default_language: "Automatski prepoznaj" 

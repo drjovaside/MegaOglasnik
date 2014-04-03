@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     #@user.banned = false
     @user.banned=false
     @user.active=false
+    @user.prefered_language="default"
     respond_to do |format|
       if @user.save
         #dodano
@@ -104,5 +105,45 @@ class UsersController < ApplicationController
   flash[:notice] = "Email has been Verified."
 end
 
+#changes prefered language to bosnian
+def change_to_bosnian
+  if session[:user_id] != nil
+  @user = User.find(session[:user_id])
+  @user.prefered_language="bosnian"
+  @user.save
+  redirect_to users_path
+  #redirect_to(:back)
+  else
+    session[:language]="bosnian"
+    redirect_to users_path
+  end
+end
+
+#changes prefered language to english
+def change_to_english
+  if session[:user_id] != nil
+  @user = User.find(session[:user_id])
+  @user.prefered_language="english"
+  @user.save
+  redirect_to users_path
+  #redirect_to(:back)
+else
+  session[:language]="english"
+  redirect_to users_path
+end
+end
+
+#changes prefered language to default
+def change_to_default
+  if session[:user_id] != nil
+  @user = User.find(session[:user_id])
+  @user.prefered_language="default"
+  @user.save
+  redirect_to(:back)
+else
+  session[:language]="default"
+  redirect_to users_path
+end
+end
 
 end
