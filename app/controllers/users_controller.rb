@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  #before_filter :set_locale
   before_filter :authenticate_user!, :only => [:index,:edit,:destroy]
   # GET /users
   # GET /users.json

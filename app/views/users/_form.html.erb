@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -14,23 +15,23 @@
 <p id="error"><%= flash[:error] %></p>
 
   <div class="field">
-    <%= f.label t :username %><br />
+    <b><%= t :username %></b><br />
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label t :firstname %><br />
+   <b><%= t :firstname %></b><br />
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label t :lastname %><br />
+    <b><%= t :lastname %></b><br />
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label t :adress %><br />
+    <b><%= t :adress %></b><br />
     <%= f.text_field :adress %>
   </div>
   <div class="field">
-    <%= f.label t :city %><br />
+    <b><%= t :city %></b><br />
     <%= f.text_field :city %>
   </div>
   <div class="field">
@@ -38,11 +39,11 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label t :tel_num %><br />
+    <b><%= t :tel_num %></b><br />
     <%= f.text_field :tel_num %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <b><%= t :password %></b><br />
     <%= f.text_field :password %>
   </div>
 
@@ -50,6 +51,7 @@
 
   <%= recaptcha_tags %>
   <div class="actions">
-    <%= f.submit "Dalje" %>
-  </div>
+    <button type="submit" class="btn btn-primary"> <%= t :next %></button>
+    </div>
 <% end %>
+</div>
