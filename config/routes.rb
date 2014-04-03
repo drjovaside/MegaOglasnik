@@ -12,6 +12,8 @@ MegaOglasnik::Application.routes.draw do
   get 'home' => 'application#index', as: 'application'
   get 'login' => 'sessions#new'
 
+resources :dashboard
+match '/dashboards' => 'dashboard#new'
    
   
 #Ruta za sessije

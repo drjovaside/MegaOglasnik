@@ -26,6 +26,11 @@ gem 'jquery-rails'
 
 #gem 'rack-recaptcha', :require => 'rack/recaptcha'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'chartkick'
+gem 'groupdate'
+#gem "google_visualr"
+
+gem 'lazy_high_charts'
 
 #gem "mail", "2.5.4"
 # To use ActiveModel has_secure_password
