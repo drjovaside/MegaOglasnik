@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         user.lastlogin=Time.now
         user.save
           session[:user_id]=user.id
-          redirect_to user
+          redirect_to '/home'
           flash[:notice] = 'Uspjesno ste se prijavili.'          
       else
        flash[:error] = 'Niste verifikovali email adresu!'

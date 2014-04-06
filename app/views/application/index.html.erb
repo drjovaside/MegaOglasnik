@@ -22,9 +22,13 @@
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <form class="navbar-form navbar-right" role="search">
+  <% if session[:user_id] == nil %>
   <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
-   <div class="btn-group">
+  <% else %>
+  <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/logout'"> <%= t :logout %> </button>
+  <% end %>
+  <div class="btn-group">
   <button type="button" class="btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
     <%= t :choose_language %> <span class="caret"></span>
   </button>
@@ -41,12 +45,15 @@
     </nav>
 </div>
 
-
-
 <div class="container">
 
 <h2> <%= t :welcome_to_megamarket %>!</h2><br/>
+<button type="button" class="btn btn-success" onclick="window.location.href='/ads'"> <%= t :ads %> </button>
+<button type="button" class="btn btn-success" onclick="window.location.href='/categories'"> <%= t :categories %> </button>
 <button type="button" class="btn btn-success" onclick="window.location.href='/users'"> <%= t :users %> </button>
+<button type="button" class="btn btn-success" onclick="window.location.href='/ads/new'"> <%= t :new_ad %> </button>
+
+
 </div>
 </body>
 </html>

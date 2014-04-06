@@ -259,6 +259,10 @@ en:
   english: "English"
   next: "Next"
   default_language: "Default language"
+  categories: "Categories"
+  ads: "Ads"
+  new_ad: "New ad"
+  ads: "Ads"
 
 hr:
   you_sure: "Da"
@@ -294,7 +298,11 @@ hr:
   bosnian: "Bosanski"
   english: "Engleski"
   default_language: "Automatski prepoznaj"
-
+  categories: "Kategorije"
+  ads: "Oglasi"
+  new_ad: "Dodaj oglas"
+  ads: "Oglasi"
+  name: "Naziv"
 bs:
   user: "korisnik"
   users: "Korisnici"
@@ -326,3 +334,8 @@ bs:
   bosnian: "Bosanski"
   english: "Engleski"
   default_language: "Automatski prepoznaj" 
+  categories: "Kategorije"
+  ads: "Oglasi"
+  new_ad: "Dodaj oglas"
+  ads: "Oglasi"
+  name: "Naziv"

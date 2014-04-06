@@ -18,7 +18,8 @@ MegaOglasnik::Application.routes.draw do
 
 resources :dashboard
 match '/dashboards' => 'dashboard#new'
-   
+resources :categories
+resources :ads
   
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
