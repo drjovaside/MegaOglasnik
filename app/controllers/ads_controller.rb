@@ -85,4 +85,11 @@ class AdsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+  @search = Ad.search(params[:search])
+  
+end
+
+
 end

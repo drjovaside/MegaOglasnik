@@ -21,12 +21,8 @@
 	<div class="bs-example">
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-    <form class="navbar-form navbar-right" role="search">
-  <div class="form-group">
-
-  <input type="text" class="form-control" placeholder="<%=@search%>"></input>
-  </div>
-  <button type="submit" class="btn-sm btn btn-success"><%= t :tab_search %></button>
+    
+  <div class="navbar-form navbar-right" role="options">
   <% if session[:user_id] == nil %>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
@@ -37,6 +33,8 @@
   <div class="btn-group">
   <button type="button" class="btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
     <%= t :choose_language %> <span class="caret"></span>
+
+
   </button>
   
       <ul class="dropdown-menu" role="menu">
@@ -46,8 +44,14 @@
         <li><a href="/home/language/default"><%= t :default_language %></a></li>
       </ul>
 </div>
-</form>
 
+</div>
+<div class="navbar-form navbar-center" role="search">
+    <%= form_tag :controller => 'ads', :action => 'search', :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], :id => 'search_field' , :class => "form-control", :placeholder => (t :search) %>
+    <%= submit_tag t :tab_search, :name => nil %> 
+    <% end %>
+    </div>
     </nav>
 </div>
 

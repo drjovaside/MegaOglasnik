@@ -20,7 +20,9 @@ resources :dashboard
 match '/dashboards' => 'dashboard#new'
 resources :categories
 resources :ads
-  
+
+get '/search' => 'ads#search'  
+post '/search' => 'ads#search'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
 #match 'login' => 'sessions#new'

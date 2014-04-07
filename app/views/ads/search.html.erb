@@ -1,0 +1,23 @@
+<h1>Rezultati pretrage</h1>
+
+<table>
+  <tr>
+    <th><%= t :title %></th>
+    <th><%= t :price %></th>
+    <th><%= t :description %></th>
+  </tr>
+
+<% @search.each do |ad| %>
+  <tr>
+    <td><%= ad.title %></td>
+    <td><%= ad.price %></td>
+    <td><%= ad.description %></td>
+    
+    <td><%= link_to (t :show), ad %></td>
+    <td><%= link_to (t :edit), edit_ad_path(ad) %></td>
+    <td><%= link_to (t :destroy), ad, method: :delete, data: { confirm: (t :you_sure) + "?" } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
