@@ -172,11 +172,11 @@ ActiveRecord::Schema.define(:version => 20140407092824) do
     t.string   "password"
     t.boolean  "banned"
     t.datetime "lastlogin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "avatar_url"
     t.string   "salt"
-    t.boolean  "active"
+    t.boolean  "active",            :default => false, :null => false
     t.string   "prefered_language"
   end
 

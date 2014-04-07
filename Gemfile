@@ -31,6 +31,7 @@ gem 'groupdate'
 #gem "google_visualr"
 
 gem 'lazy_high_charts'
+gem "tabs_on_rails"
 
 #gem "mail", "2.5.4"
 # To use ActiveModel has_secure_password

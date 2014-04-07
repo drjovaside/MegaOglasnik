@@ -7,9 +7,10 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="stylesheets/application.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="stylesheets/application.css">
 <style type="text/css">
   .bs-example{
       margin: 20px;
@@ -20,9 +21,20 @@
 
 	<div class="bs-example">
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+      
+           
         <!-- Brand and toggle get grouped for better mobile display -->
+<<<<<<< HEAD
     
   <div class="navbar-form navbar-right" role="options">
+=======
+        
+    <form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+  <input type="text" class="form-control" placeholder="<%=@search%>"></input>
+    </div>
+  <button type="submit" class="btn-sm btn btn-success"><%= t :tab_search %></button>
+>>>>>>> b8f674f55282c035df873626547079a40873c37f
   <% if session[:user_id] == nil %>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
@@ -56,15 +68,55 @@
 </div>
 
 <div class="container">
+<h2><%= t :welcome_to_megamarket %>!</h2>
+<br/>
 
-<h2> <%= t :welcome_to_megamarket %>!</h2><br/>
-<button type="button" class="btn btn-success" onclick="window.location.href='/ads'"> <%= t :ads %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/categories'"> <%= t :categories %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/users'"> <%= t :users %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/ads/new'"> <%= t :new_ad %> </button>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="/home">Početna</a></li>
+  <li><a href="/ads">Oglasi</a></li>
+  <li><a href="/categories">Kategorije</a></li>
+  <li><a href="/users">Korisnici</a></li>
+  
+</ul>
 
 
 </div>
+
+<br />
+<br />
+
+<div class="list-group">
+  <a href="#" class="list-group-item active" style = "width:190px">
+    Kategorije
+  </a>
+  <a href="#" class="list-group-item" style = "width:190px">Vozila</a>
+  <a href="#" class="list-group-item" style = "width:190px">Nekretnine</a>
+  <a href="#" class="list-group-item" style = "width:190px">Mobiteli</a>
+  <a href="#" class="list-group-item" style = "width:190px">Sportska oprema</a>
+  <a href="#" class="list-group-item" style = "width:190px">Odjeća i obuća</a>
+  <a href="#" class="list-group-item" style = "width:190px">Igre i igračke</a>
+  <a href="#" class="list-group-item" style = "width:190px">Video igre</a>
+  <a href="#" class="list-group-item" style = "width:190px">Umjetnost</a>
+    <a href="#" class="list-group-item" style = "width:190px">Ostalo</a>
+</div>
+
+
+<body>
+    <div id="wrap">
+      <div class="container">
+      </div>
+    </div>
+    <div id="footer">
+<br/>
+  <a href="http://localhost:3000/home">
+    <font size="2"><div class="container" style="text-align: center" >Copyright © All Rights Reserved</div></font>
+</a>
+    </div>
+</body>
+
+
+
 </body>
 </html>
 

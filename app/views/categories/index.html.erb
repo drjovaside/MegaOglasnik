@@ -1,4 +1,26 @@
-<h1>Listing categories</h1>
+
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<div class="container">
+
+<h2> <%= t :categories %></h2><br/>
+
+
+<ul class="nav nav-tabs">
+  <li><a href="/home">Početna</a></li>
+  <li><a href="/ads">Oglasi</a></li>
+  <li class="active"><a href="/categories">Kategorije</a></li>
+  <li><a href="/users">Korisnici</a></li>
+  
+</ul>
+
+
+</div>
 
 <table>
   <tr>
@@ -18,3 +40,16 @@
 <br />
 
 <%= link_to 'New Category', new_category_path %>
+
+<body>
+    <div id="wrap">
+      <div class="container">
+      </div>
+    </div>
+    <div id="footer">
+<br/>
+  <a href="http://localhost:3000/home">
+    <font size="2"><div class="container" style="text-align: center" >Copyright © All Rights Reserved</div></font>
+</a>
+    </div>
+</body>
