@@ -7,23 +7,21 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 
-
-<h2><%= t :New_ad %></h2>
+<div class="container">
+<h2><%= t :new_ad %></h2>
 
 <br/>
 <%= form_for(@ad) do |f| %>
   <% if @ad.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-
+    
       <ul>
       <% @ad.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class="alert alert-danger"><%= msg %></li>
       <% end %>
       </ul>
-    </div>
   <% end %>
-<div class="input-group">
+  
+  <div class="input-group">
   <div class="field">
     <b><%= t :title , :class=> "input-group-label" %></b><br />
     <%= f.text_field :title, :class=> "form-control" %>
@@ -50,3 +48,4 @@
   </div>
   
 <% end %>
+</div>

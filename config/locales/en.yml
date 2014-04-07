@@ -14,3 +14,5 @@ en:
   tab_search: "Search"
   search: "Type something..."
   ad_listing: "Ad listing"
+  ad_successfully_added: "Ad was successfully created!"
+  ad_successfully_updated: "Ad was successfully updated!"

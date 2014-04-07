@@ -242,12 +242,15 @@ bs:
       short: ! '%d. %b %Y. %H:%M'
     pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
+bs:
   activerecord:
     errors:
-      <<: *errors
+      models:
+        ad:
+          attributes:
+            title:
+              blank: "Naziv artikla ne moze biti prazan. Molimo ispravite."
+
 en:
   hello: "Hello world"
   add_user: "Add user"
@@ -338,10 +341,29 @@ bs:
   english: "Engleski"
   default_language: "Automatski prepoznaj" 
   categories: "Kategorije"
-  ads: "Oglasi"
   new_ad: "Dodaj oglas"
   ads: "Oglasi"
   name: "Naziv"
   tab_search: "Traži"
   search: "Pretraga..."
   ad_listing: "Pregled oglasa"
+  create_ad: "Objavi"
+  new_ad: "Novi oglas"
+  title: "Naziv"
+  price: "Cijena"
+  description: "Opis"
+  ad_successfully_added: "Uspješno ste objavili oglas!"
+  ad_successfully_updated: "Uspješno ste izmijenili oglas!"
+  activerecord:
+    errors:
+      models:
+        ad:
+          attributes:
+            title:
+              blank: "Morate unijeti naziv artikla."
+            price:
+              blank: "Cijena artikla mora biti pozitivan broj. Molimo Vas ispravite."
+  errors:
+    format: "%{message}"
+    messages: &error_messages
+      empty: "Something something %{attribute} something something"
