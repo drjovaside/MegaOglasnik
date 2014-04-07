@@ -35,9 +35,8 @@ protect_from_forgery
   def index
     if session[:language] == nil
       session[:language] = "default"
-      
     end
-  
+  @user=User.find_by_id(session[:user_id])
   end
 
   def registration

@@ -21,11 +21,17 @@
 	<div class="bs-example">
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+
+  <input type="text" class="form-control" placeholder="<%=@search%>"></input>
+  </div>
+  <button type="submit" class="btn-sm btn btn-success"><%= t :tab_search %></button>
   <% if session[:user_id] == nil %>
-  <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
+  <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
   <% else %>
+  <%= link_to @user.username, @user %>
   <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/logout'"> <%= t :logout %> </button>
   <% end %>
   <div class="btn-group">

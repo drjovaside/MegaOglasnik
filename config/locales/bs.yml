@@ -303,6 +303,7 @@ hr:
   new_ad: "Dodaj oglas"
   ads: "Oglasi"
   name: "Naziv"
+  tab_search: "Traži"
 bs:
   user: "korisnik"
   users: "Korisnici"
@@ -339,3 +340,5 @@ bs:
   new_ad: "Dodaj oglas"
   ads: "Oglasi"
   name: "Naziv"
+  tab_search: "Traži"
+  search: "Pretraga..."
