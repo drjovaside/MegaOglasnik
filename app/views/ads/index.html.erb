@@ -1,6 +1,6 @@
-
+<link rel="stylesheet" href="stylesheets/ad.css">
  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
+        
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -23,38 +23,43 @@
 </div>
 
  
-
-<table>
+<div class="panel panel-default">
+	<div class="panel-heading"><%= t :ad_listing %></div>
+<div class="panel-body">
+	<table class="table table-condensed">
   <tr>
     <th class="darkerBG col-xs-1"><%= t :title %></th>
     <th class="darkerBG col-xs-1"><%= t :price %></th>
     <th class="darkerBG col-xs-1"><%= t :description %></th>
   </tr>
+  </br>
 
 
-<% @ads.each do |ad| %>
+  <tr>
+     <% @ads.each do |ad| %>
 
-  <tr class="panel panel-default">
-      <div class="panel-body">
+  
     
     <td class="darkBG col-xs-1"><%= ad.title %></td>
     <td class="darkBG col-xs-1"><%= ad.price %></td>
     <td class="darkBG col-xs-1"><%= ad.description %></td>
 
-    </div>
-  </tr>
     
-    <td><%= link_to (t :show), ad %></td>
-    <td><%= link_to (t :edit), edit_ad_path(ad) %></td>
-    <td><%= link_to (t :destroy), ad, method: :delete, data: { confirm: (t :you_sure) + "?" } %></td>
-
-       
-
-
+  
+    <div class="btn-group" align="right">
+    <td><%= link_to (t :show), ad,:class => "btn btn-default" %>
+    <%= link_to (t :edit), edit_ad_path(ad),:class => "btn btn-default" %>
+    <%= link_to (t :destroy), ad, method: :delete, data: { confirm: (t :you_sure) + "?" },:class => "btn btn-default" %></td>
+    </div>
+   </tr>
+   <br/>
 <% end %>
 </table>
+</div>
+</div>
+
 
 
 <br />
 
-<%= link_to (t :new_ad), new_ad_path %>
+<%= link_to (t :new_ad), new_ad_path,:class => "btn btn-default" %>
