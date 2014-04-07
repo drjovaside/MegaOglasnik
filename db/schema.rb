@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331025048) do
+ActiveRecord::Schema.define(:version => 20140407092824) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
@@ -172,11 +172,12 @@ ActiveRecord::Schema.define(:version => 20140331025048) do
     t.string   "password"
     t.boolean  "banned"
     t.datetime "lastlogin"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "avatar_url"
     t.string   "salt"
-    t.boolean  "active",     :default => false, :null => false
+    t.boolean  "active"
+    t.string   "prefered_language"
   end
 
 end
