@@ -1,5 +1,52 @@
-<h1>New ad</h1>
+<link rel="stylesheet" href="stylesheets/ad.css">
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', ads_path %>
+
+<h2><%= t :New_ad %></h2>
+
+<br/>
+<%= form_for(@ad) do |f| %>
+  <% if @ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+      <ul>
+      <% @ad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="input-group">
+  <div class="field">
+    <b><%= t :title , :class=> "input-group-label" %></b><br />
+    <%= f.text_field :title, :class=> "form-control" %>
+  </div>
+
+ 
+    <b ><%= t :price,:class=> "input-group-label" %></b><br />
+    <div class="input-group">
+    <%= f.text_field :price,:class=> "form-control" %>
+    <span class="input-group-addon">KM</span>
+    
+  </div>
+
+
+
+  <div class="field">
+   <b><%= t :description,:class=>"input-group-label" %></b><br />
+    <%= f.text_area :description,:class=> "form-control" %>
+  </div>
+ </div>
+  <div class="actions">
+  	<br />
+    <%= f.submit :Create,:class => "btn btn-default" %>
+  </div>
+  
+<% end %>
