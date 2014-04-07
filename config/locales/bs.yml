@@ -304,6 +304,8 @@ hr:
   ads: "Oglasi"
   name: "Naziv"
   tab_search: "Traži"
+  ad_listing: "Pregled oglasa"
+
 bs:
   user: "korisnik"
   users: "Korisnici"
