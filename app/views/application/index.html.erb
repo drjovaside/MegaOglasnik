@@ -54,13 +54,21 @@
 <div class="container">
 
 <h2> <%= t :welcome_to_megamarket %>!</h2><br/>
-<button type="button" class="btn btn-success" onclick="window.location.href='/ads'"> <%= t :ads %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/categories'"> <%= t :categories %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/users'"> <%= t :users %> </button>
-<button type="button" class="btn btn-success" onclick="window.location.href='/ads/new'"> <%= t :new_ad %> </button>
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="/home">Početna</a></li>
+  <li><a href="/ads">Oglasi</a></li>
+  <li><a href="/categories">Kategorije</a></li>
+  <li><a href="/users">Korisnici</a></li>
+  
+</ul>
 
 
 </div>
+
+
+
 </body>
 </html>
 
