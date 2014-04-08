@@ -32,6 +32,7 @@ gem 'groupdate'
 
 gem 'lazy_high_charts'
 gem "tabs_on_rails"
+gem 'rambling-slider-rails'
 
 #gem "mail", "2.5.4"
 # To use ActiveModel has_secure_password

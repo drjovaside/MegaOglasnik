@@ -20,3 +20,11 @@
 //= require highcharts/highcharts                                                           
 //= require highcharts/highcharts-more                                                         
 //= require highcharts/highstock
+
+//= require jquery
+//= require jquery.rambling.slider
+
+$(window).load(function(){
+  $('#slider').ramblingSlider();
+});
+

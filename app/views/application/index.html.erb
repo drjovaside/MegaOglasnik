@@ -5,6 +5,9 @@
 		<!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
+
+
+<link rel="javascripts" href="javascripts/application.js">
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="stylesheets/application.css">
@@ -74,7 +77,30 @@
   
   
 </ul>
-<br />
+
+<script>
+  $(window).load(function(){
+    $('#slider').ramblingSlider();
+      adaptImages: true,
+            useLargerImage: false,
+            alignBottom: true
+  });
+</script>
+
+<div id="wrapper" style="text-align: center">
+ <div class="slider-wrapper theme-default">
+  <div class="ribbon"></div>
+  <div id="slider" class="ramblingSlider">
+   
+    <img src="images/image3.jpg" alt="image3"/>
+    <%= image_tag "image1.jpeg" %>
+    <%= image_tag "image2.jpeg" %>
+   
+  </div>
+ </div>
+</div>
+
+
 <br />
 <div class="list-group">
   <a href="#" class="list-group-item active" style = "width:190px">

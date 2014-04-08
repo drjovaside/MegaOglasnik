@@ -15,11 +15,10 @@ def set_locale
       I18n.locale = :bs
       elsif user.prefered_language == 'english' 
       I18n.locale = :en
-<<<<<<< HEAD
-=======
+
        elsif user.prefered_language == nil
       I18n.locale = :bs
->>>>>>> 266c02b37135db84bf00a00c658ab73fdccf14a8
+
       end
     else
       I18n.locale = extract_locale_from_accept_language_header
