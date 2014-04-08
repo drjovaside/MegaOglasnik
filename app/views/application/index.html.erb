@@ -78,27 +78,26 @@
   
 </ul>
 
-<script>
-  $(window).load(function(){
-    $('#slider').ramblingSlider();
-      adaptImages: true,
-            useLargerImage: false,
-            alignBottom: true
-  });
-</script>
 
-<div id="wrapper" style="text-align: center">
- <div class="slider-wrapper theme-default">
-  <div class="ribbon"></div>
-  <div id="slider" class="ramblingSlider">
-   
-    <img src="images/image3.jpg" alt="image3"/>
-    <%= image_tag "image1.jpeg" %>
-    <%= image_tag "image2.jpeg" %>
-   
-  </div>
- </div>
-</div>
+    <div id="wrapper">
+        <div class="slider-wrapper theme-default">
+            <div class="ribbon"></div>
+            <div id="slider" class="ramblingSlider">
+                <img src="http://pokit.org/get/img/f6ae4ba6c57180775890bfee26cd9566.jpg" alt="Slika 1" title="This is an example of a caption">
+                <img src="http://pokit.org/get/img/3a4857b9d61c8c38ab9790910ef01a5a.jpg" alt="">
+                <img src="http://pokit.org/get/img/13b6b6c9a51e300351d6d302757364bf.jpg" alt="" title="#htmlcaption">
+            </div>
+            <div id="htmlcaption" class="rambling-html-caption">
+                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+            </div>
+        </div>
+
+    </div>
+    <script>
+    $(window).load(function() {
+        $('#slider').ramblingSlider();
+    });
+    </script>
 
 
 <br />
