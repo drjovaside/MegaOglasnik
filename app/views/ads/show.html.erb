@@ -15,12 +15,12 @@
 
 <p>
   <b><%= t :price %>:</b>
-  <%= @ad.price %>
+  <%= @ad.price%>
 </p>
 
 <p>
   <b><%= t :description %>:</b>
-  <%= @ad.description %>
+  <%= @ad.description%>
 </p>
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
-<%= link_to 'Back', ads_path %>
+<%= link_to 'Edit', edit_ad_path(@ad),:class => "btn btn-default"%> 
+<%= link_to 'Back', ads_path,:class => "btn btn-default" %>

@@ -11,41 +11,7 @@
 <h2><%= t :new_ad %></h2>
 
 <br/>
-<%= form_for(@ad) do |f| %>
-  <% if @ad.errors.any? %>
-    
-      <ul>
-      <% @ad.errors.full_messages.each do |msg| %>
-        <li class="alert alert-danger"><%= msg %></li>
-      <% end %>
-      </ul>
-  <% end %>
-  
-  <div class="input-group">
-  <div class="field">
-    <b><%= t :title , :class=> "input-group-label" %></b><br />
-    <%= f.text_field :title, :class=> "form-control" %>
-  </div>
+<%= render 'form' %>
 
  
-    <b ><%= t :price,:class=> "input-group-label" %></b><br />
-    <div class="input-group">
-    <%= f.text_field :price,:class=> "form-control" %>
-    <span class="input-group-addon">KM</span>
-    
-  </div>
-
-
-
-  <div class="field">
-   <b><%= t :description,:class=>"input-group-label" %></b><br />
-    <%= f.text_area :description,:class=> "form-control" %>
-  </div>
- </div>
-  <div class="actions">
-  	<br />
-    <%= f.submit :Create,:class => "btn btn-default" %>
-  </div>
-  
-<% end %>
-</div>
+ 
