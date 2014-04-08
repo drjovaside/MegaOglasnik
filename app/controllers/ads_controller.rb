@@ -26,8 +26,8 @@ class AdsController < ApplicationController
   # GET /ads/new
   # GET /ads/new.json
   def new
+    @categories=Category.all
     @ad = Ad.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ad }
@@ -46,9 +46,14 @@ class AdsController < ApplicationController
     @ad.user_id = session[:user_id]
     @ad.sold = false
     @ad.rating = 0 
-
+    
     respond_to do |format|
       if @ad.save
+        @item=Item.new
+        @item.category_id=params[:category_id]
+        @item.ad_id=@ad.id
+        @item.name=@ad.title
+        @item.save
         format.html { redirect_to @ad, notice:  (t :ad_successfully_added) }
         format.json { render json: @ad, status: :created, location: @ad }
       else

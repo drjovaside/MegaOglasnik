@@ -4,3 +4,26 @@
 <%= @category.name %>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+<b> Oglasi </b>
+
+<div class="panel panel-default">
+	<div class="panel-heading"><%= t :ad_listing %></div>
+<div class="panel-body">
+	<table class="table table-condensed">
+  <tr>
+    <th class="darkerBG col-xs-1"><%= t :name %></th>
+  </tr>
+  </br>
+  <tr>
+     <% @items.each do |item| %>
+    <td class="darkBG col-xs-1"><%= item.name %></td>
+    <div class="btn-group" align="right">
+    </div>
+   </tr>
+   <br/>
+<% end %>
+</table>
+</div>
+</div>
+</div>

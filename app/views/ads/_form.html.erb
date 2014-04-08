@@ -16,13 +16,19 @@
       <% end %>
       </ul>
   <% end %>
+
+  <select name="category_id">
+    <% Category.all.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+</select>
+
   
-  <div class="input-group">
+ <div class="input-group">
   <div class="field">
     <b><%= t :title , :class=> "input-group-label" %></b><br />
     <%= f.text_field :title, :class=> "form-control" %>
-  </div>
-
+  </div> 
  
     <b ><%= t :price,:class=> "input-group-label" %></b><br />
     <div class="input-group">
