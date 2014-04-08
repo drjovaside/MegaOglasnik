@@ -103,5 +103,47 @@ series = {
       end
 
 
+@chart3 = LazyHighCharts::HighChart.new('pie') do |f|
+      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 200, 60, 170]} )
+      series = {
+               :type=> 'pie',
+               :name=> 'Browser share',
+               :data=> [
+                  ['Ukupan broj usera', User.count],
+                  ['Ukupan broj oglasa',Ad.count],
+                  
+                  
+               ]
+      }
+      f.series(series)
+      f.options[:title][:text] = "Odnos oglasa i korisnika"
+      f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '50px',:top=> '100px'}) 
+      f.plot_options(:pie=>{
+        :allowPointSelect=>true, 
+        :cursor=>"pointer" , 
+        :dataLabels=>{
+          :enabled=>true,
+          :color=>"black",
+          :style=>{
+            :font=>"13px Trebuchet MS, Verdana, sans-serif"
+          }
+        }
+      })
+  end
+  
+ @bar = LazyHighCharts::HighChart.new('column') do |f|
+      f.series(:name=>'Kategorije',:data=> [Category.count ])
+      f.series(:name=>'Oglasi',:data=>[Ad.count] )
+      f.series(:name=>'Komentari',:data=>[Comment.count] )       
+      f.title({ :text=>"Odnos kategorija, oglasa i komentara"})
+
+      ###  Options for Bar
+      ### f.options[:chart][:defaultSeriesType] = "bar"
+      ### f.plot_options({:series=>{:stacking=>"normal"}}) 
+
+      ## or options for column
+      f.options[:chart][:defaultSeriesType] = "column"
+      f.plot_options({:column=>{:stacking=>"percent"}})
+    end 
    end
 end
