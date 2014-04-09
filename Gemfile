@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'strong_parameters'
 
-
+gem "best_in_place"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,7 +21,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "jquery-ui-rails"
 gem 'jquery-rails'
 
 #gem 'rack-recaptcha', :require => 'rack/recaptcha'

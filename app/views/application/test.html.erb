@@ -11,12 +11,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script>
     
     <!-- main.js -->
-    <script src="main.js"></script>
+        <script src="assets/javascripts/main.js"></script>
 </head>
 <body>
 <div class="container">
 
-<h2> <%= t :ads %></h2><br/>
+<h2> Oglasi</h2><br/>
 
 
 <ul class="nav nav-tabs">
@@ -31,32 +31,29 @@
 </div>
 
 <div class="panel panel-default">
-	<div class="panel-heading"><%= t :ad_listing %></div>
+  <div class="panel-heading"></div>
 <div class="panel-body">
-	<table class="table table-condensed">
+  <table class="table table-condensed">
   <tr>
-    <th class="darkerBG col-xs-1"><%= t :title %></th>
-    <th class="darkerBG col-xs-1"><%= t :price %></th>
-    <th class="darkerBG col-xs-1"><%= t :description %></th>
+    <th class="darkerBG col-xs-1"></th>
+    <th class="darkerBG col-xs-1"></th>
+    <th class="darkerBG col-xs-1"></th>
   </tr>
   </br>
 
 
   <tr>
-     <% @ads.each do |ad| %>  
+     
     
-    <td class="darkBG col-xs-1"><a href="#" id="title" data-url="ads/<%= ad.id %>" data-title= "Enter title"><%= ad.title %></a></td>
-    <td class="darkBG col-xs-1"><a href="#" id="price" data-url="ads/<%= ad.id %>"  data-title= "Enter price"><%= ad.price %></a></td>
-    <td class="darkBG col-xs-1"><a href="#" id="description" data-url="ads/<%= ad.id %>"  data-title= "Enter description"><%= ad.description %></a></td> <br>
+    <td class="darkBG col-xs-1"><a href="#" id="title" data-url="" data-title= "Enter title">Naslov</a></td>
+    <td class="darkBG col-xs-1"><a href="#" id="price" data-url=""  data-title= "Enter price">Cijena</a></td>
+    <td class="darkBG col-xs-1"><a href="#" id="description" data-url=""  data-title= "Enter description">Opis</a></td> <br>
 
-    <div class="btn-group" align="right">
-    <td><%= link_to (t :show), ad,:class => "btn btn-default" %>
-    <%= link_to (t :edit), edit_ad_path(ad),:class => "btn btn-default" %>
-    <%= link_to (t :destroy), ad, method: :delete, data: { confirm: (t :you_sure) + "?" },:class => "btn btn-default" %></td>
-    </div>
+    
+    
    </tr>
    <br/>
-<% end %>
+
 </table>
 </div>
 </div>
@@ -64,8 +61,6 @@
 
 
 <br />
-
-<%= link_to (t :new_ad), new_ad_path,:class => "btn btn-default" %>
 
 
     <div id="wrap">

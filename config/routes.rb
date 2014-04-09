@@ -23,6 +23,8 @@ resources :ads
 
 get '/search' => 'ads#search'  
 post '/search' => 'ads#search'
+
+match '/test' => 'application#test'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
 #match 'login' => 'sessions#new'
