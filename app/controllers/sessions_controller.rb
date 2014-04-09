@@ -13,22 +13,24 @@ class SessionsController < ApplicationController
         user.save
           session[:user_id]=user.id
           redirect_to '/home'
-          flash[:notice] = 'Uspjesno ste se prijavili.'          
+          flash[:notice] = (t :successfully_logged_in)          
       else
        flash[:error] = 'Niste verifikovali email adresu!'
        redirect_to login_path
       end
       
       else 
-        flash[:error] = 'Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo.'
+        flash[:error] = ( t :login_error)
         redirect_to login_path
       end
+
   end
 
 
   def destroy
     session[:user_id]=nil
-    flash[:notice] = 'Uspjesno ste se odjavili.' 
+    session[:language]= "default"
+    flash[:notice] = (t :successfully_logged_out)
     redirect_to login_path
   end
 

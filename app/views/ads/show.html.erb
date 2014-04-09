@@ -14,8 +14,15 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head> 
-<body>
-<p id="notice" class="alert alert-success"><%= notice %></p>
+<body class="container">
+
+<p>
+<% unless notice.nil? %>
+<div id="notice" class="alert alert-success sm-4"><%= notice %></div>
+</br>
+<% end %>
+</p>
+
 <p>
   <b><%= t :title %>:</b>
   <%= @ad.title %>
@@ -30,7 +37,8 @@
   <b><%= t :description %>:</b>
   <%= @ad.description%>
 </p>
-<%= link_to 'Edit', edit_ad_path(@ad),:class => "btn btn-default"%> 
-<%= link_to 'Back', ads_path,:class => "btn btn-default" %>
+<%= link_to (t :edit), edit_ad_path(@ad),:class => "btn btn-default"%> 
+<%= link_to (t :back), ads_path,:class => "btn btn-default" %>
+
 </body>
 </html>

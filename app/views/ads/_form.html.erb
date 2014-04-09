@@ -7,6 +7,7 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <br/>
+
 <%= form_for(@ad) do |f| %>
   <% if @ad.errors.any? %>
     
@@ -38,12 +39,12 @@
   </div>
 
 
-
   <div class="field">
    <b><%= t :description,:class=>"input-group-label" %></b><br />
     <%= f.text_area :description,:class=> "form-control" %>
   </div>
  </div>
+ <br>
  <button type="submit" class="btn btn-primary"> <%= t :next %></button>
  <%= link_to (t :back), ads_path, :class => "btn btn-default" %> 
 <% end %>

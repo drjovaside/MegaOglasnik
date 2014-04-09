@@ -13,23 +13,23 @@ class DashboardController < ApplicationController
       @petdanaprije= 5.days.ago.strftime("%d/%m/%Y")
 
 
-      f.title({ :text=>"Broj dodanih oglasa po kategorijama u zadnjih 5 dana"})
+      f.title({ :text=> (t :number_of_added_ads_in_last_five_days)})
       f.options[:xAxis][:categories] = [@danprije, @dvadanaprije, @tridanaprije, @cetiridanaprije, @petdanaprije]
-      f.labels(:items=>[:html=>"Pregled po kategorijama", :style=>{:left=>"40px", :top=>"0px", :color=>"black"} ])      
-      f.series(:type=> 'column',:name=> 'Automobili',:data=> [3, 2, 1, 3, 4])
-      f.series(:type=> 'column',:name=> 'Nekretnine',:data=> [2, 3, 5, 7, 6])
-      f.series(:type=> 'column', :name=> 'Odjeca',:data=> [4, 3, 3, 9, 0])
-      f.series(:type=> 'column', :name=> 'Knjige',:data=> [4, 3, 3, 9, 0])
-      f.series(:type=> 'column', :name=> 'Ostalo',:data=> [4, 3, 3, 9, 0])
+      f.labels(:items=>[:html=> (t :category_view), :style=>{:left=>"40px", :top=>"0px", :color=>"black"} ])      
+      f.series(:type=> 'column',:name=> (t :vehicles),:data=> [3, 2, 1, 3, 4])
+      f.series(:type=> 'column',:name=> (t :real_estate),:data=> [2, 3, 5, 7, 6])
+      f.series(:type=> 'column', :name=> (t :clothing_and_footwear),:data=> [4, 3, 3, 9, 0])
+      f.series(:type=> 'column', :name=> (t :toys),:data=> [4, 3, 3, 9, 0])
+      f.series(:type=> 'column', :name=> (t :other),:data=> [4, 3, 3, 9, 0])
       
       f.series(:type=> 'spline',:name=> 'Prosjek', :data=> [3, 2.67, 3, 6.33, 3.33])
       f.series(:type=> 'pie',:name=> 'Ukupno', 
         :data=> [
-          {:name=> 'Automobili', :y=> 13, :color=> 'red'}, 
-          {:name=> 'Nekretnine', :y=> 23,:color=> 'green'},
-          {:name=> 'Odjeca', :y=> 19,:color=> 'blue'},
-          {:name=> 'Knjige', :y=> 25,:color=> 'violet'},
-          {:name=> 'Ostalo', :y=> 5,:color=> 'yellow'}
+          {:name=> (t :vehicles), :y=> 13, :color=> 'red'}, 
+          {:name=> (t :real_estate), :y=> 23,:color=> 'green'},
+          {:name=> (t :clothing_and_footwear), :y=> 19,:color=> 'blue'},
+          {:name=> (t :toys), :y=> 25,:color=> 'violet'},
+          {:name=> (t :other), :y=> 5,:color=> 'yellow'}
         ],
         :center=> [100, 80], :size=> 100, :showInLegend=> false)
     end

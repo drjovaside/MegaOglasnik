@@ -115,7 +115,7 @@ def change_to_bosnian
   #redirect_to(:back)
   else
     session[:language]="bosnian"
-    redirect_to users_path
+    redirect_to 'home'
   end
 end
 
@@ -125,7 +125,7 @@ def change_to_english
   @user = User.find(session[:user_id])
   @user.prefered_language="english"
   @user.save
-  redirect_to users_path
+  redirect_to 'home'
   #redirect_to(:back)
 else
   session[:language]="english"

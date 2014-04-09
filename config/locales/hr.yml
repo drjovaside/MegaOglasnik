@@ -1,53 +1,52 @@
 hr:
   date:
     abbr_day_names:
-    - Ned
-    - Pon
-    - Uto
-    - Sri
-    - Čet
-    - Pet
-    - Sub
+    - ned
+    - pon
+    - uto
+    - sri
+    - čet
+    - pet
+    - sub
     abbr_month_names:
     -
-    - Sij
-    - Vel
-    - Ožu
-    - Tra
-    - Svi
-    - Lip
-    - Srp
-    - Kol
-    - Ruj
-    - Lis
-    - Stu
-    - Pro
+    - jan
+    - feb
+    - mar
+    - apr
+    - maj
+    - jun
+    - jul
+    - aug
+    - sep
+    - okt
+    - nov
+    - dec
     day_names:
-    - Nedjelja
-    - Ponedjeljak
-    - Utorak
-    - Srijeda
-    - Četvrtak
-    - Petak
-    - Subota
+    - nedjelja
+    - ponedjeljak
+    - utorak
+    - srijeda
+    - četvrtak
+    - petak
     formats:
       default: ! '%d.%m.%Y.'
-      long: ! '%B %e, %Y'
-      short: ! '%e %b'
+      long: ! '%e. %B %Y.'
+      short: ! '%e. %b. %Y.'
     month_names:
     -
-    - Siječanj
-    - Veljača
-    - Ožujak
-    - Travanj
-    - Svibanj
-    - Lipanj
-    - Srpanj
-    - Kolovoz
-    - Rujan
-    - Listopad
-    - Studeni
-    - Prosinac
+    - januar
+    - februar
+    - mart
+    - april
+    - maj
+    - juni
+    - juli
+    - august
+    - septembar
+    - oktobar
+    - novembar
+    - decembar
     order:
     - :day
     - :month
@@ -55,161 +54,169 @@ hr:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: oko %{count} sat
         few: oko %{count} sata
         many: oko %{count} sati
+        one: oko sat
         other: oko %{count} sati
       about_x_months:
-        one: oko %{count} mjesec
         few: oko %{count} mjeseca
         many: oko %{count} mjeseci
+        one: oko mjesec
         other: oko %{count} mjeseci
       about_x_years:
-        one: oko %{count} godine
         few: oko %{count} godine
         many: oko %{count} godina
+        one: oko godine
         other: oko %{count} godina
       almost_x_years:
-        one: skoro %{count} godina
         few: skoro %{count} godine
         many: skoro %{count} godina
+        one: skoro 1 godina
         other: skoro %{count} godina
       half_a_minute: pola minute
       less_than_x_minutes:
-        one: manje od %{count} minute
         few: manje od %{count} minute
         many: manje od %{count} minuta
+        one: manje od minute
         other: manje od %{count} minuta
       less_than_x_seconds:
-        one: manje od %{count} sekunde
         few: manje od %{count} sekunde
         many: manje od %{count} sekundi
+        one: manje od sekunde
         other: manje od %{count} sekundi
       over_x_years:
-        one: preko %{count} godine
         few: preko %{count} godine
         many: preko %{count} godina
+        one: preko godine
         other: preko %{count} godina
       x_days:
-        one: ! '%{count} dan'
         few: ! '%{count} dana'
         many: ! '%{count} dana'
+        one: 1 dan
         other: ! '%{count} dana'
       x_minutes:
-        one: ! '%{count} minuta'
         few: ! '%{count} minute'
         many: ! '%{count} minuta'
+        one: 1 minut
         other: ! '%{count} minuta'
       x_months:
-        one: ! '%{count} mjesec'
         few: ! '%{count} mjeseca'
         many: ! '%{count} mjeseci'
+        one: 1 mjesec
         other: ! '%{count} mjeseci'
       x_seconds:
-        one: ! '%{count} sekunda'
         few: ! '%{count} sekunde'
         many: ! '%{count} sekundi'
+        one: 1 sekund
         other: ! '%{count} sekundi'
     prompts:
-      day: Dan
-      hour: Sat
-      minute: Minuta
-      month: Mjesec
-      second: Sekunde
-      year: Godina
+      day: dan
+      hour: sat
+      minute: minut
+      month: mjesec
+      second: sekundi
+      year: godina
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
-      accepted: mora biti prihvaćen
-      blank: ne smije biti prazan
-      present: mora biti prazan
-      confirmation: se ne slaže sa svojom potvrdom
-      empty: ne smije biti prazan
-      equal_to: mora biti jednak %{count}
-      even: mora biti paran
-      exclusion: je rezerviran
-      greater_than: mora biti veći od %{count}
-      greater_than_or_equal_to: mora biti veći ili jednak %{count}
-      inclusion: nije u listi
-      invalid: nije ispravan
-      less_than: mora biti manji od %{count}
-      less_than_or_equal_to: mora biti manji ili jednak %{count}
+      accepted: mora biti prihvaćeno
+      blank: ne smije biti prazno
+      present: mora biti prazno
+      confirmation: se ne poklapa sa potvrdom
+      empty: ne smije biti prazno
+      equal_to: mora biti %{count}
+      even: mora biti parno
+      exclusion: je rezervisano
+      greater_than: mora biti veće od %{count}
+      greater_than_or_equal_to: mora biti veće ili jednako %{count}
+      inclusion: nije uključeno u listu
+      invalid: nije validno
+      less_than: mora biti manje od %{count}
+      less_than_or_equal_to: mora biti manje ili jednako %{count}
       not_a_number: nije broj
-      not_an_integer: nije cijeli broj
-      odd: mora biti neparan
+      not_an_integer: mora biti cijeli broj
+      odd: mora biti neparno
       record_invalid: ! 'Validacija nije uspjela: %{errors}'
       restrict_dependent_destroy:
         one: "Nije moguće izbrisati zapis jer postoji ovisan %{record}"
         many: "Nije moguće izbrisati zapis jer postoje ovisni %{record}"
       taken: je već zauzet
-      too_long:
-        one: je predugačak (maksimum je %{count} znak)
-        few: je predugačak (maksimum je %{count} znaka)
-        many: je predugačak (maksimum je %{count} znakova)
-        other: je predugačak (maksimum je %{count} znakova)
-      too_short:
-        one: je prekratak (minimum je %{count} znak)
-        few: je prekratak (minimum je %{count} znaka)
-        many: je prekratak (minimum je %{count} znakova)
-        other: je prekratak (minimum je %{count} znakova)
-      wrong_length:
-        one: nije odgovarajuće duljine (treba biti %{count} znak)
-        few: nije odgovarajuće duljine (treba biti %{count} znaka)
-        many: nije odgovarajuće duljine (treba biti %{count} znakova)
-        other: nije odgovarajuće duljine (treba biti %{count} znakova)
-      other_than: "mora biti različit od %{count}"
+      too_long: je predugo (maksimalno je dozvoljeno %{count} znakova)
+      too_short: je prekratko (predviđeno je minimalno %{count} znakova)
+      wrong_length: je pogrešne dužine (trebalo bi biti tačno %{count} znakova)
+      other_than: "mora biti različito od %{count}"
     template:
-      body: ! 'Sljedeća polja su neispravno popunjena:'
+      body: ! 'Desili su se problemi sa slijedećim poljima:'
       header:
-        one: ! '%{count} greška je spriječila %{model} da se spremi'
-        few: ! '%{count} greške su spriječile %{model} da se spremi'
-        many: ! '%{count} grešaka je spriječilo %{model} da se spremi'
-        other: ! '%{count} grešaka je spriječilo %{model} da se spremi'
+        few: ! '%{count} greške su spriječile da se ovaj %{model} spremi'
+        many: ! '%{count} grešaka je spriječilo da se ovaj %{model} spremi'
+        one: 1 greška je spriječila da se ovaj %{model} spremi
+        other: ! '%{count} grešaka je spriječilo da se ovaj %{model} spremi'
   helpers:
     select:
-      prompt: Izaberite
+      prompt: Molimo odaberite
     submit:
-      create: Stvori %{model}
-      submit: Spremi %{model}
-      update: Izmjeni %{model}
+      create: Kreiraj %{model}
+      submit: Sačuvaj %{model}
+      update: Osvježi %{model}
   number:
     currency:
       format:
-        delimiter: ! ','
-        format: ! '%n %u'
+        delimiter: .
+        format: ! '%n%u'
         precision: 2
-        separator: .
+        separator: ! ','
         significant: false
-        strip_insignificant_zeros: false
-        unit: Kn
+        strip_insignificant_zeros: true
+        unit: KM
     format:
       delimiter: .
       precision: 3
       separator: ! ','
       significant: false
-      strip_insignificant_zeros: false
+      strip_insignificant_zeros: true
     human:
       decimal_units:
         format: ! '%n %u'
         units:
-          thousand: Tisuća
-          million: Milijun
-          billion: Milijarda
-          trillion: Trilijun
-          quadrillion: Kvadrilijun
+          billion:
+            few: milijarde
+            many: milijardi
+            one: milijarda
+            other: milijardi
+          million:
+            few: miliona
+            many: miliona
+            one: milion
+            other: miliona
+          quadrillion:
+            few: bilijarde
+            many: bilijardi
+            one: bilijarda
+            other: bilijardi
+          thousand:
+            few: hiljade
+            many: hiljada
+            one: hiljada
+            other: hiljada
+          trillion:
+            few: biliona
+            many: biliona
+            one: bilion
+            other: biliona
           unit: ''
       format:
-        delimiter: ''
-        precision: 3
+        delimiter: ! ','
+        precision: 0
         significant: true
         strip_insignificant_zeros: true
       storage_units:
         format: ! '%n %u'
         units:
           byte:
-            one: bajt
             few: bajta
             many: bajtova
+            one: bajt
             other: bajtova
           gb: GB
           kb: KB
@@ -217,35 +224,35 @@ hr:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ! ','
         format: "%n%"
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: ! ', i '
+      last_word_connector: ! ' i '
       two_words_connector: ! ' i '
       words_connector: ! ', '
   time:
-    am: AM
+    am: ''
     formats:
-      default: ! '%a %b %d %H:%M:%S %Z %Y'
-      long: ! '%B %d, %Y %H:%M'
-      short: ! '%d %b %H:%M'
-    pm: PM
+      default: ! '%H:%M:%S'
+      long: ! '%d. %B %Y. - %H:%M:%S'
+      short: ! '%d. %b %Y. %H:%M'
+    pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
+hr:
   activerecord:
     errors:
-      <<: *errors
+      models:
+        ad:
+          attributes:
+            title:
+              blank: "Naziv artikla ne moze biti prazan. Molimo ispravite."
 
-      
-  you_sure: "Da"
-  edit: "Promijeni"
-  you_sure: "Da"
+
+hr:
   user: "korisnik"
   users: "Korisnici"
   new_user: "Registracija"
@@ -275,33 +282,62 @@ hr:
   choose_language: "Odaberite jezik"
   bosnian: "Bosanski"
   english: "Engleski"
-hr:
-  user: "korisnik"
-  users: "Korisnici"
-  new_user: "Registracija"
-  create_user: "Registruj se"
-  registration: "Registracija"
-  username: "Korisničko ime"
-  firstname: "Ime"
-  lastname: "Prezime"
-  adress: "Adresa"
-  city: "Grad"
-  tel_num: "Broj tel."
-  banned: "Banovan"
-  lastlogin: "Posljednja prijava"
-  login: "Prijavi se"
-  logout: "Odjavi se"
-  home: "Glavna"
-  edit: "Promijeni"
-  editing: "Izmjena"
-  destroy: "Obrisi"
-  editing_user: "Izmjena podataka korisnika"
-  back: "Nazad"
-  show: "Pogledaj"
-  add_user: "Dodaj korisnika"
-  you_sure: "Jeste li sigurni"
-  welcome_to_megamarket: "Dobrodosli na Megamarket"
-  choose_language: "Odaberite jezik"
-  bosnian: "Bosanski"
-  english: "Engleski"
+  default_language: "Automatski prepoznaj" 
+  categories: "Kategorije"
+  new_ad: "Dodaj oglas"
+  ads: "Oglasi"
+  name: "Naziv"
+  tab_search: "Traži"
+  search: "Pretraga..."
   ad_listing: "Pregled oglasa"
+  create_ad: "Objavi"
+  new_ad: "Novi oglas"
+  title: "Naziv"
+  price: "Cijena"
+  description: "Opis"
+  ad_successfully_added: "Uspješno ste objavili oglas!"
+  ad_successfully_updated: "Uspješno ste izmijenili oglas!"
+  editing_ad: "Izmjena oglasa"
+  search_results: "Rezultati pretrage"
+  vehicles: "Vozila"
+  real_estate: "Nekretnine"
+  cell_phones: "Mobiteli"
+  sports_equipment: "Sportska oprema"
+  clothing_and_footwear: "Odjecća i obuća"
+  toys: "Igračke"
+  video_games: "Video igre"
+  art: "Umjetnost"
+  other: "Ostalo"
+  category_view: "Pregled po kategorijama"
+  number_of_added_ads_in_last_five_days: "Broj dodanih oglasa po kategorijama u zadnjih 5 dana"
+  successfully_logged_out: "Uspjesno ste se odjavili!"
+  successfully_logged_in: "Uspjesno ste se prijavili!"
+  login_error: "Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo."
+  new_category: "Nova kategorija"
+  activerecord:
+    errors:
+      models:
+        ad:
+          attributes:
+            title:
+              blank: "Morate unijeti naziv artikla."
+            price:
+              blank: "Cijena artikla mora biti pozitivan broj. Molimo Vas ispravite."
+        user:
+          attributes:
+            username:
+              blank: "Morate unijeti korisničko ime."
+            email:
+              blank: "Email mora biti validna email adresa."
+            firstname:
+              blank: "Morate unijeti ime."
+            lastname:
+              blank: "Morate unijeti prezime."
+            adress:
+              blank: "Morate unijeti adresu."
+            city:
+              blank: "Morate unijeti naziv grada u kojem živite."
+  errors:
+    format: "%{message}"
+    messages: &error_messages
+      empty: "Something something %{attribute} something something"

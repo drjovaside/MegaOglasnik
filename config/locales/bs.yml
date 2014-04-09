@@ -354,6 +354,25 @@ bs:
   description: "Opis"
   ad_successfully_added: "Uspješno ste objavili oglas!"
   ad_successfully_updated: "Uspješno ste izmijenili oglas!"
+  editing_ad: "Izmjena oglasa"
+  search_results: "Rezultati pretrage"
+
+  vehicles: "Vozila"
+  real_estate: "Nekretnine"
+  cell_phones: "Mobiteli"
+  sports_equipment: "Sportska oprema"
+  clothing_and_footwear: "Odjecća i obuća"
+  toys: "Igračke"
+  video_games: "Video igre"
+  art: "Umjetnost"
+  other: "Ostalo"
+  category_view: "Pregled po kategorijama"
+  number_of_added_ads_in_last_five_days: "Broj dodanih oglasa po kategorijama u zadnjih 5 dana"
+  successfully_logged_out: "Uspjesno ste se odjavili!"
+  successfully_logged_in: "Uspjesno ste se prijavili!"
+  login_error: "Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo."
+  new_category: "Nova kategorija"
+
   activerecord:
     errors:
       models:
@@ -363,6 +382,21 @@ bs:
               blank: "Morate unijeti naziv artikla."
             price:
               blank: "Cijena artikla mora biti pozitivan broj. Molimo Vas ispravite."
+        user:
+          attributes:
+            username:
+              blank: "Morate unijeti korisničko ime."
+            email:
+              blank: "Email mora biti validna email adresa."
+            firstname:
+              blank: "Morate unijeti ime."
+            lastname:
+              blank: "Morate unijeti prezime."
+            adress:
+              blank: "Morate unijeti adresu."
+            city:
+              blank: "Morate unijeti naziv grada u kojem živite."
+
   errors:
     format: "%{message}"
     messages: &error_messages

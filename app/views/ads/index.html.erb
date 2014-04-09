@@ -20,17 +20,20 @@
 
 
 <ul class="nav nav-tabs">
-  <li><a href="/home">Početna</a></li>
-  <li class="active"><a href="/ads">Oglasi</a></li>
-  <li><a href="/categories">Kategorije</a></li>
-  <li><a href="/users">Korisnici</a></li>
+  <li><a href="/home"><%= t :home %></a></li>
+  <li class="active"><a href="/ads"><%= t :ads %></a></li>
+  <li><a href="/categories"><%= t :categories %></a></li>
+  <li><a href="/users"><%= t :users %></a></li>
+  <li><a href="/ads/new"><%= t :create_ad %></a></li>
+  <li><a href="/dashboards"> Dashboard </a></li>
+  
   
 </ul>
 
 
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default container">
 	<div class="panel-heading"><%= t :ad_listing %></div>
 <div class="panel-body">
 	<table class="table table-condensed">
@@ -50,22 +53,24 @@
     <td class="darkBG col-xs-1"><a href="#" id="description" data-url="ads/<%= ad.id %>"  data-title= "Enter description"><%= ad.description %></a></td> <br>
 
     <div class="btn-group" align="right">
-    <td><%= link_to (t :show), ad,:class => "btn btn-default" %>
+    <td>
+    <%= link_to (t :show), ad,:class => "btn btn-default" %>
     <%= link_to (t :edit), edit_ad_path(ad),:class => "btn btn-default" %>
-    <%= link_to (t :destroy), ad, method: :delete, data: { confirm: (t :you_sure) + "?" },:class => "btn btn-default" %></td>
+    <%= button_to (t :destroy), ad, :method=>:delete, :class=> "btn btn-default",data: { confirm: (t :you_sure) + "?" } %></td>
     </div>
    </tr>
    <br/>
 <% end %>
 </table>
 </div>
+<%= link_to (t :new_ad), new_ad_path,:class => "btn btn-default" %>
 </div>
 
 
 
 <br />
 
-<%= link_to (t :new_ad), new_ad_path,:class => "btn btn-default" %>
+
 
 
     <div id="wrap">

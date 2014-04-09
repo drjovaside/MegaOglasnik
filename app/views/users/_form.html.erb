@@ -1,59 +1,62 @@
 <div class="container">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+    
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
   <% end %>
 
+<p id="error alert alert-danger"><%= flash[:error] %></p>
+
+<div class="container">
+  <div class="field input-group-label">
+    <b><%= t :username , :class=> "input-group-label" %></b><br />
+    <%= f.text_field :username, :class=> "form-control" %>
+  </div>
+ 
+  <div class="field">
+    <b><%= t :firstname , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :firstname, :class=> "form-control" %>
+  </div>
 
 
-<p id="error"><%= flash[:error] %></p>
-
   <div class="field">
-    <b><%= t :username %></b><br />
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-   <b><%= t :firstname %></b><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <b><%= t :lastname %></b><br />
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <b><%= t :adress %></b><br />
-    <%= f.text_field :adress %>
-  </div>
-  <div class="field">
-    <b><%= t :city %></b><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <b><%= t :tel_num %></b><br />
-    <%= f.text_field :tel_num %>
-  </div>
-  <div class="field">
-    <b><%= t :password %></b><br />
-    <%= f.text_field :password %>
+    <b><%= t :lastname , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :lastname, :class=> "form-control" %>
   </div>
 
+  <div class="field">
+    <b><%= t :adress , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :adress, :class=> "form-control" %>
+  </div>
+
+  <div class="field">
+    <b><%= t :city , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :city, :class=> "form-control" %>
+  </div>
+  <div class="field">
+    <b><%= t :email , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :email, :class=> "form-control" %>
+  </div>
+  <div class="field">
+    <b><%= t :tel_num , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :tel_num, :class=> "form-control" %>
+  </div>
+  
+  <div class="field">
+    <b><%= t :password , :class=> "input-group-label sm-2" %></b><br />
+    <%= f.text_field :password, :class=> "form-control" %>
+  </div>
 
 
   <%= recaptcha_tags %>
   <div class="actions">
+    <br>
     <button type="submit" class="btn btn-primary"> <%= t :next %></button>
     </div>
 <% end %>
+</div>
 </div>
