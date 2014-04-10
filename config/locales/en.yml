@@ -40,3 +40,4 @@ en:
   login_error: "Email or password incorect. Please try again."
   email_verified: "Email has been Verified."
   user_successfully_updated: "User was successfully updated."
+  successfully_registered: "User was successfully created. Please verify your email adress to complete the sign up process!"
