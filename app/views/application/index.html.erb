@@ -31,7 +31,7 @@
     
   <div class="navbar-form navbar-right" role="options">
 
-  <% if (session[:user_id]==nil || User.find_by_id(session[:user_id]).active==false) %>
+  <% if session[:user_id] == nil %>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
   <% else %>
@@ -87,8 +87,6 @@
               <img src="http://i.imgur.com/AuD7A6X.png" alt="Slika 2" title="This is an example of a caption">
               <img src="http://i.imgur.com/th2AOH8.png" alt="Slika 0" title="Welcome to MegaOglasnik">
               <img src="http://pokit.org/get/img/f6ae4ba6c57180775890bfee26cd9566.jpg" alt="Slika 1" title="This is an example of a caption">
-              <img src="http://pokit.org/get/img/3a4857b9d61c8c38ab
-              9790910ef01a5a.jpg" alt="">
               <img src="http://pokit.org/get/img/13b6b6c9a51e300351d6d302757364bf.jpg" alt="" title="#htmlcaption">
             </div>
             <div id="htmlcaption" class="rambling-html-caption">
@@ -122,6 +120,40 @@
 </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://i.imgur.com/G64lHZg.png" alt="...">
+      <div class="caption" style="text-align:center">
+        <h4 >Decsription:</h4>
+        <p>Golf GTD u extra stanju duze vrijeme garaziran,sve fabricko,nista nije radjeno farbano ,nije udaran,registrovan do ...</p>
+        <p ><a href="#" class="btn btn-default" role="button">Read more</a></p> 
+ </div>
+</div>
+
+</div>
+<div class="col-sm-6 col-md-4" style="text-align:center">
+  <div class="thumbnail">
+<img src="http://i.imgur.com/qbVJ0me.png" alt="...">
+      <div class="caption" style="text-align:center">
+        <h4 >Decsription:</h4>
+        <p>Na prodaju kuća sa poslovnim prostorom i 4 duluma zemlje. Kuća se nalazi na glavnom putu Podlugovi- Breza,...</p>
+        <p ><a href="#" class="btn btn-default" role="button">Read more</a></p>
+      </div>
+    </div>
+ </div>
+
+<div class="col-sm-6 col-md-4" style="text-align:center">
+  <div class="thumbnail">
+<img src="http://i.imgur.com/LIQdlRs.png" alt="...">
+      <div class="caption" style="text-align:center">
+        <h4 >Decsription:</h4>
+        <p>iPhone 5s 16 GB Space Gray i Silver/fabricki otkljucani na sve mreze/novo u vakumu, nasuprot rudnika mrkog uglja Breza.Kuća poseduje podrum,prizemlje,sprat ...</p>
+        <p ><a href="#" class="btn btn-default" role="button">Read more</a></p>
+      </div>
+    </div>
+ </div>
+</div>
 
 
 <body>
