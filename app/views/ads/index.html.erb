@@ -47,7 +47,7 @@
   <tr class="row">
      <% @ads.each do |ad| %>  
     
-    <td class="col-xs-1"><a href="#" id="title" data-url="ads/<%= ad.id %>" data-title= "Enter title"><%= ad.title %></a></td>
+    <td class="col-xs-1"><a href="#" id="title" data-title= "Enter title"><%= ad.title %></a></td>
     <td class="col-xs-1"><a href="#" id="price" data-url="ads/<%= ad.id %>"  data-title= "Enter price"><%= ad.price %></a></td>
     <td class="col-xs-1"><a href="#" id="description" data-url="ads/<%= ad.id %>"  data-title= "Enter description"><%= ad.description %></a></td> <br>
 
@@ -55,7 +55,7 @@
     <td>
     <%= link_to (t :show), ad,:class => "btn btn-default" %>
     <%= link_to (t :edit), edit_ad_path(ad),:class => "btn btn-default" %>
-    <%= button_to (t :destroy), ad, :method=>:delete, :class=> "btn btn-default",data: { confirm: (t :you_sure) + "?" } %></td>
+    <%= link_to (t :destroy), ad, :method=>:delete, :class=> "btn btn-default",data: { confirm: (t :you_sure) + "?" } %></td>
     </div>
    </tr>
    <br/>

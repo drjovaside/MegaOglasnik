@@ -22,7 +22,7 @@ en:
   ad_listing: "Ad listing"
   ad_successfully_added: "Ad was successfully created!"
   ad_successfully_updated: "Ad was successfully updated!"
-  search_results: "Rezultati pretrage"
+  search_results: "Search results"
   number_of_added_ads_in_last_five_days: "Number of added ads in last five days"
   vehicles: "Vehicles"
   real_estate: "Real estates"
@@ -40,3 +40,4 @@ en:
   login_error: "Email or password incorect. Please try again."
   email_verified: "Email has been Verified."
   user_successfully_updated: "User was successfully updated."
+  must_be_logged_in: "You must be logged in."

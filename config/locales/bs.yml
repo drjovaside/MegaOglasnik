@@ -318,6 +318,7 @@ bs:
   successfully_registered: "Uspješno ste se registrovali! Molimo Vas provjerite Vaš email račun i potvrdite Vašu registraciju."
   email_verified: "Email adresa je verifikovana!"
   user_successfully_updated: "Uspješno ste izmijenili podatke!"
+  must_be_logged_in: "Morate biti prijavljeni."
 
 
   activerecord:

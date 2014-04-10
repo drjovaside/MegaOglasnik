@@ -31,7 +31,7 @@
     
   <div class="navbar-form navbar-right" role="options">
 
-  <% if session[:user_id] == nil %>
+  <% if (session[:user_id]==nil || User.find_by_id(session[:user_id]).active==false) %>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/login'"> <%= t :login %> </button>
   <button type="button" class="btn-sm btn btn-info" onclick="window.location.href='/users/new'"> <%= t :registration %> </button>
   <% else %>

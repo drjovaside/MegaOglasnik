@@ -52,13 +52,15 @@ protect_from_forgery
   end
 
 def current_user
- return unless session[:user_id]
- @current_user ||= User.find(session[:user_id])
+ return (session[:user_id] && User.find_by_id(session[:user_id]).active==true)
 end
 
 def authenticate_user!
-  redirect_to(:controller => 'sessions', :action => 'new') unless current_user
-  flash[:error]='Morate biti logovani'
+  if self.current_user 
+  else
+  redirect_to(:controller => 'sessions', :action => 'new')
+  flash[:error]=(t :must_be_logged_in)
+end
 end
 
 
