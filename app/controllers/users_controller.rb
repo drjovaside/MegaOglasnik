@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if verify_recaptcha
+    
     @user = User.new(params[:user])
     #@user.banned = false
     @user.banned=false
@@ -50,22 +50,23 @@ class UsersController < ApplicationController
     @user.prefered_language="default"
     respond_to do |format|
       if @user.save
+        if verify_recaptcha
         #dodano
       session[:user_id]=@user.id
       UserMailer.registration_confirmation(@user).deliver  
-      
-        format.html { redirect_to '/login', notice: 'User was successfully created. Please verify your email adress to complete the sign up process!' }
+        format.html { redirect_to '/login', notice: (t :successfully_registered) }
         format.json { render json: @user, status: :created, location: @user }
+        else
+      flash[:error] = 'Captcha nije ispravno unesena, pokusajte ponovo!'
+      redirect_to new_user_path
+
+    end
       else  
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    else
-      flash[:error] = 'Captcha nije ispravno unesena, pokusajte ponovo!'
-      redirect_to new_user_path
-
-    end
+    
   end
 
   # PUT /users/1
@@ -102,7 +103,7 @@ class UsersController < ApplicationController
   @user.active=true
   @user.save
   redirect_to login_path
-  flash[:notice] = "Email has been Verified."
+  flash[:notice] = (t :email_verified)
 end
 
 #changes prefered language to bosnian
@@ -111,7 +112,7 @@ def change_to_bosnian
   @user = User.find(session[:user_id])
   @user.prefered_language="bosnian"
   @user.save
-  redirect_to users_path
+  redirect_to '/home'
   #redirect_to(:back)
   else
     session[:language]="bosnian"
@@ -125,11 +126,11 @@ def change_to_english
   @user = User.find(session[:user_id])
   @user.prefered_language="english"
   @user.save
-  redirect_to 'home'
+  redirect_to '/home'
   #redirect_to(:back)
 else
   session[:language]="english"
-  redirect_to users_path
+  redirect_to '/home'
 end
 end
 

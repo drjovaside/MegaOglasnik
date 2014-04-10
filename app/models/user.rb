@@ -3,18 +3,16 @@ class User < ActiveRecord::Base
     attr_accessible :adress,:avatar_url, :banned, :city, :email, :firstname,:lastlogin, :lastname, :name, :password,:prefered_language, :salt, :tel_num, :username, :active
 	 validates :username, :presence => true, :uniqueness => true
 	 validates :password, :confirmation => true
-	 validates :email, :presence => true, :uniqueness => true , :format => {
+	 validates :email, :uniqueness => true , :format => {
 	   :with => /@/,
 	   :with => /./,
 	   :message => 'Morate unijeti validnu email adresu!'
 	 }
 
-
+    validates :password, :presence => true
  	validates :firstname, :presence => true
  	validates :lastname, :presence => true
- 	validates :adress, :presence => true
- 	validates :city, :presence => true
-
+ 	
 	has_many :sessions
  
     ENCRYPT = Digest::SHA256

@@ -1,62 +1,77 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
 <div class="container">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li class="error alert alert-danger"><%= msg %></li>
       <% end %>
       </ul>
   <% end %>
 
 <p id="error alert alert-danger"><%= flash[:error] %></p>
 
-<div class="container">
-  <div class="field input-group-label">
-    <b><%= t :username , :class=> "input-group-label" %></b><br />
-    <%= f.text_field :username, :class=> "form-control" %>
-  </div>
- 
-  <div class="field">
-    <b><%= t :firstname , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :firstname, :class=> "form-control" %>
-  </div>
+<div class="form-horizontal container">
+<br/>
 
 
-  <div class="field">
-    <b><%= t :lastname , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :lastname, :class=> "form-control" %>
-  </div>
 
-  <div class="field">
-    <b><%= t :adress , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :adress, :class=> "form-control" %>
-  </div>
-
-  <div class="field">
-    <b><%= t :city , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :city, :class=> "form-control" %>
-  </div>
-  <div class="field">
-    <b><%= t :email , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :email, :class=> "form-control" %>
-  </div>
-  <div class="field">
-    <b><%= t :tel_num , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :tel_num, :class=> "form-control" %>
+  <div class="form-group">
+    <label for="inputUsername" class="col-sm-2 control-label"><%= t :username %></label>
+    <div class="col-sm-3">
+    <%= f.text_field :username, :class=> "form-control" , :placeholder => "Username" %>
+    </div>
   </div>
   
-  <div class="field">
-    <b><%= t :password , :class=> "input-group-label sm-2" %></b><br />
-    <%= f.text_field :password, :class=> "form-control" %>
+  <div class="form-group">
+    <label for="inputFirsttname" class="col-sm-2 control-label"><%= t :firstname %></label>
+    <div class="col-sm-3">
+    <%= f.text_field :firstname, :class=> "form-control" , :placeholder => "Firstname" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputLastname" class="col-sm-2 control-label"><%= t :lastname %></label>
+    <div class="col-sm-3">
+    <%= f.text_field :lastname, :class=> "form-control" , :placeholder => "Lastname" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-3">
+    <%= f.text_field :email, :class=> "form-control" , :placeholder => "Email" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label"><%= t :password %></label>
+    <div class="col-sm-3">
+    <%= f.password_field :password, :class=> "form-control" , :placeholder => "Password" %>
+    </div>
   </div>
 
 
-  <%= recaptcha_tags %>
+<%= recaptcha_tags %>
   <div class="actions">
     <br>
     <button type="submit" class="btn btn-primary"> <%= t :next %></button>
     </div>
 <% end %>
+
 </div>
+
+
+
+
+  
+  
 </div>

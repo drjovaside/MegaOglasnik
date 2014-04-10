@@ -33,24 +33,23 @@
 
 </div>
 
-<div class="panel panel-default container">
-	<div class="panel-heading"><%= t :ad_listing %></div>
-<div class="panel-body">
+<div class="container">
+
 	<table class="table table-condensed">
-  <tr>
-    <th class="darkerBG col-xs-1"><%= t :title %></th>
-    <th class="darkerBG col-xs-1"><%= t :price %></th>
-    <th class="darkerBG col-xs-1"><%= t :description %></th>
+  <tr class="row darkerBG">
+    <th class="col-xs-1"><%= t :title %></th>
+    <th class="col-xs-1"><%= t :price %></th>
+    <th class="col-xs-1"><%= t :description %></th>
   </tr>
   </br>
 
 
-  <tr>
+  <tr class="row">
      <% @ads.each do |ad| %>  
     
-    <td class="darkBG col-xs-1"><a href="#" id="title" data-url="ads/<%= ad.id %>" data-title= "Enter title"><%= ad.title %></a></td>
-    <td class="darkBG col-xs-1"><a href="#" id="price" data-url="ads/<%= ad.id %>"  data-title= "Enter price"><%= ad.price %></a></td>
-    <td class="darkBG col-xs-1"><a href="#" id="description" data-url="ads/<%= ad.id %>"  data-title= "Enter description"><%= ad.description %></a></td> <br>
+    <td class="col-xs-1"><a href="#" id="title" data-url="ads/<%= ad.id %>" data-title= "Enter title"><%= ad.title %></a></td>
+    <td class="col-xs-1"><a href="#" id="price" data-url="ads/<%= ad.id %>"  data-title= "Enter price"><%= ad.price %></a></td>
+    <td class="col-xs-1"><a href="#" id="description" data-url="ads/<%= ad.id %>"  data-title= "Enter description"><%= ad.description %></a></td> <br>
 
     <div class="btn-group" align="right">
     <td>
@@ -62,7 +61,7 @@
    <br/>
 <% end %>
 </table>
-</div>
+
 <%= link_to (t :new_ad), new_ad_path,:class => "btn btn-default" %>
 </div>
 

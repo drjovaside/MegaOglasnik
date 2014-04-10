@@ -251,63 +251,6 @@ bs:
             title:
               blank: "Naziv artikla ne moze biti prazan. Molimo ispravite."
 
-en:
-  hello: "Hello world"
-  add_user: "Add user"
-  editing_user: "Editing user"
-  you_sure: "Are you sure"
-  welcome_to_megamarket: "Welcome to MegaMarket"
-  choose_language: "Choose language"
-  bosnian: "Bosnian"
-  english: "English"
-  next: "Next"
-  default_language: "Default language"
-  categories: "Categories"
-  ads: "Ads"
-  new_ad: "New ad"
-  ads: "Ads"
-
-hr:
-  you_sure: "Da"
-  edit: "Promijeni"
-  you_sure: "Da"
-  user: "korisnik"
-  users: "Korisnici"
-  new_user: "Registracija"
-  create_user: "Registruj se"
-  registration: "Registracija"
-  username: "Korisničko ime"
-  firstname: "Ime"
-  lastname: "Prezime"
-  adress: "Adresa"
-  city: "Grad"
-  tel_num: "Broj tel."
-  banned: "Banovan"
-  lastlogin: "Posljednja prijava"
-  login: "Prijavi se"
-  logout: "Odjavi se"
-  home: "Glavna"
-  edit: "Promijeni"
-  editing: "Izmjena"
-  destroy: "Obrisi"
-  editing_user: "Izmjena podataka korisnika"
-  back: "Nazad"
-  show: "Pogledaj"
-  add_user: "Dodaj korisnika"
-  you_sure: "Jeste li sigurni"
-  welcome_to_megamarket: "Dobrodosli na Megamarket"
-  next: "Dalje"
-  choose_language: "Odaberite jezik"
-  bosnian: "Bosanski"
-  english: "Engleski"
-  default_language: "Automatski prepoznaj"
-  categories: "Kategorije"
-  ads: "Oglasi"
-  new_ad: "Dodaj oglas"
-  ads: "Oglasi"
-  name: "Naziv"
-  tab_search: "Traži"
-  ad_listing: "Pregled oglasa"
 
 bs:
   user: "korisnik"
@@ -372,6 +315,10 @@ bs:
   successfully_logged_in: "Uspjesno ste se prijavili!"
   login_error: "Email adresa ili password koji ste unijeli nije ispravan. Molimo Vas pokusajte ponovo."
   new_category: "Nova kategorija"
+  successfully_registered: "Uspješno ste se registrovali! Molimo Vas provjerite Vaš email račun i potvrdite Vašu registraciju."
+  email_verified: "Email adresa je verifikovana!"
+  user_successfully_updated: "Uspješno ste izmijenili podatke!"
+
 
   activerecord:
     errors:
@@ -396,6 +343,8 @@ bs:
               blank: "Morate unijeti adresu."
             city:
               blank: "Morate unijeti naziv grada u kojem živite."
+            password:
+              blank: "Morate unijeti password."
 
   errors:
     format: "%{message}"

@@ -29,40 +29,40 @@
 </ul>
 
 
-</div>
+
 
 <body >
 
 <table>
-  <tr class="row">
-    <th class="darkerBG col-xs-1"><%= t :username %></th>
-    <th class="darkerBG col-xs-1"><%= t :firstname %></th>
-    <th class="darkerBG col-xs-1"><%= t :lastname %></th>
-    <th class="darkerBG col-xs-1"><%= t :adress %></th>
-    <th class="darkerBG col-xs-1"><%= t :city %></th>
-    <th class="darkerBG col-xs-1">Email</th>
-    <th class="darkerBG col-xs-1"><%= t :tel_num %></th>
-    <th class="darkerBG col-xs-1"><%= t :banned %></th>
-    <th class="darkerBG col-xs-1"><%= t :lastlogin %></th>
-    <th class="darkerBG col-xs-1"></th> <br/>
-    <th class="darkerBG col-xs-1"></th>  <br/>
-    <th class="darkerBG col-xs-1"></th> <br/>
+  <tr class="row darkerBG">
+    <th class="col-xs-1"><%= t :username %></th>
+    <th class="col-xs-1"><%= t :firstname %></th>
+    <th class="col-xs-1"><%= t :lastname %></th>
+    <th class="col-xs-1"><%= t :adress %></th>
+    <th class="col-xs-1"><%= t :city %></th>
+    <th class="col-xs-1">Email</th>
+    <th class="col-xs-1"><%= t :tel_num %></th>
+    <th class="col-xs-1"><%= t :banned %></th>
+    <th class="col-xs-1"><%= t :lastlogin %></th>
+    <th class="col-xs-1"></th> <br/>
+    <th class="col-xs-1"></th>  <br/>
+    <th class="col-xs-1"></th> <br/>
   </tr>
 
 <% @users.each do |user| %>
   <tr class="row">
-    <td class="darkBG col-xs-1"><%= user.username %></td>
-    <td class="darkBG col-xs-1"><%= user.firstname %></td>
-    <td class="darkBG col-xs-1"><%= user.lastname %></td>
-    <td class="darkBG col-xs-1"><%= user.adress %></td>
-    <td class="darkBG col-xs-1"><%= user.city %></td>
-    <td class="darkBG col-xs-1"><%= user.email %></td>
-    <td class="darkBG col-xs-1"><%= user.tel_num %></td>
-   <td class="darkBG col-xs-1"><%=  user.banned %></td>
-    <td class="darkBG col-xs-1"><%= user.lastlogin %></td>
-    <td class="darkBG col-xs-1"><%= link_to (t :show), user %></td>
-    <td class="darkBG col-xs-1"><%= link_to (t :edit), edit_user_path(user) %></td>
-    <td class="darkBG col-xs-1"><%= link_to (t :destroy), user, method: :delete, data: { confirm: (t :you_sure) + "?"  } %></td>
+    <td class="col-xs-1"><%= user.username %></td>
+    <td class="col-xs-1"><%= user.firstname %></td>
+    <td class="col-xs-1"><%= user.lastname %></td>
+    <td class="col-xs-1"><%= user.adress %></td>
+    <td class="col-xs-1"><%= user.city %></td>
+    <td class="col-xs-1"><%= user.email %></td>
+    <td class="col-xs-1"><%= user.tel_num %></td>
+   <td class="col-xs-1"><%=  user.banned %></td>
+    <td class="col-xs-1"><%= user.lastlogin %></td>
+    <td class="col-xs-1"><%= link_to (t :show), user %></td>
+    <td class="col-xs-1"><%= link_to (t :edit), edit_user_path(user) %></td>
+    <td class="col-xs-1"><%= link_to (t :destroy), user, method: :delete, data: { confirm: (t :you_sure) + "?"  } %></td>
   </tr>
 <% end %>
 </table>
@@ -72,7 +72,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
+</div>
   <body>
     <div id="wrap">
       <div class="container">
