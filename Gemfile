@@ -5,8 +5,9 @@ gem 'rails', '3.2.17'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+group :development, :test do
+  gem 'sqlite3'
+end
 gem 'strong_parameters'
 
 gem "best_in_place"
@@ -49,3 +50,8 @@ gem 'rambling-slider-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :production do 
+  gem 'taps'
+  gem 'pg'
+end
