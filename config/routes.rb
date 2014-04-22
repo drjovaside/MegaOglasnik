@@ -1,7 +1,7 @@
 MegaOglasnik::Application.routes.draw do
   #get "activations/new"
   #get "activations/create"
-
+  root :to => 'application#index'
   get "sessions/new"
   resources :users
   resources :sessions
