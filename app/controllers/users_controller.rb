@@ -50,7 +50,8 @@ class UsersController < ApplicationController
     @user.prefered_language="default"
     respond_to do |format|
       if @user.save
-        if verify_recaptcha
+        if true
+        #verify_recaptcha
         #dodano
       session[:user_id]=@user.id
       UserMailer.registration_confirmation(@user).deliver  

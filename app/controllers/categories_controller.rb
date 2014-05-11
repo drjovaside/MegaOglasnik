@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+  respond_to :html, :xml, :json, :js
   # GET /categories
   # GET /categories.json
   def index
@@ -6,6 +8,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js { render json: @categories  }
       format.json { render json: @categories }
     end
   end
@@ -18,7 +21,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @category }
+      format.json { render json: @items }
     end
   end
 

@@ -46,6 +46,7 @@ class AdsController < ApplicationController
     @ad.user_id = session[:user_id]
     @ad.sold = false
     @ad.rating = 0 
+    @ad.sponsored = true
     
     respond_to do |format|
       if @ad.save
@@ -92,8 +93,28 @@ class AdsController < ApplicationController
 
   def search
   @search = Ad.search(params[:search])
-  
-end
+  respond_to do |format|
+      format.html #search.html
+      format.json { render json: @search }
+    end
+  end
 
+  def get_sponsored_ads
+    @sponsored_ads = Ad.where(sponsored: true)
+
+    respond_to do |format|
+      format.html { redirect_to ads_url }
+      format.json { render json: @sponsored_ads }
+    end
+  end
+
+  def get_latest_ads
+    @last_ads = Ad.last(4)
+
+    respond_to do |format|
+      format.json { render json: @last_ads }
+    end
+    
+  end
 
 end

@@ -25,6 +25,9 @@ get '/search' => 'ads#search'
 post '/search' => 'ads#search'
 
 match '/test' => 'application#test'
+
+get '/sponsored_ads' => 'ads#get_sponsored_ads'
+get '/new_ads' => 'ads#get_latest_ads'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
 #match 'login' => 'sessions#new'
