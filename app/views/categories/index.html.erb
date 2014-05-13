@@ -35,7 +35,7 @@
     <td><%= category.name %></td>
     <td><%= link_to (t :show), category %></td>
      <td><%= link_to (t :edit), edit_category_path(category) %></td>
-    <td><%= link_to (t :destroy), category, method: :delete, data: { confirm: (t :you_sure) + "?"  } %></td>
+    <td><%= link_to (t :destroy), category, :method=>:delete, data: { confirm: (t :you_sure) + "?"  } %></td>
   </tr>
 <% end %>
 </table>
