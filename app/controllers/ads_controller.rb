@@ -46,7 +46,8 @@ class AdsController < ApplicationController
     @ad.user_id = session[:user_id]
     @ad.sold = false
     @ad.rating = 0 
-    @ad.sponsored = true
+    @ad.sponsored = false
+    @ad.category_id=params[:category_id]
     
     respond_to do |format|
       if @ad.save
@@ -69,6 +70,8 @@ class AdsController < ApplicationController
   # PUT /ads/1.json
   def update
     @ad = Ad.find(params[:id])
+    @item=Item.find_by_ad_id(@ad.ad_id)
+
     respond_to do |format|
       if @ad.update_attributes(params[:ad])
         format.html { redirect_to @ad, notice: (t :ad_successfully_updated) }
