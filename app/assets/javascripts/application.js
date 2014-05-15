@@ -11,8 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_tree .
-//= require jquery
-//= require jquery.ui.all
+
 //= require best_in_place
 
 
@@ -20,7 +19,3 @@
 //= require highcharts/highcharts                                                           
 //= require highcharts/highcharts-more                                                         
 //= require highcharts/highstock
-
- $(window).load(function() {
-        $('#slider').ramblingSlider();
-    });

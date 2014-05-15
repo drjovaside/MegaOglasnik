@@ -54,6 +54,7 @@ class AdsController < ApplicationController
         @item.category_id=params[:category_id]
         @item.ad_id=@ad.id
         @item.name=@ad.title
+        @item.price=@ad.price
         @item.save
         format.html { redirect_to @ad, notice:  (t :ad_successfully_added) }
         format.json { render json: @ad, status: :created, location: @ad }

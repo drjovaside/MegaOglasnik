@@ -3,8 +3,8 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        
+
 
 <div class="container">
 
@@ -35,7 +35,7 @@
     <td><%= category.name %></td>
     <td><%= link_to (t :show), category %></td>
      <td><%= link_to (t :edit), edit_category_path(category) %></td>
-    <td><%= link_to (t :destroy), category, :method=>:delete, data: { confirm: (t :you_sure) + "?"  } %></td>
+    <td><%= link_to (t :destroy), category, :method => :delete, data: { confirm: (t :you_sure) + "?"  } %></td>
   </tr>
 <% end %>
 </table>
