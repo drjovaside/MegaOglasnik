@@ -47,7 +47,7 @@ class AdsController < ApplicationController
     @ad.sold = false
     @ad.rating = 0 
     @ad.sponsored = false
-    
+    @ad.category_id=params[:category_id]
     respond_to do |format|
       if @ad.save
         @item=Item.new
