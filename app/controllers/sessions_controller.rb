@@ -20,14 +20,18 @@ class SessionsController < ApplicationController
           flash[:notice] = (t :successfully_logged_in)          
        else
        flash[:error] = 'Niste verifikovali email adresu!'
+       respond_to do |format|
        format.json { render json: @user.error }
        format.html { redirect_to '/login'}
+     end
        end
       
       else 
         flash[:error] = ( t :login_error)
-        format.json { render json: @user.error }
+        respond_to do |format|
+       format.json { render json: @user.error }
        format.html { redirect_to '/login'}
+     end
       end
 
   end

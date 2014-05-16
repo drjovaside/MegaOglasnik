@@ -1,14 +1,23 @@
 class ApplicationController < ActionController::Base
 helper :all
 
-before_filter :set_locale, :cors_check
+before_filter :set_locale, :add_cors_headers
 
-def cors_check
-headers['Access-Control-Allow-Origin'] = '*'
-headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-headers['Access-Control-Request-Method'] = '*'
-headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  
+def add_cors_headers
+  origin = request.headers["Origin"]
+  unless (not origin.nil?) and (origin == "http://localhost" or origin.starts_with? "http://localhost:")
+    origin = "http://localhost"
+  end
+  headers['Access-Control-Allow-Origin'] = origin
+  headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
+  allow_headers = request.headers["Access-Control-Request-Headers"]
+  if allow_headers.nil?
+    #shouldn't happen, but better be safe
+    allow_headers = 'Origin, Authorization, Accept, Content-Type'
+  end
+  headers['Access-Control-Allow-Headers'] = allow_headers
+  headers['Access-Control-Allow-Credentials'] = 'true'
+  headers['Access-Control-Max-Age'] = '1728000'
 end
 
 def set_locale
@@ -53,6 +62,10 @@ protect_from_forgery
       session[:language] = "default"
     end
   @user=User.find_by_id(session[:user_id])
+  respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @user }
+    end
   end
 
   def registration
