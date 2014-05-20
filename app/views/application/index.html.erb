@@ -14,6 +14,7 @@
         <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application.js" %>
     <%= javascript_include_tag "angular" %>
+    <%= javascript_include_tag "angular-route" %>
     <%= csrf_meta_tag %>
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -58,7 +59,7 @@
           <li><a class="navbar-brand" href="#" ng-click="latestAds()">Najnoviji oglasi</a></li>
           <li><a class="navbar-brand" href="#">Kontakt</a></li>
         
-          <li><a href="/users/new"><strong>Registracija</strong></a></li>
+          <li><a href="#registration"><strong>Registracija</strong></a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Prijava <strong class="caret"></strong></a>
@@ -115,7 +116,10 @@
   </div>
 </div>
  </div>     
+    <div ng-view> </div>
     </div>
+<br/>
+
     
 </div>
 

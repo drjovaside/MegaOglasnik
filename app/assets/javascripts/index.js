@@ -3,7 +3,7 @@
 /* Controllers */
 
 
-var CategoryApp = angular.module('CategoryApp',[]);
+var CategoryApp = angular.module('CategoryApp',['ngRoute']);
  
 CategoryApp.service('dataService', function($http) {
 this.getData = function(callbackFunc) {
@@ -20,6 +20,21 @@ this.getData = function(callbackFunc) {
 
 });
 
+CategoryApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/registration', {
+        templateUrl: 'users/new'
+        //controller: 'AddOrderController'
+      }).
+      when('/objavi', {
+        templateUrl: 'ads/new'
+        //controller: 'ShowOrdersController'
+      }).
+      otherwise({
+        redirectTo: '/home'
+      });
+  }]);
 
 
 CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
