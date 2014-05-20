@@ -20,6 +20,8 @@ this.getData = function(callbackFunc) {
 
 });
 
+
+
 CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $scope.results = null;
     dataService.getData(function(dataResponse) {
@@ -164,17 +166,30 @@ CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
 
 
   $scope.login = function(user) {
-   $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+   $http.defaults.headers.post["Content-Type"] = "application/json";
+   $http.defaults.headers.post["Accept"] = "application/json";
    alert(user.email);
    alert(user.password);
-    $http.post('http://localhost:3000/sessions', { email : user.email, password: user.password })
+    $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
-        alert("proslo");
+        alert(data.email);
     }).error(function(data){
         alert(data)});
 
   };
 
+$scope.trazi = function(rijec) {
+$http.defaults.headers.post["Content-Type"] = "application/json";
+$http.defaults.headers.post["Accept"] = "application/json";
+     
+alert("prolazi " + rijec);
+    $http.post('http://localhost:3000/search', {"search": rijec })
+    .success(function(data){
+        $scope.results = data;
+    }).error(function(data){
+        alert(data)});
+    
+};
 
 
 });

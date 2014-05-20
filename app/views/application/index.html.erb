@@ -14,6 +14,7 @@
         <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application.js" %>
     <%= javascript_include_tag "angular" %>
+    <%= csrf_meta_tag %>
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
@@ -27,9 +28,9 @@
 </head>
 <body ng-app="CategoryApp">
 
-<div style="margin: 5px;" ng-controller="CategoryAds">
+<div ng-controller="CategoryAds">
 
-     <nav class="navbar navbar-default" role="navigation" >
+     <nav class="" role="navigation" style="background-color: #5C2849;height: 60px; padding-top: 7px" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -46,29 +47,29 @@
       <ul class="nav navbar-nav">
         <li><%= image_tag("logo.png") %></li>        
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" style="height: 20px;">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ukucajte nešto...">
+          <input type="text" class="form-control" placeholder="Ukucajte nešto..." ng-model="rijec">
         </div>
-        <button type="submit" class="btn btn-default">Traži</button>
+        <button type="submit" class="btn btn-default" ng-click="trazi(rijec)">Traži</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
           <li><a class="navbar-brand" href="#">Objavi</a></li>
           <li><a class="navbar-brand" href="#" ng-click="latestAds()">Najnoviji oglasi</a></li>
           <li><a class="navbar-brand" href="#">Kontakt</a></li>
         
-          <li><a href="/users/sign_up">Sign Up</a></li>
+          <li><a href="/users/new"><strong>Registracija</strong></a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Prijava <strong class="caret"></strong></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px; width: 250px;">
               <!-- Login form here -->
      <form role="login" >
      <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
-     <input class="form-control" style="margin-bottom: 15px;" type="password" ng-model="user.password" size="45" placeholder="Password" />
-     <input style="float: left; margin-right: 10px;" type="checkbox" value="1"/>
+     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;" type="password" ng-model="user.password" size="45" placeholder="Password" />
+     <input style="float: left; margin-right: 10px; margin-bottom: 15px; " type="checkbox" value="1"/>
      <label class="string optional" for="user_remember_me">Zapamti</label>
-     <button class="btn btn-primary" style="clear: left; margin-bottom: 10px; width: 80%; height: 32px; font-size: 13px;" ng-click="login(user)" > Login</button>
+     <button class="btn btn-primary" style="clear: left; margin-bottom: 10px; width: 80%; height: 32px; font-size: 13px;" ng-click="login(user)" >Prijavi se</button>
 </form>
             </div>
           </li>
@@ -124,6 +125,8 @@
         e.stopPropagation();
     });
 </script>
+    
+
 </body>
 </html>
 

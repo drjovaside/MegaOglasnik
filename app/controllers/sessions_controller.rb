@@ -13,26 +13,27 @@ class SessionsController < ApplicationController
         @user.save
         session[:user_id]=@user.id
         @user1= User.find_by_id(session[:user_id])
-          respond_to do |format|
-        format.html { redirect_to '/home'}
-        format.json { render json: @user }
-          end
+         
+         render json: @user
+    
           flash[:notice] = (t :successfully_logged_in)          
        else
        flash[:error] = 'Niste verifikovali email adresu!'
-       respond_to do |format|
-       format.json { render json: @user.error }
-       format.html { redirect_to '/login'}
-     end
+       
+     render json: @user.error
+       
        end
       
       else 
-        flash[:error] = ( t :login_error)
-        respond_to do |format|
-       format.json { render json: @user.error }
-       format.html { redirect_to '/login'}
+        @user = User.validate_login(params[:email],params[:password])
+        if @user
+            render json: @user
+        else
+          flash[:error] = ( t :login_error)
+          render json: @user.error
+            end
+       
      end
-      end
 
   end
 

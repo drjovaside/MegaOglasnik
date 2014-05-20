@@ -95,11 +95,11 @@ class AdsController < ApplicationController
   end
 
   def search
+  
   @search = Ad.search(params[:search])
-  respond_to do |format|
-      format.html #search.html
-      format.json { render json: @search }
-    end
+  render json: @search
+
+  
   end
 
   def get_sponsored_ads

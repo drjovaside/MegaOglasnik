@@ -28,6 +28,10 @@ match '/test' => 'application#test'
 
 get '/sponsored_ads' => 'ads#get_sponsored_ads'
 get '/new_ads' => 'ads#get_latest_ads'
+get 'ads/:id/comments/new' => 'comments#new', as: 'comments'
+post 'ads/:id/comments' => 'comments#create', as: 'comments'
+get 'ads/:id/comments' => 'comments#index', as: 'comments'
+#get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
 #match 'login' => 'sessions#new'

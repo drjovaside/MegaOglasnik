@@ -2,22 +2,20 @@ class ApplicationController < ActionController::Base
 helper :all
 
 before_filter :set_locale, :add_cors_headers
-
+skip_before_filter :verify_authenticity_token
+    
 def add_cors_headers
-  origin = request.headers["Origin"]
-  unless (not origin.nil?) and (origin == "http://localhost" or origin.starts_with? "http://localhost:")
-    origin = "http://localhost"
+  puts 'ApplicationController.set_headers'
+  if request.headers["HTTP_ORIGIN"]     
+  # better way check origin
+  # if request.headers["HTTP_ORIGIN"] && /^https?:\/\/(.*)\.some\.site\.com$/i.match(request.headers["HTTP_ORIGIN"])
+    headers['Access-Control-Allow-Origin'] = request.headers["HTTP_ORIGIN"]
+    headers['Access-Control-Expose-Headers'] = 'ETag'
+    headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD'
+    headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match,Auth-User-Token'
+    headers['Access-Control-Max-Age'] = '86400'
+    headers['Access-Control-Allow-Credentials'] = 'true'
   end
-  headers['Access-Control-Allow-Origin'] = origin
-  headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
-  allow_headers = request.headers["Access-Control-Request-Headers"]
-  if allow_headers.nil?
-    #shouldn't happen, but better be safe
-    allow_headers = 'Origin, Authorization, Accept, Content-Type'
-  end
-  headers['Access-Control-Allow-Headers'] = allow_headers
-  headers['Access-Control-Allow-Credentials'] = 'true'
-  headers['Access-Control-Max-Age'] = '1728000'
 end
 
 def set_locale
