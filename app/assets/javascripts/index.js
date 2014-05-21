@@ -33,15 +33,18 @@ CategoryApp.config(['$routeProvider',
       }).
       when('/part', {
         templateUrl: 'partial_views/main'
-      }).
-      otherwise({
-        redirectTo: '/home'
       });
+     
   }]);
+
+
 
 
 CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $scope.results = null;
+    $scope.items=null;
+   
+    
     dataService.getData(function(dataResponse) {
        $scope.results = dataResponse;
     });
@@ -211,5 +214,17 @@ $scope.go = function ( path ) {
 };
 
 
+
+$scope.dodajukorpu = function(price){
+    $scope.items = $scope.items + price
+    
+};
+
+$scope.total = function() {
+    var total=0;
+    total=$scope.AddCart
+
+    return total;
+};
 
 });
