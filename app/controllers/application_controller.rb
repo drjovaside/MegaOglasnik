@@ -55,7 +55,7 @@ end
 
 protect_from_forgery
 
-  def index
+  def home
     if session[:language] == nil
       session[:language] = "default"
     end

@@ -31,6 +31,18 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'ads/new'
         //controller: 'ShowOrdersController'
       }).
+      when('/home', {
+        templateUrl: 'partial_views/index'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/najnoviji', {
+        templateUrl: 'partial_views/latest_ads'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/login', {
+        templateUrl: 'partial_views/login'
+        //controller: 'ShowOrdersController'
+      }).
       when('/part', {
         templateUrl: 'partial_views/main'
       });
@@ -45,9 +57,19 @@ CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $scope.items=null;
    
     
-    dataService.getData(function(dataResponse) {
-       $scope.results = dataResponse;
+    
+    
+    $scope.sponsored_ads = function () {
+        $http({
+        method: 'GET',
+        url: 'http://oglasnik.etf.ba/sponsored_ads.json'
+        }).success(function(data){
+        // With the data succesfully returned, call our callback
+        $scope.results = data;
+    }).error(function(){
+        alert("error");
     });
+    };
     
     $scope.vozila = function() {
    $http({

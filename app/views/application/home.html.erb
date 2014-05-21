@@ -1,0 +1,74 @@
+<!doctype>
+<html>
+<head>
+<title> MegaOglasnik Home </title>
+		<!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+
+
+<link rel="javascripts" href="javascripts/application.js">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" src="stylesheets/application.css"/>
+        <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application.js" %>
+    <%= javascript_include_tag "angular" %>
+    <%= javascript_include_tag "angular-route" %>
+    <%= csrf_meta_tag %>
+        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+  .bs-example{
+      margin: 20px;
+      }
+   
+</style>
+
+</head>
+<body ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds">
+
+     <nav class="" role="navigation" style="background-color: black;height: 60px; padding-top: 7px" >
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= image_tag("logo.png") %></li>        
+      </ul>
+      <form class="navbar-form navbar-left" role="search" style="height: 20px;">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ukucajte nešto..." ng-model="rijec">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="trazi(rijec)">Traži</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
+        
+          <li><a class="navbar-brand" href="#objavi" ng-click="myValue = true" ><font color="white">Objavi</font></a></li>
+          <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li>        
+          <li><a href="#registration" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="#login" ><font color="white">Prijava</font> <strong class="caret"></strong></a></li>
+        
+          
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+<div ng-view> </div>
+<br/>
+</body>

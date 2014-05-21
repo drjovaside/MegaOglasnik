@@ -1,7 +1,7 @@
 MegaOglasnik::Application.routes.draw do
   #get "activations/new"
   #get "activations/create"
-  root :to => 'application#index'
+  root :to => 'application#home'
   get "sessions/new"
   resources :users
   resources :sessions
@@ -9,7 +9,7 @@ MegaOglasnik::Application.routes.draw do
   match '/logout' => 'sessions#destroy'
   match '/activate' => 'users#activate'
 
-  get 'home' => 'application#index', as: 'application'
+  get 'home' => 'application#home', as: 'application'
   get 'login' => 'sessions#new'
 
   get '/home/language/bosnian' => 'users#change_to_bosnian'
@@ -33,6 +33,7 @@ post 'ads/:id/comments' => 'comments#create', as: 'comments'
 get 'ads/:id/comments' => 'comments#index', as: 'comments'
 
 resources :partial_views, only: [:show]
+get 'partial_view/index' => 'partial_views#index'
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]
