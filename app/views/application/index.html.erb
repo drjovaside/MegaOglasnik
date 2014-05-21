@@ -59,7 +59,7 @@
           <li><a class="navbar-brand" href="#" ng-click="latestAds()">Najnoviji oglasi</a></li>
           <li><a class="navbar-brand" href="#">Kontakt</a></li>
         
-          <li><a href="#registration"><strong>Registracija</strong></a></li>
+          <li><a href="#registration" ng-click="myValue = true"><strong>Registracija</strong></a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Prijava <strong class="caret"></strong></a>
@@ -102,7 +102,7 @@
 
 <div style="margin-top: 30px; ">
     
-<div ng-repeat="result in results" >    
+<div ng-hide="myValue" ng-repeat="result in results" >    
   <div class="row" style="float: left; margin: 20px; width: 16%; ">
     <div class="thumbnail">
       <%= image_tag("logo.png") %>
@@ -111,7 +111,8 @@
         <p>{{result.description}}</p>
         <p>Cijena: {{result.price}} KM</p><br/>
           
-          <a href="#" class="btn btn-default" role="button">Pogledaj</a>
+          <a href="#/part" ng-click="myValue = true" class="btn btn-default" role="button">Pogledaj</a> 
+
       </div>
   </div>
 </div>

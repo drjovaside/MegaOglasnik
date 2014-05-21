@@ -148,4 +148,11 @@ else
 end
 end
 
+
+def nesto
+  respond_to do |format|
+      format.html
+end
+end
+
 end

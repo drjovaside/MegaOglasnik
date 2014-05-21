@@ -1,0 +1,15 @@
+<div ng-repeat="result in results" >    
+  <div class="row" style="float: left; margin: 20px; width: 16%; ">
+    <div class="thumbnail">
+      <%= image_tag("logo.png") %>
+      <div class="caption">
+        <h3>{{result.title}}</h3>
+        <p>{{result.description}}</p>
+        <p>Cijena: {{result.price}} KM</p><br/>
+          
+          <a href="#/part" class="btn btn-default" role="button">Pogledaj</a> 
+
+      </div>
+  </div>
+</div>
+ </div>

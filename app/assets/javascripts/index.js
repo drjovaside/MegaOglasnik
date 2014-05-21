@@ -31,6 +31,9 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'ads/new'
         //controller: 'ShowOrdersController'
       }).
+      when('/part', {
+        templateUrl: 'partial_views/main'
+      }).
       otherwise({
         redirectTo: '/home'
       });
@@ -194,10 +197,7 @@ CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
   };
 
 $scope.trazi = function(rijec) {
-$http.defaults.headers.post["Content-Type"] = "application/json";
-$http.defaults.headers.post["Accept"] = "application/json";
-     
-alert("prolazi " + rijec);
+
     $http.post('http://localhost:3000/search', {"search": rijec })
     .success(function(data){
         $scope.results = data;
@@ -205,6 +205,11 @@ alert("prolazi " + rijec);
         alert(data)});
     
 };
+
+$scope.go = function ( path ) {
+  $location.path( path );
+};
+
 
 
 });
