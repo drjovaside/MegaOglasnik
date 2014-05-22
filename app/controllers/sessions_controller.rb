@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         @user1= User.find_by_id(session[:user_id])
          
          render json: @user
+         
     
           flash[:notice] = (t :successfully_logged_in)          
        else

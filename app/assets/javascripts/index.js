@@ -40,7 +40,7 @@ CategoryApp.config(['$routeProvider',
         //controller: 'ShowOrdersController'
       }).
       when('/login', {
-        templateUrl: 'partial_views/login'
+        templateUrl: 'sessions/new'
         //controller: 'ShowOrdersController'
       }).
       when('/part', {

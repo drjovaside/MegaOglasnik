@@ -5,23 +5,9 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="stylesheets/application.css">
-<div class="container">
 
-<h2> <%= t :login %></h2><br/>
-
-
-<ul class="nav nav-tabs">
-  <li><a href="/home"><%= t :home %></a></li>
-  <li><a href="/ads"><%= t :ads %></a></li>
-  <li><a href="/categories"><%= t :categories %></a></li>
-  <li><a href="/users"><%= t :users %></a></li>
-  <li><a href="/ads/new"><%= t :create_ad %></a></li>
-  <li><a href="/dashboards"> Dashboard </a></li>
-  
-  
-</ul>
-
-</div>
+<div class="row" style="float: left; margin: 20px; width: 16%; ">
+<h2> Login</h2><br/>
 
 <div class="form-horizontal container" role="form">
   <% unless flash[:error].nil? %>
@@ -54,17 +40,4 @@
   
 <% end %>
 </div>
-
-
-<body>
-    <div id="wrap">
-      <div class="container">
-      </div>
-    </div>
-    <div id="footer">
-<br/>
-  <a href="http://localhost:3000/home">
-    <font size="2"><div class="container" style="text-align: center" >Copyright © All Rights Reserved</div></font>
-</a>
-    </div>
-</body>
+</div>
