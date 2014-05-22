@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
         @user.save
         session[:user_id]=@user.id
         @user1= User.find_by_id(session[:user_id])
-         
-         render json: @user
-         
-    
+        respond_to do |format|
+        format.html { redirect_to ''}
+        format.json { render json: @user }
+        end
           flash[:notice] = (t :successfully_logged_in)          
        else
        flash[:error] = 'Niste verifikovali email adresu!'
@@ -28,7 +28,22 @@ class SessionsController < ApplicationController
       else 
         @user = User.validate_login(params[:email],params[:password])
         if @user
-            render json: @user
+            if @user.active==true
+        @user.lastlogin=Time.now
+        @user.save
+        session[:user_id]=@user.id
+        @user1= User.find_by_id(session[:user_id])
+        respond_to do |format|
+        format.html { redirect_to ''}
+        format.json { render json: @user }
+        end
+          flash[:notice] = (t :successfully_logged_in)          
+       else
+       flash[:error] = 'Niste verifikovali email adresu!'
+       
+     render json: @user.error
+       
+       end
         else
           flash[:error] = ( t :login_error)
           render json: @user.error

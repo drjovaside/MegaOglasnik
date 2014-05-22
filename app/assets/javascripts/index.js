@@ -35,12 +35,12 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/index'
         //controller: 'ShowOrdersController'
       }).
-      when('/najnoviji', {
-        templateUrl: 'partial_views/latest_ads'
+      when('/', {
+        templateUrl: 'partial_views/index'
         //controller: 'ShowOrdersController'
       }).
-      when('/login', {
-        templateUrl: 'sessions/new'
+      when('/najnoviji', {
+        templateUrl: 'partial_views/latest_ads'
         //controller: 'ShowOrdersController'
       }).
       when('/part', {
@@ -216,6 +216,7 @@ CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
         alert(data.email);
+        $route.reload();
     }).error(function(data){
         alert(data)});
 
