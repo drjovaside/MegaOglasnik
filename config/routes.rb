@@ -28,6 +28,7 @@ match '/test' => 'application#test'
 
 get '/sponsored_ads' => 'ads#get_sponsored_ads'
 get '/new_ads' => 'ads#get_latest_ads'
+get '/add_to_cart' => 'ads#add_to_cart'
 get 'ads/:id/comments/new' => 'comments#new', as: 'comments'
 post 'ads/:id/comments' => 'comments#create', as: 'comments'
 get 'ads/:id/comments' => 'comments#index', as: 'comments'

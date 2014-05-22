@@ -120,4 +120,26 @@ class AdsController < ApplicationController
     
   end
 
+
+  def add_to_cart
+    ad = Ad.find(params[:id])
+    # @cart = Cart.new
+    @cart = find_or_create_cart
+    @cart.add_ad(ad)
+    # session[:cart] = @cart
+    redirect_to(:action => 'show_cart' )  
+  end
+
+  def show_cart
+    # @cart = session[:cart]
+    @cart = find_or_create_cart
+  end
+
+ private #--------------------
+
+ def find_or_create_cart
+  session[:cart] ||= Cart.new
+
+ end
+
 end

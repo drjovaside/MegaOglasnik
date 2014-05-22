@@ -244,9 +244,8 @@ $scope.dodajukorpu = function(price){
 };
 
 $scope.total = function() {
-    var total=0;
-    total=$scope.AddCart
-
+    
+    
     return total;
 };
 
