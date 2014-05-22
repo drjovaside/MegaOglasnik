@@ -43,8 +43,8 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/latest_ads'
         //controller: 'ShowOrdersController'
       }).
-      when('/part', {
-        templateUrl: 'partial_views/main'
+      when('/cart', {
+        templateUrl: 'partial_views/cart'
       });
      
   }]);
@@ -54,7 +54,7 @@ CategoryApp.config(['$routeProvider',
 
 CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $scope.results = null;
-    $scope.items=null;
+    $scope.items=0;
    
     
     
@@ -239,7 +239,7 @@ $scope.go = function ( path ) {
 
 
 $scope.dodajukorpu = function(price){
-    $scope.items = $scope.items + price
+    $scope.items = $scope.items + Number(price);
     
 };
 

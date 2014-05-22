@@ -24,17 +24,17 @@
           <!--<a href="#/part" ng-click="myValue = true" class="btn btn-default" role="button">Pogledaj</a> -->
            <!--<a href="" class="btn btn-default" ng-click="dodajukorpu(5)">Dodaj u korpu</a>-->
             <button ng-click="" type="button" class="btn btn-default btn-sm">View</button>
-           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(5)"><i class=" icon-shopping-cart">Add in cart</button>
+           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(result.price)"><i class=" icon-shopping-cart">Add in cart</button>
       </div>
   </div>
 </div>
  </div>     
 
-  <p><b>Korpa</b></p>
+    <p><b><a href="#cart">Korpa</a></b></p>
       <%= image_tag("cart_icon.png") %>
-
+  
       <p><b> {{items}}</b></p>
-
+      
     </div>
 <br/>
 
