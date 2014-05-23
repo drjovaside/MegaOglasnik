@@ -20,6 +20,9 @@ this.getData = function(callbackFunc) {
 
 });
 
+
+
+
 CategoryApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -43,6 +46,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/latest_ads'
         //controller: 'ShowOrdersController'
       }).
+      when('/product_detail', {
+        templateUrl: 'partial_views/product_detail'
+        //controller: 'ShowOrdersController'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -55,6 +62,7 @@ CategoryApp.config(['$routeProvider',
 CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
     $scope.results = null;
     $scope.items=0;
+
    
     
     
@@ -243,10 +251,11 @@ $scope.dodajukorpu = function(price){
     
 };
 
-$scope.total = function() {
-    
-    
-    return total;
+$scope.niz = 0;
+$scope.total = function(total) {
+    $scope.niz = total;
+
+
 };
 
 });

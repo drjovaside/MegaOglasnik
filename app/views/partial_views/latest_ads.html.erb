@@ -21,19 +21,33 @@
         <p>{{result.description}}</p>
         <p>Cijena: {{result.price}} KM</p><br/>
           
-          <!--<a href="#/part" ng-click="myValue = true" class="btn btn-default" role="button">Pogledaj</a> -->
-           <!--<a href="" class="btn btn-default" ng-click="dodajukorpu(5)">Dodaj u korpu</a>-->
-            <button href="#/part" type="button" class="btn btn-default btn-sm">View</button>
+           <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
+            <a href="#/product_detail" type="button" class="btn btn-default btn-sm">View</a>
            <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(result.price)"><i class=" icon-shopping-cart">Add in cart</button>
       </div>
   </div>
 </div>
  </div>     
 
-    <p><b><a href="#cart">Korpa</a></b></p>
-      <%= image_tag("cart_icon.png") %>
+    <div class="list-group" style="margin-left: 15px; width: 16%; float: left; ">
+  <a href="" class="list-group-item active" >
+    <%= t :cart %>
+  </a>
+   <table>
+    <tr>
+    <td>
+    </br>
+      <p><b>Total: {{items}}</b></p>
+    </td>
+    <td>
+  <%= image_tag("cart_icon.png") %>  
+</td>
+</tr>
+</table>
+  <a href="#/cart" type="button" class="btn btn-primary btn-sm" ng-click="total(items)" ><font color="white">View cart</font></a>
+</div>
 
-      <p><b> {{items}}</b></p>
+
 
     </div>
 <br/>
