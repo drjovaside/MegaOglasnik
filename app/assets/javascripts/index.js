@@ -121,6 +121,11 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/product_detail'
         //controller: 'ShowOrdersController'
       }).
+       when('/search', {
+        templateUrl: 'partial_views/search'
+        //controller: 'ShowOrdersController'
+      }).
+
       when('/login', {
         templateUrl: 'partial_views/login'
         //controller: 'ShowOrdersController'
@@ -302,15 +307,18 @@ CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, dataSer
 
   };
 
-$scope.trazi = function(rijec) {
 
-    $http.post('http://localhost:3000/search', {"search": rijec })
+$scope.trazi = function(rijec) {
+$rootScope.slovo = rijec;
+    $http.post('http://localhost:3000/search', {"search": $rootScope.slovo })
     .success(function(data){
         $scope.results = data;
     }).error(function(data){
         alert(data)});
     
 };
+
+
 
 $scope.go = function ( path ) {
   $location.path( path );
@@ -319,22 +327,25 @@ $scope.go = function ( path ) {
 
 
 $scope.items=0;
-$rootScope.ads=[];
 
 $scope.dodajCijenu = function(price){
     $scope.items = $scope.items + Number(price);
 };
 
-$scope.ads=[];
+$rootScope.niz=[];
 $scope.dodajukorpu = function (id, title, price) {
     $rootScope.AdID=id;
     $rootScope.AdTitle=title;
     $rootScope.AdPrice=price;
 
-    $rootScope.ads.push(id, title, price);
+    $rootScope.niz.push(id, title, price);
 };
 
 
+$scope.dodajukorpu2 = function (ad) {
+    
+    $rootScope.ads.push(ad); 
+};
 
 //$scope.niz = 0;
 $scope.ukupnaCijena = function(total) {

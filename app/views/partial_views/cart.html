@@ -3,11 +3,13 @@
 <head>
 <%= javascript_include_tag "angular" %>
 <%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
 
 
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds"  data-ng-init="sponsored_ads()">
+<div ng-controller="CategoryAds" >
 
 
 <div style="margin-top: 30px; ">
@@ -15,11 +17,15 @@
 
 <h2>Your Shopping Cart</h2>
 
-<li>
-
-	<b>Title:</b> {{AdTitle}} ; <b>Price:</b> {{AdPrice}} </li> 
+<li><b>Title:</b> {{AdTitle}} ; <b>Price:</b> {{AdPrice}} </li> 
 
 </br>
+
+
+<div ng-repeat="ad in ads">
+dakjsdhkajshdkusahfkjashfkjahskjfhakjfhakjshf
+{{ad}}
+</div>
 
 <h3><b>Total price:</b> {{cijena}}KM</h3>
 
@@ -28,9 +34,10 @@
   
   <a href="#home"><button type="button" class="btn btn-primary btn-lg" ng-click="">Chackout</button></a>
   <a href="#home"><button type="button" class="btn btn-primary btn-lg" ng-click="">PayPal</button></a>
+</div>
 
-
-
+</div>
+</div>
 
 </body>
 </html>

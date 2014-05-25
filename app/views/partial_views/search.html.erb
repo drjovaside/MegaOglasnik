@@ -3,15 +3,17 @@
 <head>
 <%= javascript_include_tag "angular" %>
 <%= javascript_include_tag "index" %>
-<%= javascript_include_tag "ui-bootstrap-0.11.0" %>
-<%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
-   
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
 
-</head>
+
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds"  data-ng-init="sponsored_ads()">
+<div ng-controller="CategoryAds" data-ng-init="trazi(slovo)">
 
+    
+
+<h2>Pretraga</h2>
 
 <div style="margin-top: 30px; ">
     
@@ -37,40 +39,10 @@
   </div>
 </div>
  </div>     
-
-
-  <div class="list-group" style="margin-left: 15px; width: 16%; float: left; ">
-  <a href="" class="list-group-item active" >
-    <%= t :cart %>
-  </a>
-   <table>
-    <tr>
-    <td>
-    </br>
-      <p><b>Total: {{items}}</b></p>
-    </td>
-    <td>
-  <%= image_tag("cart_icon.png") %>  
-</td>
-</tr>
-</table>
-  <a href="#/cart" type="button" class="btn btn-primary btn-sm" ng-click="ukupnaCijena(items)" ><font color="white">View cart</font></a>
 </div>
 
-
-    </div>
-<br/>
-
-    
 </div>
-
-
-<script type="text/javascript">
-    $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
-        e.stopPropagation();
-    });
-</script>
-    
+</div>
 
 </body>
 </html>
