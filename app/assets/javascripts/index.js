@@ -3,7 +3,7 @@
 /* Controllers */
 
 
-var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.bootstrap']);
+var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.bootstrap', 'ngStorage']);
 var varijabla;
 
 var RatingDemoCtrl = function ($scope) {
@@ -20,7 +20,7 @@ var RatingDemoCtrl = function ($scope) {
 };
 
 
-CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, dataService,Proizvodi,Komentari) {
+CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
     
     
     $scope.pokreni = function() {
@@ -45,6 +45,10 @@ CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, dataServic
         
     };
 $scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
+
+});
+
+angular.module('App', ['ngStorage']).controller('Ctrl', function($scope, $localStorage,$sessionStorage){
 
 });
 
@@ -139,7 +143,7 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, dataService,Proizvodi,Komentari) {
+CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
     $scope.results = null;
     
     
@@ -332,19 +336,30 @@ $scope.dodajCijenu = function(price){
     $scope.items = $scope.items + Number(price);
 };
 
-$rootScope.niz=[];
+$scope.$localStorage = $localStorage.$default({
+        subjects: []
+
+  });
+
+$scope.subjects = $localStorage.subjects;
 $scope.dodajukorpu = function (id, title, price) {
+
     $rootScope.AdID=id;
     $rootScope.AdTitle=title;
     $rootScope.AdPrice=price;
 
-    $rootScope.niz.push(id, title, price);
+    $localStorage.subjects.push({ id:  $rootScope.AdID, title:  $rootScope.AdTitle, price: $rootScope.AdPrice})
+
 };
 
+$scope.izbrisiizkorpe = function (id, title, price){
 
-$scope.dodajukorpu2 = function (ad) {
-    
-    $rootScope.ads.push(ad); 
+    $rootScope.AdID=id;
+    $rootScope.AdTitle=title;
+    $rootScope.AdPrice=price;
+     
+     $localStorage.subjects.splice({ id:  id, title:  title, price: price},1);
+
 };
 
 //$scope.niz = 0;
