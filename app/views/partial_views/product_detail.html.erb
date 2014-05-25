@@ -1,0 +1,51 @@
+<!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="AdDetail" data-ng-init="pokreni()" >
+
+
+<div style="margin-left: 25%;">
+     
+    <h3>{{ad.title}}</h3>
+        Opis:
+        <p>{{ad.description}}</p>
+        <p>Cijena: {{ad.price}} KM</p><br/>
+
+<br/>
+<br/>
+Komentari
+<br/>
+<div ng-repeat="comment in comments">
+id_oglasa: {{comment.ad_id}} 
+
+id_usera: {{comment.user_id}}  <br/>
+
+    {{comment.content}}
+</div>
+<br/>
+<br/>
+<% if session[:user_id] == nil %>
+Prijavite se da bi ostavili komentar.
+<% else %>
+Dodaj komentar:
+<br/>
+    <br/>
+<textarea rows="4" cols="50" ng-model="comment.content">
+Unesite komentar...</textarea>
+<br/>
+<button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm">Dodaj komentar</button>
+<% end %>
+</div>
+
+</div>
+</body>
+</html>
+

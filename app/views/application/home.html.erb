@@ -15,8 +15,11 @@
     <%= javascript_include_tag "application.js" %>
     <%= javascript_include_tag "angular" %>
     <%= javascript_include_tag "angular-route" %>
+    <%= javascript_include_tag "angular-resource" %>
+   <%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+    
     <%= csrf_meta_tag %>
-        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <style type="text/css">
@@ -64,7 +67,10 @@
         
           <li><a class="navbar-brand" href="#objavi" ng-click="myValue = true" ><font color="white">Objavi</font></a></li>
           <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li> 
+          <li><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
+          
           <% if session[:user_id] == nil %>       
+          
           <li><a href="#registration" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
@@ -110,8 +116,8 @@
   <a href="" class="list-group-item" ng-click="umjetnost()"><%= t :art %></a>
   <a href="" class="list-group-item" ng-click="ostalo()"><%= t :other %></a>
 </div>
-
-
+<div style="margin: 30px;">
+ 
 </div>
 <div ng-view> </div>
 <br/>

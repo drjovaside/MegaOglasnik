@@ -3,8 +3,51 @@
 /* Controllers */
 
 
-var CategoryApp = angular.module('CategoryApp',['ngRoute']);
- 
+var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.bootstrap']);
+var varijabla;
+
+var RatingDemoCtrl = function ($scope) {
+  $scope.rate = 7;
+  $scope.max = 10;
+  $scope.isReadonly = false;
+
+  $scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
+
+
+};
+
+
+CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, dataService,Proizvodi,Komentari) {
+    
+    
+    $scope.pokreni = function() {
+     varijabla = $rootScope.ad_id;
+    $scope.ad = Proizvodi.get({},{'Id': varijabla});
+    $scope.comments = Komentari.get({},{'Id': varijabla});
+}
+    
+    
+    $scope.posaljiKomentar = function (comment) {
+    $http.defaults.headers.post["Content-Type"] = "application/json";
+    $http.defaults.headers.post["Accept"] = "application/json";
+  var user_id = $rootScope.user_id;
+  var pomocna = $rootScope.ad_id;
+  var content = comment.content;
+ comment.user_id = $rootScope.user_id;   $http.post('http://localhost:3000/ads/comments', 
+    { "content": comment.content, "ad_id": $rootScope.ad_id, "user_id": $rootScope.user_id })
+    .success(function(data){
+        alert("Usojesno objavljen komentar!");
+    }).error(function(data){
+        alert("nije proslo")});
+        
+    };
+$scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
+
+});
+
 CategoryApp.service('dataService', function($http) {
 this.getData = function(callbackFunc) {
     $http({
@@ -19,6 +62,34 @@ this.getData = function(callbackFunc) {
  }
 
 });
+
+CategoryApp.factory("Proizvodi", function ($resource) {
+    return $resource(
+        "http://localhost:3000/ads/:Id.json",
+        {Id: "@Id" },
+        {
+            "update": {method: "PUT"},
+            "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
+            'query': {method: 'GET', isArray: false }
+ 
+        }
+    );
+});
+
+CategoryApp.factory("Komentari", function ($resource) {
+    return $resource(
+        "http://localhost:3000/ads/:Id/comments.json",
+        {Id: "@Id" },
+        {
+            "update": {method: "PUT"},
+            "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
+            'query': {method: 'GET', isArray: true },
+            'get':    {method:'GET', isArray: true }
+ 
+        }
+    );
+});
+
 
 
 
@@ -50,6 +121,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/product_detail'
         //controller: 'ShowOrdersController'
       }).
+      when('/login', {
+        templateUrl: 'partial_views/login'
+        //controller: 'ShowOrdersController'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -59,11 +134,10 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
+CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, dataService,Proizvodi,Komentari) {
     $scope.results = null;
     $scope.items=0;
-
-   
+    
     
     
     
@@ -219,12 +293,10 @@ CategoryApp.controller('CategoryAds', function($scope, $http, dataService) {
   $scope.login = function(user) {
    $http.defaults.headers.post["Content-Type"] = "application/json";
    $http.defaults.headers.post["Accept"] = "application/json";
-   alert(user.email);
-   alert(user.password);
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
-        alert(data.email);
-        $route.reload();
+        $rootScope.user_id=data.id;
+     
     }).error(function(data){
         alert(data)});
 
@@ -257,5 +329,12 @@ $scope.total = function(total) {
 
 
 };
+    
+$scope.novaFunkcija = function(id) {
+$rootScope.ad_id = id;
+
+
+};
+    
 
 });

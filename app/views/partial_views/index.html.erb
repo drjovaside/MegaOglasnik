@@ -3,6 +3,9 @@
 <head>
 <%= javascript_include_tag "angular" %>
 <%= javascript_include_tag "index" %>
+<%= javascript_include_tag "ui-bootstrap-0.11.0" %>
+<%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+   
 
 </head>
 <body  ng-app="CategoryApp">
@@ -19,11 +22,16 @@
       <div class="caption">
         <h3>{{result.title}}</h3>
         <p>{{result.description}}</p>
-        <p>Cijena: {{result.price}} KM</p><br/>
+        <p>Cijena: {{result.price}} KM</p>
+    <div ng-controller="RatingDemoCtrl">
+    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" on-click="testna(result.id)"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+</div>
+<br/>
           
         
         <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
-            <a href="#/product_detail" type="button" class="btn btn-default btn-sm">View</a>
+            <a ng-click="novaFunkcija(result.id)" href="#/product_detail" type="button" class="btn btn-default btn-sm" >View</a>
            <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(result.price)"><i class=" icon-shopping-cart">Add in cart</button>
       </div>
   </div>

@@ -28,7 +28,7 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
   # GET /comments/new.json
   def new
     @comment = Comment.new
-
+    @comment.save
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
@@ -45,13 +45,16 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
   def create
     @comment = Comment.new(params[:comment])
     @comment.user_id = session[:user_id]
-    @comment.ad_id = params[:id]
+    if @comment.user_id == nil 
+        @comment.user_id = params[:user_id]
+        end
+    #@comment.ad_id = params[:id]
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.json { render json: @comment}
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
