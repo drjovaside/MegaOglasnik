@@ -32,7 +32,7 @@
         
         <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
             <a ng-click="novaFunkcija(result.id)" href="#/product_detail" type="button" class="btn btn-default btn-sm" >View</a>
-           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(result.price)"><i class=" icon-shopping-cart">Add in cart</button>
+           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajCijenu(result.price); dodajukorpu(result.id, result.title, result.price)"><i class=" icon-shopping-cart">Add in cart</button>
       </div>
   </div>
 </div>
@@ -54,7 +54,7 @@
 </td>
 </tr>
 </table>
-  <a href="#/cart" type="button" class="btn btn-primary btn-sm" ng-click="total(items)" ><font color="white">View cart</font></a>
+  <a href="#/cart" type="button" class="btn btn-primary btn-sm" ng-click="ukupnaCijena(items)" ><font color="white">View cart</font></a>
 </div>
 
 

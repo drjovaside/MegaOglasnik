@@ -14,6 +14,3 @@
 
 //= require best_in_place
 
-//= require highcharts/highcharts                                                           
-//= require highcharts/highcharts-more                                                         
-//= require highcharts/highstock

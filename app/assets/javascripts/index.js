@@ -136,7 +136,7 @@ CategoryApp.config(['$routeProvider',
 
 CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, dataService,Proizvodi,Komentari) {
     $scope.results = null;
-    $scope.items=0;
+    
     
     
     
@@ -318,14 +318,27 @@ $scope.go = function ( path ) {
 
 
 
-$scope.dodajukorpu = function(price){
+$scope.items=0;
+$rootScope.ads=[];
+
+$scope.dodajCijenu = function(price){
     $scope.items = $scope.items + Number(price);
-    
 };
 
-$scope.niz = 0;
-$scope.total = function(total) {
-    $scope.niz = total;
+$scope.ads=[];
+$scope.dodajukorpu = function (id, title, price) {
+    $rootScope.AdID=id;
+    $rootScope.AdTitle=title;
+    $rootScope.AdPrice=price;
+
+    $rootScope.ads.push(id, title, price);
+};
+
+
+
+//$scope.niz = 0;
+$scope.ukupnaCijena = function(total) {
+    $rootScope.cijena = total;
 
 
 };
