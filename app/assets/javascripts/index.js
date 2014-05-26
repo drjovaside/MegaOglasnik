@@ -123,7 +123,7 @@ CategoryApp.config(['$routeProvider',
         //controller: 'AddOrderController'
       }).
       when('/objavi', {
-        templateUrl: 'ads/new'
+        templateUrl: 'partial_views/new_ad'
         //controller: 'ShowOrdersController'
       }).
       when('/registracija', {
@@ -309,5 +309,9 @@ $scope.kategorija = function(id) {
 $rootScope.categorieId = id;
 
 };
+    $scope.registruj = function(user) { 
+    $http.defaults.headers.post["Content-Type"] = "application/json"; 
+    $http.defaults.headers.post["Accept"] = "application/json"; 
+    $http.post('http://localhost:3000/users/new', { "username": user.username, "firstname": user.firstname,         "lastname": user.lastname, "email": user.email, "password": user.password }) .success(function(data){           alert("proslo"); }).error(function(data){ alert("nije proslo"); }); };
     
 }]);
