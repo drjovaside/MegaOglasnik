@@ -3,15 +3,13 @@
 <head>
 <%= javascript_include_tag "angular" %>
 <%= javascript_include_tag "index" %>
-<%= javascript_include_tag "ui-bootstrap-0.11.0" %>
-<%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
 
-   
 
-</head>
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds"  data-ng-init="sponsored_ads()">
+<div ng-controller="CategoryAds" data-ng-init="oglasiIzKategorije()">
 
 
 <div style="margin-top: 30px; ">
@@ -25,7 +23,7 @@
         <p>{{result.description}}</p>
         <p>Cijena: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
-    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="testna(rate)"></rating>
+    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" on-click="testna(result.id)"></rating>
     <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 </div>
 <br/>
@@ -38,24 +36,10 @@
   </div>
 </div>
  </div>     
-
-
-  
-
-
-    </div>
-<br/>
-
-    
 </div>
 
-
-<script type="text/javascript">
-    $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
-        e.stopPropagation();
-    });
-</script>
-    
+</div>
+</div>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.find_by_ad_id(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb

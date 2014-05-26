@@ -38,17 +38,10 @@
 
 
 
-     <nav class="" role="navigation" style="background-color: black;height: 60px; padding-top: 7px" >
+     <nav class="" role="navigation" style="background-color: #333333;height: 60px; padding-top: 7px" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+ 
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -62,11 +55,15 @@
         <a href="#search"><button type="submit" class="btn btn-default" ng-click="trazi(rijec)">Traži</button><a/>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li><a class="navbar-brand" href="#"><font color="white">Home</font></a></li>
-        
+          <li><a></a></li>
+          
+          <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
           <li><a class="navbar-brand" href="#objavi" ng-click="myValue = true" ><font color="white">Objavi</font></a></li>
-          <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li> 
-           <li><a class="navbar-brand" href="#/cart"><font color="white">Korpa</font></a></li> 
+          <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li>
+          <li>
+          <%= image_tag("cart_icon2.png", :size => "60x60") %>
+        </li>
+          <li><a class="navbar-brand" href="#/cart"><font color="white">Korpa</font></a></li> 
           <li><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
 
           
@@ -74,20 +71,7 @@
           
           <li><a href="#registration" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
           <li class="divider-vertical"></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Prijava <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px; width: 250px;">
-              <!-- Login form here -->
-     <form role="login" >
-     <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
-     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;" type="password" ng-model="user.password" size="45" placeholder="Password" />
-     <input style="float: left; margin-right: 10px; margin-bottom: 15px; " type="checkbox" value="1"/>
-     <label class="string optional" for="user_remember_me">Zapamti</label>
-     <button class="btn btn-primary" style="clear: left; margin-bottom: 10px; width: 80%; height: 32px; font-size: 13px;" ng-click="login(user)" >Prijavi se</button>
-</form>
-            </div>
-          </li>
-      <li>
+        
    <% else %>
   <%= link_to @user.username, @user %>
   <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/logout'"> <%= t :logout %> </button>
@@ -102,20 +86,15 @@
 <h2><center><%= t :welcome_to_megamarket %>!</center></h2>
 <br/>
 
+ 
+    
 <div class="list-group" style="margin-left: 15px; width: 16%; float: left; ">
   <a href="" class="list-group-item active" >
     <%= t :categories %>
   </a>
-  <a href="" class="list-group-item" ng-click="vozila()"><%= t :vehicles %></a>
-  <a href="" class="list-group-item" ng-click="nekretnine()"><%= t :real_estate %></a>
-  <a href="" class="list-group-item" ng-click="mobiteli()"><%= t :cell_phones %></a>
-  <a href="" class="list-group-item" ng-click="sport()"><%= t :sports_equipment %></a>
-  <a href="" class="list-group-item" ng-click="odjeca()"><%= t :clothing_and_footwear %></a>
-  <a href="" class="list-group-item" ng-click="igrice()"><%= t :toys %></a>
-  <a href="" class="list-group-item" ng-click="pcigre()"><%= t :video_games %></a>
-  <a href="" class="list-group-item" ng-click="knjige()"> Knjige </a>
-  <a href="" class="list-group-item" ng-click="umjetnost()"><%= t :art %></a>
-  <a href="" class="list-group-item" ng-click="ostalo()"><%= t :other %></a>
+  <div ng-repeat="categorie in categories">
+    <a href="#categorie_ads" class="list-group-item" ng-click="kategorija(categorie.id)">{{categorie.name}}</a>
+</div>
 </div>
 <div style="margin: 30px;">
  

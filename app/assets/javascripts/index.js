@@ -94,6 +94,22 @@ CategoryApp.factory("Komentari", function ($resource) {
     );
 });
 
+CategoryApp.factory("Kategorije", function ($resource) {
+    return $resource(
+        "http://localhost:3000/categories/:Id.json",
+        {Id: "@Id" },
+        {
+            "update": {method: "PUT"},
+            "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
+            'query': {method: 'GET', isArray: true },
+            'get':    {method:'GET', isArray: true }
+ 
+        }
+    );
+});
+
+
+
 
 
 
@@ -129,9 +145,12 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/search'
         //controller: 'ShowOrdersController'
       }).
-
       when('/login', {
         templateUrl: 'partial_views/login'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/categorie_ads', {
+        templateUrl: 'partial_views/categorie_ads'
         //controller: 'ShowOrdersController'
       }).
       when('/cart', {
@@ -143,10 +162,10 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
+CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije) {
     $scope.results = null;
     
-    
+    kategorije();
     
     
     
@@ -162,130 +181,14 @@ CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localS
     });
     };
     
-    $scope.vozila = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/1.json',
-        
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
+    function kategorije() {
+        $scope.categories = Kategorije.query();
     };
     
-    $scope.nekretnine = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/2.json',
-        
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
+    $scope.oglasiIzKategorije = function () {
+    $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     };
     
-    $scope.mobiteli = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/3.json',
-        
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    
-    $scope.sport = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/4.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    $scope.odjeca = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/5.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    $scope.igrice = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/5.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    $scope.pcigre = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/6.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    $scope.knjige = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/7.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-    
-    $scope.umjetnost = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/8.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-     
-    $scope.ostalo = function() {
-   $http({
-        method: 'GET',
-        url: 'http://oglasnik.etf.ba/categories/9.json'
-        }).success(function(data){
-        // With the data succesfully returned, call our callback
-        $scope.results = data;
-    }).error(function(){
-        alert("error");
-    });
-    };
-
     $scope.latestAds = function() {
        $http({
         method: 'GET',
@@ -371,9 +274,15 @@ $scope.ukupnaCijena = function(total) {
     
 $scope.novaFunkcija = function(id) {
 $rootScope.ad_id = id;
+};
+    
+$scope.testna = function (rate) {
+alert(rate);
+};
 
+$scope.kategorija = function(id) {
+$rootScope.categorieId = id;
 
 };
     
-
 });
