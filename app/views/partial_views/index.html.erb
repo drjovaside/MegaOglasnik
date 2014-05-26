@@ -12,20 +12,28 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds"  data-ng-init="sponsored_ads()">
+<h3 style="margin-left: 20%; margin-right: 20%;" class="page-header">Dobrodošli na MegaOglasnik!</h3>
 
 
-<div style="margin-top: 30px; ">
-    
-<div ng-repeat="result in results" >    
-  <div class="row" style="float: left; margin: 20px; width: 16%; ">
-    <div class="thumbnail">
+<div style="">
+<div class="list-group" style="margin-left: 35px; width: 16%; float: left; ">
+  <a href="" class="list-group-item active" >
+    <%= t :categories %>
+  </a>
+  <div ng-repeat="categorie in categories">
+    <a href="#categorie_ads" class="list-group-item" ng-click="kategorija(categorie.id)">{{categorie.name}}</a>
+</div>
+</div>
+<div ng-repeat="result in results" style="margin-left: 20%;" >    
+  <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
+    <div class="thumbnail" style="height: 350px;">
       <%= image_tag("no-img.jpg") %>
       <div class="caption">
         <h3>{{result.title}}</h3>
         <p>{{result.description}}</p>
         <p>Cijena: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
-    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="testna(rate)"></rating>
+    <rating  data-ng-init="postaviRating(result.rating)" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="dodajRating(rate,result.id)"></rating>
     <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 </div>
 <br/>
@@ -38,11 +46,6 @@
   </div>
 </div>
  </div>     
-
-
-  
-
-
     </div>
 <br/>
 

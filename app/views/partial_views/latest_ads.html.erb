@@ -8,48 +8,38 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds" data-ng-init="latestAds()">
+<h3 style="margin-left: 20%;" class="page-header">Najnoviji oglasi!</h3>
 
-
-<div style="margin-top: 30px; ">
-    
-<div ng-repeat="result in results" >    
-  <div class="row" style="float: left; margin: 20px; width: 16%; ">
-    <div class="thumbnail">
+<div class="list-group" style="margin-left: 35px; width: 16%; float: left; ">
+  <a href="" class="list-group-item active" >
+    <%= t :categories %>
+  </a>
+  <div ng-repeat="categorie in categories">
+    <a href="#categorie_ads" class="list-group-item" ng-click="kategorija(categorie.id)">{{categorie.name}}</a>
+</div>
+</div>
+<div ng-repeat="result in results" style="margin-left: 20%;" >    
+  <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
+    <div class="thumbnail" style="height: 350px;">
       <%= image_tag("no-img.jpg") %>
       <div class="caption">
         <h3>{{result.title}}</h3>
         <p>{{result.description}}</p>
-        <p>Cijena: {{result.price}} KM</p><br/>
+        <p>Cijena: {{result.price}} KM</p>
+    <div ng-controller="RatingDemoCtrl">
+    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="testna(rate)"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+</div>
+<br/>
           
-           <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
-            <a href="#/product_detail" type="button" class="btn btn-default btn-sm">View</a>
-           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajukorpu(result.price)"><i class=" icon-shopping-cart">Add in cart</button>
+        
+        <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
+            <a ng-click="novaFunkcija(result.id)" href="#/product_detail" type="button" class="btn btn-default btn-sm" >View</a>
+           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajCijenu(result.price); dodajukorpu(result.id, result.title, result.price); dodajukorpu2(result)"><i class=" icon-shopping-cart">Add in cart</button>
       </div>
   </div>
 </div>
- </div>     
-
-    <div class="list-group" style="margin-left: 15px; width: 16%; float: left; ">
-  <a href="" class="list-group-item active" >
-    <%= t :cart %>
-  </a>
-   <table>
-    <tr>
-    <td>
-    </br>
-      <p><b>Total: {{items}}</b></p>
-    </td>
-    <td>
-  <%= image_tag("cart_icon.png") %>  
-</td>
-</tr>
-</table>
-  <a href="#/cart" type="button" class="btn btn-primary btn-sm" ng-click="total(items)" ><font color="white">View cart</font></a>
-</div>
-
-
-
-    </div>
+ </div>
 <br/>
 
     

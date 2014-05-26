@@ -20,6 +20,7 @@ resources :dashboard
 match '/dashboards' => 'dashboard#new'
 resources :categories
 resources :ads
+post 'ads/:id' => 'ads#update'
 
 get '/search' => 'ads#search'  
 post '/search' => 'ads#search'

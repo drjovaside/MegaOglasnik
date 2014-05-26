@@ -5,7 +5,6 @@ class AdsController < ApplicationController
   # GET /ads.json
   def index
     @ads = Ad.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ads }
@@ -46,7 +45,7 @@ class AdsController < ApplicationController
     @ad.user_id = session[:user_id]
     @ad.sold = false
     @ad.rating = 0 
-    @ad.sponsored = false
+    @ad.sponsored = true
     @ad.category_id=params[:category_id]
     respond_to do |format|
       if @ad.save
@@ -69,12 +68,19 @@ class AdsController < ApplicationController
   # PUT /ads/1.json
   def update
     @ad = Ad.find(params[:id])
-    @item=Item.find_by_ad_id(@ad.ad_id)
+    @item=Item.where(ad_id: @ad.id)
 
     respond_to do |format|
       if @ad.update_attributes(params[:ad])
         format.html { redirect_to @ad, notice: (t :ad_successfully_updated) }
-        format.json { head :no_content }
+        format.json { render json: @ad }
+          if params[:rating] == nil
+              else
+              @ad.ratingsnumber=params[:ratingsnumber]
+              @ad.ratingsum=params[:ratingsum]
+              @ad.rating=@ad.ratingsum / @ad.ratingsnumber
+               @ad.save
+              end     
       else
         format.html { render action: "edit" }
         format.json { render json: @ad.errors, status: :unprocessable_entity }

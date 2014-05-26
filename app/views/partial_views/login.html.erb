@@ -5,13 +5,15 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="stylesheets/application.css">
 <body ng-app="CategoryApp">
-<h2> Login </h2><br/>
-
+<div style="margin: 20%; margin-top:100px;">
+<h2 class="page-header"> Login </h2><br/>
+<alert style="width: 450px;"ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
 <form role="login" ng-controller="CategoryAds" >
-     <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
-     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;" type="password" ng-model="user.password" size="45" placeholder="Password" />
-     <input style="float: left; margin-right: 10px; margin-bottom: 15px; " type="checkbox" value="1"/>
-     <label class="string optional" for="user_remember_me">Zapamti</label>
-     <button class="btn btn-primary" style="clear: left; margin-bottom: 10px; width: 80%; height: 32px; font-size: 13px;" ng-click="login(user)" >Prijavi se</button>
+     <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email" style="width: 250px;">
+     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="password" ng-model="user.password" placeholder="Password">
+     <button class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="login(user)" style="width: 250px;">Prijavi se</button>
 </form>
+<br/>
+<h4>Niste registrovani? </h4><a href="#registracija">Registrujte se.</a> 
+</div>
 </body>

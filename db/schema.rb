@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140522143022) do
+ActiveRecord::Schema.define(:version => 20140526194234) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
@@ -28,10 +28,12 @@ ActiveRecord::Schema.define(:version => 20140522143022) do
     t.text     "description"
     t.decimal  "price"
     t.string   "title"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.boolean  "sponsored"
     t.integer  "category_id"
+    t.float    "ratingsum"
+    t.integer  "ratingsnumber"
   end
 
   create_table "carts", :force => true do |t|

@@ -7,10 +7,10 @@ var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.boots
 var varijabla;
 
 var RatingDemoCtrl = function ($scope) {
-  $scope.rate = 7;
+  $scope.rate = 8;
   $scope.max = 10;
   $scope.isReadonly = false;
-
+  $scope.postaviRating = function (value) { $scope.rate = value;};
   $scope.hoveringOver = function(value) {
     $scope.overStar = value;
     $scope.percent = 100 * (value / $scope.max);
@@ -20,7 +20,8 @@ var RatingDemoCtrl = function ($scope) {
 };
 
 
-CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
+CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari',                          
+    function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
     
     
     $scope.pokreni = function() {
@@ -46,17 +47,17 @@ CategoryApp.controller('AdDetail', function($scope,$rootScope, $http, $localStor
     };
 $scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
 
-});
+}]);
 
-angular.module('App', ['ngStorage']).controller('Ctrl', function($scope, $localStorage,$sessionStorage){
+CategoryApp.controller('Ctrl', ['$scope', '$localStorage','$sessionStorage', function($scope, $localStorage,$sessionStorage){
 
-});
+}]);
 
 CategoryApp.service('dataService', function($http) {
 this.getData = function(callbackFunc) {
     $http({
         method: 'GET',
-        url: 'http://oglasnik.etf.ba/sponsored_ads.json'
+        url: 'http://localhost:3000/sponsored_ads.json'
         }).success(function(data){
         // With the data succesfully returned, call our callback
         callbackFunc(data);
@@ -72,7 +73,7 @@ CategoryApp.factory("Proizvodi", function ($resource) {
         "http://localhost:3000/ads/:Id.json",
         {Id: "@Id" },
         {
-            "update": {method: "PUT"},
+            "save": {method: "PUT"},
             "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
             'query': {method: 'GET', isArray: false }
  
@@ -125,6 +126,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'ads/new'
         //controller: 'ShowOrdersController'
       }).
+      when('/registracija', {
+        templateUrl: 'partial_views/registration'
+        //controller: 'ShowOrdersController'
+      }).
       when('/home', {
         templateUrl: 'partial_views/index'
         //controller: 'ShowOrdersController'
@@ -162,7 +167,7 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije) {
+CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije) {
     $scope.results = null;
     
     kategorije();
@@ -172,7 +177,7 @@ CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localS
     $scope.sponsored_ads = function () {
         $http({
         method: 'GET',
-        url: 'http://oglasnik.etf.ba/sponsored_ads.json'
+        url: 'http://localhost:3000/sponsored_ads.json'
         }).success(function(data){
         // With the data succesfully returned, call our callback
         $scope.results = data;
@@ -192,7 +197,7 @@ CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localS
     $scope.latestAds = function() {
        $http({
         method: 'GET',
-        url: 'http://oglasnik.etf.ba/new_ads.json'
+        url: 'http://localhost:3000/new_ads.json'
         }).success(function(data){
         // With the data succesfully returned, call our callback
         $scope.results = data;
@@ -208,10 +213,17 @@ CategoryApp.controller('CategoryAds', function($scope,$rootScope, $http, $localS
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
         $rootScope.user_id=data.id;
+       $rootScope.alerts = [
+    { type: 'success', msg: 'Uspješno ste se prijavili!' }
+  ];
      
     }).error(function(data){
-        alert(data)});
-
+       $rootScope.alerts = [
+    { type: 'danger', msg: 'Unijeli ste pogrešnu email adresu ili password. Pokušajte ponovo.' }
+  ];
+     
+    });
+        
   };
 
 
@@ -276,8 +288,21 @@ $scope.novaFunkcija = function(id) {
 $rootScope.ad_id = id;
 };
     
-$scope.testna = function (rate) {
-alert(rate);
+$scope.dodajRating = function (rate,id) {
+var oglas = Proizvodi.get({},{'Id': id}); 
+var rejting = rate;
+if (oglas.ratingsum == null) {
+    oglas.ratingsum = rejting;
+} else {
+    oglas.ratingsum = oglas.ratingsum + rejting ;
+}
+    
+if (oglas.ratingsnumber == null) {
+    oglas.ratingsnumber = 1;
+} else {
+    oglas.ratingsnumber = oglas.ratingsnumber + 1 ;
+}
+oglas.$save();
 };
 
 $scope.kategorija = function(id) {
@@ -285,4 +310,4 @@ $rootScope.categorieId = id;
 
 };
     
-});
+}]);
