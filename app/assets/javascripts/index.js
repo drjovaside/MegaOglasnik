@@ -40,7 +40,7 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
  comment.user_id = $rootScope.user_id;   $http.post('http://localhost:3000/ads/comments', 
     { "content": comment.content, "ad_id": $rootScope.ad_id, "user_id": $rootScope.user_id })
     .success(function(data){
-        alert("Usojesno objavljen komentar!");
+        alert("Uspjesno objavljen komentar!");
     }).error(function(data){
         alert("nije proslo")});
         
@@ -191,7 +191,9 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
     };
     
     $scope.oglasiIzKategorije = function () {
+    
     $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
+        
     };
     
     $scope.latestAds = function() {
@@ -291,22 +293,14 @@ $rootScope.ad_id = id;
 $scope.dodajRating = function (rate,id) {
 var oglas = Proizvodi.get({},{'Id': id}); 
 var rejting = rate;
-if (oglas.ratingsum == null) {
-    oglas.ratingsum = rejting;
-} else {
-    oglas.ratingsum = oglas.ratingsum + rejting ;
-}
-    
-if (oglas.ratingsnumber == null) {
-    oglas.ratingsnumber = 1;
-} else {
-    oglas.ratingsnumber = oglas.ratingsnumber + 1 ;
-}
+
+oglas.rating = rate;
 oglas.$save();
 };
 
 $scope.kategorija = function(id) {
 $rootScope.categorieId = id;
+$scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
 
 };
     $scope.registruj = function(user) { 

@@ -21,14 +21,15 @@
 
 <br/>
 <br/>
-Komentari
+<b>Komentari</b>
 <br/>
-<div ng-repeat="comment in comments">
-id_oglasa: {{comment.ad_id}} 
-
-id_usera: {{comment.user_id}}  <br/>
-
-    {{comment.content}}
+<br/>
+    
+<div ng-repeat="comment in comments" class="list-group" style="width: 40%;">
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">id_usera: {{comment.user_id}}</h4>
+    <p class="list-group-item-text">{{comment.content}}</p>
+  </a>
 </div>
 <br/>
 <br/>

@@ -44,7 +44,9 @@ class AdsController < ApplicationController
     @ad = Ad.new(params[:ad])
 #    @ad.user_id = session[:user_id]
     @ad.sold = false
-    @ad.rating = 0 
+    @ad.rating = 0
+    @ad.ratingsum = 0
+    @ad.ratingsnumber = 0
     @ad.sponsored = true
     @ad.category_id=params[:category_id]
     respond_to do |format|
@@ -69,18 +71,15 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.find(params[:id])
     @item=Item.where(ad_id: @ad.id)
-
     respond_to do |format|
       if @ad.update_attributes(params[:ad])
         format.html { redirect_to @ad, notice: (t :ad_successfully_updated) }
         format.json { render json: @ad }
-          if params[:rating] == nil
-              else
-              @ad.ratingsnumber=params[:ratingsnumber]
-              @ad.ratingsum=params[:ratingsum]
-              @ad.rating=@ad.ratingsum / @ad.ratingsnumber
-               @ad.save
-              end     
+              @ad.rating=params[:rating]
+              @ad.ratingsnumber+=1
+              @ad.ratingsum+=@ad.rating
+              @ad.rating= @ad.ratingsum / @ad.ratingsnumber
+              @ad.save  
       else
         format.html { render action: "edit" }
         format.json { render json: @ad.errors, status: :unprocessable_entity }

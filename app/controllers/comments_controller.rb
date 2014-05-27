@@ -5,7 +5,7 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.find_by_ad_id(params[:id])
+    @comments = Comment.where(ad_id: params[:id]).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,12 +43,14 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new
     @comment.user_id = session[:user_id]
     if @comment.user_id == nil 
         @comment.user_id = params[:user_id]
         end
-    #@comment.ad_id = params[:id]
+    @comment.ad_id = params[:ad_id]
+    @comment.content = params[:content]
+    
     respond_to do |format|
       if @comment.save
         #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
