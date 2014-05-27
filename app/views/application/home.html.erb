@@ -64,12 +64,13 @@
           <%= image_tag("cart_icon2.png", :size => "60x60") %>
         </li>
           <li><a class="navbar-brand" href="#/cart"><font color="white">Korpa</font></a></li> 
-          <li><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
-
+          
           
           <% if session[:user_id] == nil %>       
           
-          <li><a href="#registracija" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
+          <li><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
+          <li><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
+
           <li class="divider-vertical"></li>
         
    <% else %>

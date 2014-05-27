@@ -312,6 +312,12 @@ $rootScope.categorieId = id;
     $scope.registruj = function(user) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/users/new', { "username": user.username, "firstname": user.firstname,         "lastname": user.lastname, "email": user.email, "password": user.password }) .success(function(data){           alert("proslo"); }).error(function(data){ alert("nije proslo"); }); };
+    $http.post('http://localhost:3000/users', { "username": user.username, "firstname": user.firstname, "lastname": user.lastname, "email": user.email, "password": user.password }) .success(function(data){$rootScope.alerts = [
+    { type: 'success', msg: 'Uspješno ste se registrovali, molimo Vas verifikujte Vas mail.' }
+  ];})
+.error(function(data){ $rootScope.alerts = [
+    { type: 'danger', msg: 'Registracija nije uspjela.' }
+  ]; });
+    };
     
 }]);

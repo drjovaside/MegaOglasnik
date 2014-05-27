@@ -48,25 +48,23 @@ class UsersController < ApplicationController
     @user.banned=false
     @user.active=false
     @user.prefered_language="default"
-    respond_to do |format|
+    
       if @user.save
         if true
         #verify_recaptcha
         #dodano
       session[:user_id]=@user.id
       UserMailer.registration_confirmation(@user).deliver  
-        format.html { redirect_to '/login', notice: (t :successfully_registered) }
-        format.json { render json: @user, status: :created, location: @user }
+         render json: @user, status: :created, location: @user 
         else
       flash[:error] = 'Captcha nije ispravno unesena, pokusajte ponovo!'
       redirect_to new_user_path
 
     end
       else  
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+           render json: @user.errors, status: :unprocessable_entity 
       end
-    end
+    
     
   end
 
