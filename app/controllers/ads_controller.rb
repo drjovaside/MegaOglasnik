@@ -42,7 +42,7 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(params[:ad])
-    @ad.user_id = session[:user_id]
+#    @ad.user_id = session[:user_id]
     @ad.sold = false
     @ad.rating = 0 
     @ad.sponsored = true

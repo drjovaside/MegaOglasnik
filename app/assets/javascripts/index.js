@@ -323,7 +323,7 @@ $rootScope.categorieId = id;
     $scope.objavi = function(ad) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description}) .success(function(data){$rootScope.alerts = [
+    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $rootScope.user_id}) .success(function(data){$rootScope.alerts = [
     { type: 'success', msg: 'Uspjesno ste objavili oglas!' }
   ];})
 .error(function(data){ $rootScope.alerts = [
