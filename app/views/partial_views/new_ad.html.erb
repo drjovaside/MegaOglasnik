@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="stylesheets/application.css">
 <body ng-app="CategoryApp">
 <form role="NewAd" ng-controller="CategoryAds" > 
+    <alert style="width: 450px;"ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
     <input type="text" class="span2 form-control" id="Title" placeholder="Naslov" ng-model="ad.title" style="width: 250px;">
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="price" ng-model="ad.price" placeholder="Cijena">
-    <input type="textfield" class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="description" ng-model="ad.description" placeholder="Ops">
-    <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email" style="width: 250px;">
-    <button class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="objavi(ad)" style="width: 250px;">Objavis</button>
+    <input type="textfield" class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="description" ng-model="ad.description" placeholder="Opis">
+    
+    <button class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="objavi(ad)" style="width: 250px;">Objavi</button>
     
 </body>
