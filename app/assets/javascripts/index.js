@@ -169,12 +169,22 @@ CategoryApp.config(['$routeProvider',
 
 CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije) {
     $scope.results = null;
-    
     kategorije();
+    isLogged();
+   
+    function isLogged() {
+        if ($localStorage.user_id == null) {
+            $rootScope.reg_and_login_value = false;
+        }
+            else {
+            $rootScope.reg_and_login_value = true;
+            $rootScope.username = $localStorage.username;
+            }
     
-    
+    }
     
     $scope.sponsored_ads = function () {
+        
         $http({
         method: 'GET',
         url: 'http://localhost:3000/sponsored_ads.json'
@@ -210,11 +220,20 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
 
 
   $scope.login = function(user) {
+  $scope.user_id = $localStorage.user_id;
+   $localStorage.user_id = null;
+  $scope.username = $localStorage.username;
+   $localStorage.username = null;
    $http.defaults.headers.post["Content-Type"] = "application/json";
    $http.defaults.headers.post["Accept"] = "application/json";
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
-        $rootScope.user_id=data.id;
+         $rootScope.user_id=data.id;
+         $rootScope.reg_and_login_value = true;
+        $localStorage.user_id = data.id;
+        $localStorage.username = data.username;
+        alert($localStorage.username);
+        isLogged();
        $rootScope.login_alerts = [
     { login_type: 'success', login_msg: 'Uspješno ste se prijavili!' }
   ];
@@ -227,6 +246,29 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
     });
         
   };
+    
+    
+     $scope.logout = function(user) {
+          $localStorage.user_id = null;
+          $localStorage.username = null;
+         
+         $http.get('http://localhost:3000/logout')
+    .success(function(data){
+        $localStorage.user_id = null;
+        $localStorage.username = null;
+       $rootScope.login_alerts = [
+    { login_type: 'success', login_msg: 'Uspješno ste se odjavili!' }
+  ];
+     isLogged();
+    }).error(function(data){
+       $rootScope.login_alerts = [
+    { login_type: 'danger', login_msg: 'Odjava nije uspjela. Pokušajte ponovo.' }
+  ];
+     
+    });
+         
+           
+     };
 
 
 $scope.trazi = function(rijec) {
@@ -259,7 +301,6 @@ $scope.dodajCijenu = function(price){
 
 $scope.$localStorage = $localStorage.$default({
         subjects: []
-
 
   });
 
@@ -327,13 +368,13 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $scope.objavi = function(ad) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $rootScope.user_id}) .success(function(data){
+    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $localStorage.user_id}) .success(function(data){
         $rootScope.new_ad_alerts = [
     { new_ad_type: 'success', new_ad_msg: 'Uspjesno ste objavili oglas!' }
   ];})
 .error(function(data){ 
     $rootScope.new_ad_alerts = [
-    { new_ad_type: 'danger', new_ad_msg: 'Registracija nije uspjela.' }
+    { new_ad_type: 'danger', new_ad_msg: 'Objava oglasa nije uspjela.' }
   ]; });
     };
     

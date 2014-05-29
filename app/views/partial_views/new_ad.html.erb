@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="stylesheets/application.css">
 <body ng-app="CategoryApp">
 <form role="NewAd" ng-controller="CategoryAds" > 
-    <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{new_ad_alerts.type}}">{{new_ad_alerts.msg}}</alert>
+    <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
     <input type="text" class="span2 form-control" id="Title" placeholder="Naslov" ng-model="ad.title" style="width: 250px;">
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="price" ng-model="ad.price" placeholder="Cijena">
     <input type="textfield" class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="description" ng-model="ad.description" placeholder="Opis">

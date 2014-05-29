@@ -58,26 +58,20 @@
           <li><a></a></li>
           
           <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
-          <li><a class="navbar-brand" href="#objavi" ng-click="myValue = true" ><font color="white">Objavi</font></a></li>
+          <li><a class="navbar-brand" href="#objavi" ng-show="reg_and_login_value" ><font color="white">Objavi</font></a></li>
           <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li>
           <li>
           <%= image_tag("cart_icon2.png", :size => "60x60") %>
-        </li>
+         </li>
           <li><a class="navbar-brand" href="#/cart"><font color="white">Korpa</font></a></li> 
           
+            
           
-          <% if session[:user_id] == nil %>       
-          
-          <li><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font color="white">Registracija</font></a></li>
-          <li><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
-
-          <li class="divider-vertical"></li>
-        
-   <% else %>
-  <%= link_to @user.username, @user %>
-  <button type="button" class=" btn-sm btn btn-info" onclick="window.location.href='/logout'"> <%= t :logout %> </button>
-  <% end %>
-  </li>  
+          <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font  color="white">Registracija</font></a></li>
+          <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
+           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">{{username}}</font></a></li> 
+           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()"><font color="white">Logout</font></a></li> 
+         
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

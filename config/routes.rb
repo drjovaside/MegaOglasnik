@@ -8,6 +8,7 @@ MegaOglasnik::Application.routes.draw do
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
   match '/activate' => 'users#activate'
+  get '/logout' => 'sessions#destroy'
 
   get 'home' => 'application#home', as: 'application'
   get 'login' => 'sessions#new'
