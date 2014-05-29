@@ -8,7 +8,7 @@
 
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds" >
+<div ng-controller="CategoryAds" style="margin: 20%; margin-top:100px;">
 
 <!-- ng-init="ads = [{title:'golf2', price:'10000'}]"  -->
 
@@ -27,6 +27,8 @@
 
 
 </div>
+___________________________________ <br/>
+<h3><b>TOTAL:</b> {{total()}} KM </h3>
 
 
 
@@ -54,6 +56,10 @@
 </head>
 <body ng-controller="MainCtrl">
   <form novalidate name="paymentForm">
+    <input type="text" placeholder="First Name">
+	<br/>
+	<input type="text" placeholder="Last Name">
+	<br/>
     <input
       type="text"
       name="creditCard"

@@ -263,6 +263,7 @@ $scope.$localStorage = $localStorage.$default({
 
   });
 
+
 $scope.subjects = $localStorage.subjects;
 $scope.dodajukorpu = function (id, title, price) {
 
@@ -271,7 +272,6 @@ $scope.dodajukorpu = function (id, title, price) {
     $rootScope.AdPrice=price;
 
     $localStorage.subjects.push({ id:  $rootScope.AdID, title:  $rootScope.AdTitle, price: $rootScope.AdPrice})
-
 };
 
 $scope.izbrisiizkorpe = function (id, title, price){
@@ -281,11 +281,18 @@ $scope.izbrisiizkorpe = function (id, title, price){
     $rootScope.AdPrice=price;
      
      $localStorage.subjects.splice({ id:  id, title:  title, price: price},1);
-
+     
 };
 
 
-
+$scope.total = function (){
+  var suma=0;
+  var duzina=$localStorage.subjects.lenght;
+  angular.forEach($localStorage.subjects, function(subject) {
+            suma += Number(subject.price); 
+          })
+  return suma;
+};
     
 $scope.novaFunkcija = function(id) {
 $rootScope.ad_id = id;
