@@ -246,15 +246,20 @@ $scope.go = function ( path ) {
 };
 
 
+$scope.PorukaDodanoUkorpu = function(){
+  alert("Item added to cart!");
+};
 
 $scope.items=0;
 
 $scope.dodajCijenu = function(price){
     $scope.items = $scope.items + Number(price);
+
 };
 
 $scope.$localStorage = $localStorage.$default({
         subjects: []
+
 
   });
 
@@ -279,12 +284,8 @@ $scope.izbrisiizkorpe = function (id, title, price){
 
 };
 
-//$scope.niz = 0;
-$scope.ukupnaCijena = function(total) {
-    $rootScope.cijena = total;
 
 
-};
     
 $scope.novaFunkcija = function(id) {
 $rootScope.ad_id = id;
