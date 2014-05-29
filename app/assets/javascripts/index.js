@@ -215,13 +215,13 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
         $rootScope.user_id=data.id;
-       $rootScope.alerts = [
-    { type: 'success', msg: 'Uspješno ste se prijavili!' }
+       $rootScope.login_alerts = [
+    { login_type: 'success', login_msg: 'Uspješno ste se prijavili!' }
   ];
      
     }).error(function(data){
-       $rootScope.alerts = [
-    { type: 'danger', msg: 'Unijeli ste pogrešnu email adresu ili password. Pokušajte ponovo.' }
+       $rootScope.login_alerts = [
+    { login_type: 'danger', login_msg: 'Unijeli ste pogrešnu email adresu ili password. Pokušajte ponovo.' }
   ];
      
     });
@@ -314,22 +314,26 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $scope.registruj = function(user) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/users', { "username": user.username, "firstname": user.firstname, "lastname": user.lastname, "email": user.email, "password": user.password }) .success(function(data){$rootScope.alerts = [
-    { type: 'success', msg: 'Uspješno ste se registrovali, molimo Vas verifikujte Vas mail.' }
+    $http.post('http://localhost:3000/users', { "username": user.username, "firstname": user.firstname, "lastname": user.lastname, "email": user.email, "password": user.password }) .success(function(data){
+        $rootScope.registration_alerts = [
+    { type: 'success', registration_msg: 'Uspješno ste se registrovali, molimo Vas verifikujte Vas mail.' }
   ];})
-.error(function(data){ $rootScope.alerts = [
-    { type: 'danger', msg: 'Registracija nije uspjela.' }
+.error(function(data){ 
+        $rootScope.registration_alerts = [
+    { registration_type: 'danger', registration_msg: 'Registracija nije uspjela.' }
   ]; });
     };
     
     $scope.objavi = function(ad) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $rootScope.user_id}) .success(function(data){$rootScope.alerts = [
-    { type: 'success', msg: 'Uspjesno ste objavili oglas!' }
+    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $rootScope.user_id}) .success(function(data){
+        $rootScope.new_ad_alerts = [
+    { new_ad_type: 'success', new_ad_msg: 'Uspjesno ste objavili oglas!' }
   ];})
-.error(function(data){ $rootScope.alerts = [
-    { type: 'danger', msg: 'Registracija nije uspjela.' }
+.error(function(data){ 
+    $rootScope.new_ad_alerts = [
+    { new_ad_type: 'danger', new_ad_msg: 'Registracija nije uspjela.' }
   ]; });
     };
     

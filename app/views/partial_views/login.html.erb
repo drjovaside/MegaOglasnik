@@ -7,7 +7,7 @@
 <body ng-app="CategoryApp">
 <div style="margin: 20%; margin-top:100px;">
 <h2 class="page-header"> Login </h2><br/>
-<alert style="width: 450px;"ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
+<alert style="width: 450px;" ng-repeat="alert in login_alerts" type="{{alert.login_type}}">{{alert.login_msg}}</alert>
 <form role="login" ng-controller="CategoryAds" >
      <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email" style="width: 250px;">
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="password" ng-model="user.password" placeholder="Password">

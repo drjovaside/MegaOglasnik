@@ -7,7 +7,7 @@
 <body ng-app="CategoryApp">
 <div style="margin: 20%; margin-top:100px;">
 <h2 class="page-header"> Registration </h2><br/>
-<alert style="width: 450px;"ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
+<alert style="width: 450px;"ng-repeat="alert in registration_alerts" type="{{alert.registration_type}}">{{alert.registration_msg}}</alert>
 <form role="registration" ng-controller="CategoryAds" >
      <input type="text" class="span2 form-control" id="inputUsername" placeholder="Username" ng-model="user.username" style="width: 250px;">
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="firstname" ng-model="user.firstname" placeholder="First Name">
