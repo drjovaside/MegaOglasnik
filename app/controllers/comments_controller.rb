@@ -50,7 +50,8 @@ before_filter :authenticate_user!, :only => [:new,:edit,:destroy]
         end
     @comment.ad_id = params[:ad_id]
     @comment.content = params[:content]
-    
+    @user = User.find_by_id(@comment.user_id)
+    @comment.user_username = @user.username
     respond_to do |format|
       if @comment.save
         #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }

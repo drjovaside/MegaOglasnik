@@ -26,16 +26,19 @@
 <br/>
     
 <div ng-repeat="comment in comments" class="list-group" style="width: 40%;">
-  <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">id_usera: {{comment.user_id}}</h4>
+  <a href="" class="list-group-item">
+    <h4 class="list-group-item-heading">{{comment.user_username}}</h4>
+    
     <p class="list-group-item-text">{{comment.content}}</p>
   </a>
 </div>
 <br/>
 <br/>
-<% if session[:user_id] == nil %>
+<div ng-hide="reg_and_login_value">
+
 Prijavite se da bi ostavili komentar.
-<% else %>
+</div>
+<div ng-show="reg_and_login_value">
 Dodaj komentar:
 <br/>
     <br/>
@@ -43,7 +46,7 @@ Dodaj komentar:
 Unesite komentar...</textarea>
 <br/>
 <button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm">Dodaj komentar</button>
-<% end %>
+
 </div>
 
 </div>

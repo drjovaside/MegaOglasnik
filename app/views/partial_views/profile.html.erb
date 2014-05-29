@@ -1,0 +1,22 @@
+<!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds" data-ng-init="profil()" class="container" >
+    
+    <h2 class="page-header"> Dobrodošli na Vaš profil! </h2><br/>
+    <h2>{{user.username}}</h2>
+    <h4>{{user.firstname}}</h4>
+    <h4>{{user.lastname}}</h4>
+    <h4>{{user.email}}</h4>
+    
+    </div>
+</body>
+</html>

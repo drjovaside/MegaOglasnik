@@ -27,7 +27,7 @@
         <p>{{result.description}}</p>
         <p>Cijena: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
-    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="testna(rate)"></rating>
+    <rating  data-ng-init="postaviRating(result.rating)" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="dodajRating(rate,result.id)"></rating>
     <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 </div>
 <br/>

@@ -109,6 +109,20 @@ CategoryApp.factory("Kategorije", function ($resource) {
     );
 });
 
+CategoryApp.factory("Korisnici", function ($resource) {
+    return $resource(
+        "http://localhost:3000/users/:Id.json",
+        {Id: "@Id" },
+        {
+            "update": {method: "PUT"},
+            "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
+            'query': {method: 'GET', isArray: true },
+            'get':    {method:'GET', isArray: false }
+ 
+        }
+    );
+});
+
 
 
 
@@ -154,6 +168,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/login'
         //controller: 'ShowOrdersController'
       }).
+      when('/profile', {
+        templateUrl: 'partial_views/profile'
+        //controller: 'ShowOrdersController'
+      }).
       when('/categorie_ads', {
         templateUrl: 'partial_views/categorie_ads'
         //controller: 'ShowOrdersController'
@@ -167,7 +185,7 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije) {
+CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije','Korisnici', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije,Korisnici) {
     $scope.results = null;
     kategorije();
     isLogged();
@@ -232,7 +250,6 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
          $rootScope.reg_and_login_value = true;
         $localStorage.user_id = data.id;
         $localStorage.username = data.username;
-        alert($localStorage.username);
         isLogged();
        $rootScope.login_alerts = [
     { login_type: 'success', login_msg: 'Uspješno ste se prijavili!' }
@@ -246,6 +263,13 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
     });
         
   };
+    
+    
+ $scope.profil = function () {
+     
+     $scope.user =  Korisnici.get({},{'Id': $localStorage.user_id });
+     
+ };
     
     
      $scope.logout = function(user) {
