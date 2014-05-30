@@ -3,7 +3,6 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="stylesheets/application.css">
 <body ng-app="CategoryApp">
 <div style="margin: 20%; margin-top:100px;">
 <h2 class="page-header"> Registration </h2><br/>
@@ -14,7 +13,8 @@
     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="lastname" ng-model="user.lastname" placeholder="Last Name">
     <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email" style="width: 250px;">
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="password" ng-model="user.password" placeholder="Password">
-     <button class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="registruj(user)" style="width: 250px;">Registruj se</button>
+     <a class="btn btn-primary" style=" margin-bottom: 10px; width: 200px; height: 32px; font-size: 13px;" ng-click="registruj(user)"><font color="white">Registruj se</font></a>
 </form>
+<a href="#login">Prijava.</a>
 </div>
 </body>

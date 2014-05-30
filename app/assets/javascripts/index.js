@@ -25,7 +25,7 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
     
     
     $scope.pokreni = function() {
-     varijabla = $rootScope.ad_id;
+    varijabla = $rootScope.ad_id;
     $scope.ad = Proizvodi.get({},{'Id': varijabla});
     $scope.comments = Komentari.get({},{'Id': varijabla});
 }
@@ -41,6 +41,7 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
     { "content": comment.content, "ad_id": $rootScope.ad_id, "user_id": $rootScope.user_id })
     .success(function(data){
         alert("Uspjesno objavljen komentar!");
+        $scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
     }).error(function(data){
         alert("nije proslo")});
         
@@ -138,6 +139,7 @@ CategoryApp.config(['$routeProvider',
       }).
       when('/objavi', {
         templateUrl: 'partial_views/new_ad'
+
         //controller: 'ShowOrdersController'
       }).
       when('/registracija', {
@@ -193,10 +195,12 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
     function isLogged() {
         if ($localStorage.user_id == null) {
             $rootScope.reg_and_login_value = false;
+            return false;
         }
             else {
             $rootScope.reg_and_login_value = true;
             $rootScope.username = $localStorage.username;
+            return true;
             }
     
     }
@@ -393,6 +397,7 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
     $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $localStorage.user_id}) .success(function(data){
+        $rootScope.ad_id = data.id;
         $rootScope.new_ad_alerts = [
     { new_ad_type: 'success', new_ad_msg: 'Uspjesno ste objavili oglas!' }
   ];})
