@@ -367,6 +367,17 @@ $scope.total = function (){
   return suma;
 };
 
+
+$scope.brojac = function (){
+  var brojac=0;
+  var duzina=$localStorage.subjects.lenght;
+  angular.forEach($localStorage.subjects, function(subject) {
+            brojac += 1; 
+          })
+  return brojac;
+};
+
+
 $scope.submitForm = function(isValid) {
   if (isValid) {
         alert('our form is amazing');
