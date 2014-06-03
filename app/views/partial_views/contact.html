@@ -1,0 +1,71 @@
+<!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds" style="margin: 20%; margin-top:100px;">
+
+<!-- ng-init="ads = [{title:'golf2', price:'10000'}]"  -->
+
+
+<div style="margin-top: 30px; ">
+    
+
+<h2>Kontaktirajte nas:</h2>
+</br>
+
+<!-- FORM -->
+  <form name="myForm" action="MAILTO:edinrails@gmail.com" method="post" enctype="text/plain">
+    <!-- NAME -->
+    <div id="namee" class="form-group">
+      <label>Ime</label>
+      <input type="text" name="name" ng-model="signup.name" class="form-control" style="width: 250px;" ng-minlength="3" ng-maxlength="20"  placeholder="Name" required >
+      <ul ng-show="myForm.submitAttempt">
+     <li class="help-block" ng-show="myForm.name.$error.minlength">Name must be at least 3 character long!</li>
+      <li class="help-block" ng-show="myForm.name.$error.required">Name is required!</li>
+    </ul>
+
+    </div>
+
+    <!-- Email -->
+    <div id="maill" class="form-group" >
+      <label>Email</label>
+      <input type="email" name="input" ng-model="text" class="form-control" style="width: 250px;" placeholder="Email" required >
+      <ul ng-show="myForm.submitAttempt"> 
+     <li class="help-block" ng-show="myForm.input.$error.email">Not valid email!</li> 
+     
+     <li class="help-block" ng-show="myForm.$error.required">Email is required.</li> 
+
+    </ul>
+      
+       
+    </div>
+
+    <div id="comm" class="form-group">
+      <label>Comment</label>
+      <textarea type="text" name="comment" class="form-control" style='width:550px' rows="5" placeholder="Comment" required></textarea>
+       <ul ng-show="myForm.submitAttempt"> 
+<li class="help-block" ng-show="myForm.$error.required">Comment is required.</li> 
+
+    </ul>
+
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button ng-click="myForm.submitAttempt=true" type="submit" style="width: 250px;" class="btn btn-success btn-lg btn-block" >
+      <span class="glyphicon glyphicon-send"></span> Send
+    </button> 
+  </form>
+
+
+</div>
+</div>
+
+</body>
+</html>
+

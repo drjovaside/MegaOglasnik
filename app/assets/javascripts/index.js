@@ -178,6 +178,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/categorie_ads'
         //controller: 'ShowOrdersController'
       }).
+      when('/contact', {
+        templateUrl: 'partial_views/contact'
+        //controller: 'ShowOrdersController'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -361,6 +365,12 @@ $scope.total = function (){
             suma += Number(subject.price); 
           })
   return suma;
+};
+
+$scope.submitForm = function(isValid) {
+  if (isValid) {
+        alert('our form is amazing');
+      }
 };
     
 $scope.novaFunkcija = function(id) {
