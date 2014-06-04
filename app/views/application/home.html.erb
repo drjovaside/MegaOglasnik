@@ -1,13 +1,15 @@
 <!doctype>
 <html>
 <head>
-<title> MegaOglasnik Home </title>
+<title> BUYbook Home </title>
 		<!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 
 
 <link rel="javascripts" href="javascripts/application.js">
+
+
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
       
@@ -39,12 +41,12 @@
 
 
      <nav class="" role="navigation" style="background-color: #333333;height: 60px; padding-top: 7px" >
-  <div class="container-fluid">
+  <div  class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
  
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= image_tag("logo.png") %></li>        
       </ul>
@@ -54,22 +56,42 @@
         </div>
         <a href="#search"><button type="submit" class="btn btn-default" ng-click="trazi(rijec)">Traži</button><a/>
       </form>
+
       <ul class="nav navbar-nav navbar-right">
-          <li><a></a></li>
+ <div id='cssmenu'>
+ <ul>        
+        <li><a></a></li>
           
-          <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
+
+
+        <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
           <li><a class="navbar-brand" href="#objavi" ng-show="reg_and_login_value" ><font color="white">Objavi</font></a></li>
-          <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li>
+
+
+      <li class='has-sub'><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a>
+        <ul>
+            <li><a class="navbar-brand" href="#/wish"><font color="black">Lista želja</font></a></li> 
+        </ul>
+      </li>
+
           <li><a class="navbar-brand" href="#/cart"><font color="white"> <span class="glyphicon glyphicon-shopping-cart" ></span>Korpa</font> <font size="1px">{{brojac()}} items</font></a></li> 
 
-          <li><a class="navbar-brand" href="#/wish"><font color="white">Lista želja</font></a></li> 
+          
           <li><a class="navbar-brand" href="#/contact"><font color="white">Kontakt</font></a></li>
             
           
           <!-- <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font  color="white">Registracija</font></a></li> -->
-          <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
-           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#profile" ng-click="profil(user_id)"><font color="white">{{username}}</font></a></li> 
-           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()"><font color="white">Logout</font></a></li> 
+         <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
+           <li class='has-sub' ng-show="reg_and_login_value"><a class="navbar-brand" ng-click="profil(user_id)"><font color="white">{{username}}</font></a>
+           <ul>
+            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#profile" ng-click="profil(user_id)"><font color="black">Profile</font></a></li>
+           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()"><font color="black">Logout</font></a></li>  
+         </ul>
+         </li>
+
+
+</ul>
+</div>
          
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -81,5 +103,11 @@
 <div ng-view> </div>
 </div>
 </div>
+
+<div class="footer2" id="footer2">
+           <font size="2px">Copyright © 2014 BUYbook | Design and Development. All Rights Reserved.</font>
+           </div>
+
 <br/>
 </body>
+</html>

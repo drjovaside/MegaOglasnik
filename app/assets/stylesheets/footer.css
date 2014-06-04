@@ -1,0 +1,15 @@
+#footer2
+{
+    clear: both;
+    background: white;
+    color: Black;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
