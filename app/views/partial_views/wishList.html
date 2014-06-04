@@ -1,0 +1,70 @@
+<!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds" style="margin: 20%; margin-top:100px;">
+
+<!-- ng-init="ads = [{title:'golf2', price:'10000'}]"  -->
+
+
+<div style="margin-top: 30px; ">
+    
+
+<h2>Lista želja:</h2>
+</br> 
+<p>Ukoliko u ponudama nema knjige koju tražite, u formi ispod unesite naziv željene knjige i autora. </p>
+<!-- FORM -->
+
+
+  <form name="myForm">
+    <!-- Knjiga -->
+    <div id="namee" class="form-group">
+      <label>Naziv knjige:</label>
+      <input type="text" name="name" ng-model="list.book" placeholder="Naziv knjige" class="form-control" style="width: 250px">
+    </div>
+
+    <!-- Autor -->
+    <div id="autor" class="form-group" >
+      <label>Autor:</label>
+      <input type="text" name="autor" ng-model="list.autor" class="form-control" style="width: 250px;" placeholder="Autor knjige" required >
+    </div>
+    <!-- SUBMIT BUTTON -->
+    <button ng-click="dodajulistu(list.book, list.autor)" type="submit" class="btn btn-success btn-sm btn-block" style="width: 250px; text-align:center">
+      <span class="glyphicon glyphicon-pushpin"></span> Objavi
+    </button> 
+  </form>
+
+</br>
+</br>
+
+
+
+
+<h3><u>Trenutno u zathevima:</u></h3>
+</br>
+
+
+<div ng-repeat="list in lists">
+<table class="table">
+        <tr>
+ <th> Naziv knjige: {{list.book}} </th>
+ <th> Autor: {{list.autor}} </th> 
+ <th><button type="button" class="glyphicon glyphicon-remove" ng-click="izbrisiizliste(list.book, list.autor);"></button> </th>
+
+</tr>
+</table>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
+

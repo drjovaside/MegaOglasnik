@@ -60,11 +60,13 @@
           <li><a class="navbar-brand" href="#home"><font color="white">Home</font></a></li>
           <li><a class="navbar-brand" href="#objavi" ng-show="reg_and_login_value" ><font color="white">Objavi</font></a></li>
           <li><a class="navbar-brand" href="#najnoviji"><font color="white">Najnoviji oglasi</font></a></li>
-          <li><a class="navbar-brand" href="#/cart"><font color="white"> <span class="glyphicon glyphicon-shopping-cart" ></span>Korpa</font> <font size="1px">{{brojac()}} KM</font></a></li>  
+          <li><a class="navbar-brand" href="#/cart"><font color="white"> <span class="glyphicon glyphicon-shopping-cart" ></span>Korpa</font> <font size="1px">{{brojac()}} items</font></a></li> 
+
+          <li><a class="navbar-brand" href="#/wish"><font color="white">Lista želja</font></a></li> 
           <li><a class="navbar-brand" href="#/contact"><font color="white">Kontakt</font></a></li>
             
           
-          <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font  color="white">Registracija</font></a></li>
+          <!-- <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#registracija" ng-click="myValue = true"><font  color="white">Registracija</font></a></li> -->
           <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#profile" ng-click="profil(user_id)"><font color="white">{{username}}</font></a></li> 
            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()"><font color="white">Logout</font></a></li> 

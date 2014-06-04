@@ -182,6 +182,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/contact'
         //controller: 'ShowOrdersController'
       }).
+      when('/wish', {
+        templateUrl: 'partial_views/wishList'
+        //controller: 'ShowOrdersController'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -367,6 +371,23 @@ $scope.total = function (){
   return suma;
 };
 
+$scope.$localStorage = $localStorage.$default({
+        lists: []
+        
+  });
+
+$scope.lists = $localStorage.lists;
+$scope.dodajulistu = function(book, autor){
+  $rootScope.book=book;
+  $rootScope.autor=autor;
+  $localStorage.lists.push({ book: $rootScope.book, autor: $rootScope.autor})
+};
+
+$scope.izbrisiizliste = function(book, autor){
+  $rootScope.book=book;
+  $rootScope.autor=autor;
+ $localStorage.lists.splice({ book: book, autor: autor},1);
+};
 
 $scope.brojac = function (){
   var brojac=0;
@@ -375,6 +396,11 @@ $scope.brojac = function (){
             brojac += 1; 
           })
   return brojac;
+};
+
+$scope.isPopupVisible = false;
+$scope.showPopup = function () {
+    $scope.isPopupVisible = true;
 };
 
 

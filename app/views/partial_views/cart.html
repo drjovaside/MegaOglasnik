@@ -35,11 +35,11 @@ ___________________________________ <br/>
   </br>
   </br>
   <a href="#home"><button type="button" class="btn btn-primary btn-normal" ng-click="">Back to Shop</button></a>
-  <button type="button" class="btn btn-primary btn-normal" ng-click="myValue = true">Chackout</button>
+  <button type="button" class="btn btn-primary btn-normal" ng-click="showPopup()">Chackout</button>
   <a href="#home"><button type="button" class="btn btn-primary btn-normal" ng-click="">PayPal</button></a>
 </div>
 
-<div ng-show="myValue" class="ng-hide">
+<div ng-show="isPopupVisible" class="ng-hide">
 </br>
 </br>
 
@@ -56,10 +56,16 @@ ___________________________________ <br/>
 </head>
 <body ng-controller="MainCtrl">
   <form novalidate name="paymentForm">
+    <div class="form-group">
+      <label>First Name:</label>
     <input type="text" placeholder="First Name">
-	<br/>
+	</div>
+  <div class="form-group">
+      <label>Last Name:</label>
 	<input type="text" placeholder="Last Name">
-	<br/>
+	</div>
+  <div class="form-group">
+      <label>Credit Card:</label>
     <input
       type="text"
       name="creditCard"
@@ -70,13 +76,15 @@ ___________________________________ <br/>
       data-ng-minlength="15"
       maxlength="19"
       placeholder="Card Number" >{{ccinfo.type}}
-    <br/>
+    </div>
     <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
       <li ng-show="paymentForm.creditCard.$error.minlength">Credit card must be 15-19 digits</li>
       <li ng-show="paymentForm.creditCard.$error.pattern">Credit card must consist of only numbers</li>
       <li ng-show="paymentForm.creditCard.$error.invalid">Credit card must be a valid Amex, Visa, Discover, or Master Card</li>
       <li ng-show="paymentForm.creditCard.$error.required">Credit card required</li>
     </ul>
+    <div class="form-group">
+      <label>Security Code:</label>
     <input
       type="text"
       name="securityCode"
@@ -86,12 +94,14 @@ ___________________________________ <br/>
       data-ng-pattern="/^[0-9]+$/"
       data-ng-minlength="3"
       maxlength="4">
-    <br/>
+    </div>
     <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
       <li ng-show="paymentForm.securityCode.$error.pattern">Security code must contain only numbers</li>
       <li ng-show="paymentForm.securityCode.$error.minlength">Security code must be 3-4 digits</li>
       <li ng-show="paymentForm.securityCode.$error.required">Security code required</li>
     </ul>
+    <div class="form-group">
+      <label>Expiration date:</label>
     <select ng-model="ccinfo.month" name="month" data-card-expiration required>
       <option disabled selected value="">Month</option>
       <option value="1">1</option>
@@ -133,7 +143,7 @@ ___________________________________ <br/>
     </ul>
 
     <br/>
-    <button ng-click="paymentForm.submitAttempt=true;save(ccinfo)" type="submit">Pay with Credit Card</button>
+    <button ng-click="paymentForm.submitAttempt=true;save(ccinfo)" style="width: 220px;" type="submit" class="btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-euro"></span>Pay with Credit Card</button>
     </form>
 </body>
 </html>
