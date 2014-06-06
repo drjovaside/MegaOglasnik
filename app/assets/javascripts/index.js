@@ -115,7 +115,7 @@ CategoryApp.factory("Korisnici", function ($resource) {
         "http://localhost:3000/users/:Id.json",
         {Id: "@Id" },
         {
-            "update": {method: "PUT"},
+            "save": {method: "PUT"},
             "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
             'query': {method: 'GET', isArray: true },
             'get':    {method:'GET', isArray: false }
@@ -170,8 +170,8 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/login'
         //controller: 'ShowOrdersController'
       }).
-      when('/profile', {
-        templateUrl: 'partial_views/profile'
+      when('/myprofile', {
+        templateUrl: 'partial_views/myprofile'
         //controller: 'ShowOrdersController'
       }).
       when('/categorie_ads', {
@@ -184,6 +184,10 @@ CategoryApp.config(['$routeProvider',
       }).
       when('/wish', {
         templateUrl: 'partial_views/wishList'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/editprofile', {
+        templateUrl: 'partial_views/editprofile'
         //controller: 'ShowOrdersController'
       }).
       when('/cart', {
@@ -452,6 +456,25 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $rootScope.new_ad_alerts = [
     { new_ad_type: 'danger', new_ad_msg: 'Objava oglasa nije uspjela.' }
   ]; });
+    };
+    
+    
+    $scope.pokreniIzmjenuProfila = function () {
+         $scope.user =  Korisnici.get({},{'Id': $localStorage.user_id });
+        
+    };
+    
+    
+    $scope.spasiPromjeneIzmjeneProfila = function (user) {
+    var korisnik =  Korisnici.get({},{'Id': $localStorage.user_id });
+    korisnik.firstname = user.firstname;
+    korisnik.lastname = user.lastname;
+    korisnik.email = user.email;
+    korisnik.password = user.password;
+    korisnik.adress = user.adress;
+    korisnik.tel_num = user.tel_number;
+    korisnik.city = user.city;
+    korisnik.$save();
     };
     
 }]);

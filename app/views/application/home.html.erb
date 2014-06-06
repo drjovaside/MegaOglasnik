@@ -84,7 +84,7 @@
          <li ng-hide="reg_and_login_value"><a class="navbar-brand" href="#login"><font color="white">Login</font></a></li> 
            <li class='has-sub' ng-show="reg_and_login_value"><a class="navbar-brand" ng-click="profil(user_id)"><font color="white">{{username}}</font></a>
            <ul>
-            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#profile" ng-click="profil(user_id)"><font color="black">Profile</font></a></li>
+            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#myprofile" ng-click="profil(user_id)"><font color="black">Profile</font></a></li>
            <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()"><font color="black">Logout</font></a></li>  
          </ul>
          </li>
@@ -103,8 +103,8 @@
 <div ng-view> </div>
 </div>
 </div>
-
-<div class="footer2" id="footer2">
+<br/>
+<div class="container">
            <font size="2px">Copyright © 2014 BUYbook | Design and Development. All Rights Reserved.</font>
            </div>
 

@@ -12,11 +12,19 @@
 <div ng-controller="CategoryAds" data-ng-init="profil()" class="container" >
     
     <h2 class="page-header"> Dobrodošli na Vaš profil! </h2><br/>
-    <h2>{{user.username}}</h2>
-    <h4>{{user.firstname}}</h4>
-    <h4>{{user.lastname}}</h4>
-    <h4>{{user.email}}</h4>
     
+    <%= image_tag("default.jpg") %>
+    <h2>{{user.username}}</h2>
+    <h4>Ime: {{user.firstname}}</h4>
+    <h4>Prezime: {{user.lastname}}</h4>
+    <h4>Email: {{user.email}}</h4>
+    <h4>Grad: {{user.city}}</h4>
+    <h4>Adresa: {{user.adress}}</h4>
+    <h4>Br. tel.: {{user.tel_num}}</h4>
+    
+    <br/>
+    <div ><b><a href="#editprofile">Uredi profil</a></b></div>
     </div>
+
 </body>
 </html>

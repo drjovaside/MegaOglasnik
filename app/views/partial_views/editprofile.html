@@ -1,0 +1,36 @@
+<!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds" data-ng-init="pokreniIzmjenuProfila()" class="container" >
+    
+    <h2 class="page-header"> Izmjena profilnih podataka </h2><br/>
+    <form role="updateUser" >
+    Ime:
+   <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="user.firstname" placeholder="{{user.firstname}}">
+    Prezime:
+    <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="user.lastname" placeholder="{{user.lastname}}">
+    
+    Email:
+    <input type="text" class="span2 form-control" id="inputEmail" placeholder="user.email" ng-model="user.email" style="width: 250px;">
+    Password:
+    <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="password" ng-model="user.password" placeholder="{{user.password}}">
+    Grad:
+    <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="user.city" placeholder="{{user.city}}">
+    Adresa:
+    <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="user.adress" placeholder="{{user.adress}}">
+    Broj telefona:
+    <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="user.tel_number" placeholder="{{user.tel_num}}">
+    <br/>
+    <a href="#myprofile" class="btn btn-primary" style=" margin-bottom: 10px; width: 200px; height: 32px; font-size: 13px;" ng-click="spasiPromjeneIzmjeneProfila(user)"><font color="white">Spasi promjene</font></a>
+    </div>
+</form>
+</body>
+</html>
