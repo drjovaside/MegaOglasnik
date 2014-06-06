@@ -38,6 +38,10 @@ get 'ads/:id/comments' => 'comments#index', as: 'comments'
 resources :partial_views, only: [:show]
 get 'partial_view/index' => 'partial_views#index'
 get 'categories/:id' => 'categories#show'
+get 'myads' => 'users#myAds'
+get 'users/:id/ads' => 'users#getusersads'
+
+
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]

@@ -20,31 +20,39 @@ var RatingDemoCtrl = function ($scope) {
 };
 
 
-CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari',                          
-    function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari) {
+CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Korisnici','OglasiKorisnika',                          
+    function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Korisnici,OglasiKorisnika) {
     
     
     $scope.pokreni = function() {
     varijabla = $rootScope.ad_id;
-    $scope.ad = Proizvodi.get({},{'Id': varijabla});
+    $scope.ad = Proizvodi.get({'Id': varijabla}, function (ad){
+                $scope.id=ad.user_id;    
+    $scope.korisnik =  Korisnici.get({'Id': $scope.id }, function (korisnik){
+                                  $rootScope.ime = korisnik.username;
+                                  $localStorage.korisnicki_id = korisnik.user_id;
+                                    });
+                                    });
     $scope.comments = Komentari.get({},{'Id': varijabla});
-}
+    $rootScope.ad_id = null;
+         
+};
     
     
     $scope.posaljiKomentar = function (comment) {
     $http.defaults.headers.post["Content-Type"] = "application/json";
     $http.defaults.headers.post["Accept"] = "application/json";
-  var user_id = $rootScope.user_id;
-  var pomocna = $rootScope.ad_id;
-  var content = comment.content;
- comment.user_id = $rootScope.user_id;   $http.post('http://localhost:3000/ads/comments', 
+    var user_id = $rootScope.user_id;
+    var pomocna = $rootScope.ad_id;
+    var content = comment.content;
+    comment.user_id = $rootScope.user_id;   
+    $http.post('http://localhost:3000/ads/comments', 
     { "content": comment.content, "ad_id": $rootScope.ad_id, "user_id": $rootScope.user_id })
     .success(function(data){
         alert("Uspjesno objavljen komentar!");
         $scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
     }).error(function(data){
-        alert("nije proslo")});
-        
+        alert("Greska!")});
     };
 $scope.comments = Komentari.get({},{'Id': $rootScope.ad_id});
 
@@ -77,6 +85,20 @@ CategoryApp.factory("Proizvodi", function ($resource) {
             "save": {method: "PUT"},
             "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
             'query': {method: 'GET', isArray: false }
+ 
+        }
+    );
+});
+
+CategoryApp.factory("OglasiKorisnika", function ($resource) {
+    return $resource(
+        "http://localhost:3000/users/:Id/ads.json",
+        {Id: "@Id" },
+        {
+            "save": {method: "PUT"},
+            "reviews": {'method': 'GET', 'params': {'reviews_only': "true"}, isArray: true},
+            'query': {method: 'GET', isArray: false },
+            'get':    {method:'GET', isArray: true }
  
         }
     );
@@ -190,6 +212,10 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/editprofile'
         //controller: 'ShowOrdersController'
       }).
+      when('/profile', {
+        templateUrl: 'partial_views/user_profile'
+        //controller: 'ShowOrdersController'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -199,7 +225,7 @@ CategoryApp.config(['$routeProvider',
 
 
 
-CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije','Korisnici', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije,Korisnici) {
+CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localStorage', 'dataService','Proizvodi','Komentari','Kategorije','Korisnici','OglasiKorisnika', function($scope,$rootScope, $http, $localStorage, dataService,Proizvodi,Komentari,Kategorije,Korisnici,OglasiKorisnika) {
     $scope.results = null;
     kategorije();
     isLogged();
@@ -281,12 +307,27 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$localSto
   };
     
     
- $scope.profil = function () {
+ $scope.myProfile = function () {
      
      $scope.user =  Korisnici.get({},{'Id': $localStorage.user_id });
+     $http.get('http://localhost:3000/myads')
+    .success(function(data){
+        $scope.results = data;
+    }).error(function(data){
+       alert("ne prolazi");
+     
+    });
      
  };
     
+$scope.userProfile = function (id) {
+     $rootScope.id = id;
+ };
+
+$scope.pokreniPrikazProfilaKorisnika = function () {
+$scope.user =  Korisnici.get({},{'Id':  $rootScope.id });
+     $scope.results = OglasiKorisnika.get({},{'Id': $rootScope.id });
+};
     
      $scope.logout = function(user) {
           $localStorage.user_id = null;

@@ -11,8 +11,8 @@
 </head>
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds"  data-ng-init="myProfile()">
-<h2 class="page-header" style="margin-left: 20%;"> Dobrodošli na Vaš profil! </h2><br/>
+<div ng-controller="CategoryAds"  data-ng-init="pokreniPrikazProfilaKorisnika()">
+<h2 class="page-header" style="margin-left: 20%;"> </h2><br/>
 <div style="">
 <div class="" style="margin-left: 35px; width: 20%; float: left; ">
   <%= image_tag("default.jpg") %>
@@ -23,7 +23,7 @@
     <h4>Grad: {{user.city}}</h4>
     <h4>Adresa: {{user.adress}}</h4>
     <h4>Br. tel.: {{user.tel_num}}</h4>
-    <b><a class="btn btn-default" href="#editprofile">Uredi profil</a></b>
+    
 </div>
 <div ng-repeat="result in results" style="margin-left: 25%;">    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
@@ -57,3 +57,35 @@
 
 </body>
 </html>
+
+
+
+
+
+<!-- <!doctype>
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "angular-resource" %>
+<%= javascript_include_tag "angular-route.min" %>
+
+
+<body  ng-app="CategoryApp">
+
+<div ng-controller="CategoryAds" data-ng-init="myProfile()" class="container" >
+   
+    <%= image_tag("default.jpg") %>
+    <h2>{{user.username}}</h2>
+    <h4>Ime: {{user.firstname}}</h4>
+    <h4>Prezime: {{user.lastname}}</h4>
+    <h4>Email: {{user.email}}</h4>
+    <h4>Grad: {{user.city}}</h4>
+    <h4>Adresa: {{user.adress}}</h4>
+    <h4>Br. tel.: {{user.tel_num}}</h4>
+    
+    </div>
+
+</body>
+</html>
+-->

@@ -104,6 +104,16 @@ class UsersController < ApplicationController
   redirect_to login_path
   flash[:notice] = (t :email_verified)
 end
+    def myAds
+    @ads = Ad.where(user_id: session[:user_id]).all
+    render json: @ads
+    end
+    
+    def getusersads
+    @ads = Ad.where(user_id: params[:id]).all
+    render json: @ads
+    
+    end
 
 #changes prefered language to bosnian
 def change_to_bosnian
