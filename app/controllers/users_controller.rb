@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     @user.banned=false
     @user.active=false
     @user.prefered_language="default"
+    @user.avatar_url = "/images/users/user.jpg"
     
       if @user.save
         if true
@@ -95,7 +96,22 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+    
+#uploaded_io.original_filename
+def upload_photo
+  uploaded_io = params[:file]
+  @user=User.find(params[:id]) 
+  @naziv_slike =User.find(params[:id]).id.to_s
+  @user.avatar_url = "/images/users/user" + @naziv_slike + ".jpg"
+  @user.save
+  File.open(Rails.root.join('public', 'images/users', "user" + @naziv_slike + ".jpg"), 'wb') do |file|
+  file.write(uploaded_io.read)
+  end
+  
+  render json: @naziv_slike
+ end
 
+    
 #dodano
   def activate
   @user = User.find(session[:user_id])

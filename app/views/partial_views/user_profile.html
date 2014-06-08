@@ -15,7 +15,8 @@
 <h2 class="page-header" style="margin-left: 20%;"> </h2><br/>
 <div style="">
 <div class="" style="margin-left: 35px; width: 20%; float: left; ">
-  <%= image_tag("default.jpg") %>
+  <img src="{{user.avatar_url}}" height="250" width="200"/>
+      <br/>
     <h2>{{user.username}}</h2>
     <h4>Ime: {{user.firstname}}</h4>
     <h4>Prezime: {{user.lastname}}</h4>

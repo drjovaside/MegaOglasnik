@@ -37,10 +37,19 @@ class AdsController < ApplicationController
   def edit
     @ad = Ad.find(params[:id])
   end
+    
+ def upload_picture
+  uploaded_io = params[:ad][:picture]
+  File.open(Rails.root.join('app', 'assets', "slika"), 'wb') do |file|
+  file.write(uploaded_io.read)
+  end
+ end
 
   # POST /ads
   # POST /ads.json
   def create
+  
+    
     @ad = Ad.new(params[:ad])
 #    @ad.user_id = session[:user_id]
     @ad.sold = false
@@ -86,7 +95,7 @@ class AdsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /ads/1
   # DELETE /ads/1.json
   def destroy

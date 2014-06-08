@@ -40,7 +40,7 @@ get 'partial_view/index' => 'partial_views#index'
 get 'categories/:id' => 'categories#show'
 get 'myads' => 'users#myAds'
 get 'users/:id/ads' => 'users#getusersads'
-
+post 'users/:id/upload_photo' => 'users#upload_photo'
 
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
