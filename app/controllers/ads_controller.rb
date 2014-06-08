@@ -101,11 +101,7 @@ class AdsController < ApplicationController
   def destroy
     @ad = Ad.find(params[:id])
     @ad.destroy
-
-    respond_to do |format|
-      format.html { redirect_to ads_url }
-      format.json { head :no_content }
-    end
+render json: 1
   end
 
   def search

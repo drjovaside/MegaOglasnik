@@ -558,8 +558,23 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     };
     
     $scope.obrisiArtikal = function(id) {
-    Proizvodi.delete({}, {'Id': 1});
-    
+    //Proizvodi.delete({}, {'Id': 1});
+    var url_delete = 'http://localhost:3000/ads/delete/' + id;
+    $http.get(url_delete)
+    .success(function(data){
+        alert("obrisano!");
+        //$scope.user =  Korisnici.get({},{'Id': $localStorage.user_id });
+        $http.get('http://localhost:3000/myads')
+        .success(function(data){
+        $scope.results = data;
+        }).error(function(data){
+        alert("Greška!");
+     
+    });
+    }).error(function(data){
+       alert("Doslo je do greške!");
+     
+    });
     
     };
 }]);
