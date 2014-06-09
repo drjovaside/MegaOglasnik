@@ -58,6 +58,7 @@ class AdsController < ApplicationController
     @ad.ratingsnumber = 0
     @ad.sponsored = true
     @ad.category_id=params[:category_id]
+    @ad.picture_path = "/images/products/product.jpg"
     respond_to do |format|
       if @ad.save
         @item=Item.new
@@ -95,6 +96,21 @@ class AdsController < ApplicationController
       end
     end
   end
+    
+def upload_photo
+  uploaded_io = params[:file]
+  @ad=Ad.find(params[:id]) 
+  @naziv_slike =User.find(params[:id]).id.to_s
+  @ad.picture_path = "/images/products/product" + @naziv_slike + ".jpg"
+  @ad.save
+  @filename = "product" + @naziv_slike
+  File.delete("#{Rails.root}/public/images/users/#{@filename}") if File.exist?("#{Rails.root}/public/images/users/#{@filename}")
+  File.open(Rails.root.join('public', 'images/products', "product" + @naziv_slike + ".jpg"), 'wb') do |file|
+  file.write(uploaded_io.read)
+  end
+  
+  render json: @naziv_slike
+ end
   
   # DELETE /ads/1
   # DELETE /ads/1.json

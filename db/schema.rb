@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140529205439) do
+ActiveRecord::Schema.define(:version => 20140609131736) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20140529205439) do
     t.integer  "category_id"
     t.float    "ratingsum"
     t.integer  "ratingsnumber"
+    t.string   "picture_path"
   end
 
   create_table "carts", :force => true do |t|

@@ -42,6 +42,7 @@ get 'myads' => 'users#myAds'
 get 'users/:id/ads' => 'users#getusersads'
 post 'users/:id/upload_photo' => 'users#upload_photo'
 get 'ads/delete/:id' => 'ads#destroy'
+post 'ads/:id/upload_photo' => 'ads#upload_photo'
 
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije

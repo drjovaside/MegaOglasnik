@@ -104,6 +104,8 @@ def upload_photo
   @naziv_slike =User.find(params[:id]).id.to_s
   @user.avatar_url = "/images/users/user" + @naziv_slike + ".jpg"
   @user.save
+    @filename = "user" + @naziv_slike
+  File.delete("#{Rails.root}/public/images/users/#{@filename}") if File.exist?("#{Rails.root}/public/images/users/#{@filename}")
   File.open(Rails.root.join('public', 'images/users', "user" + @naziv_slike + ".jpg"), 'wb') do |file|
   file.write(uploaded_io.read)
   end
@@ -173,10 +175,5 @@ end
 end
 
 
-def nesto
-  respond_to do |format|
-      format.html
-end
-end
 
 end

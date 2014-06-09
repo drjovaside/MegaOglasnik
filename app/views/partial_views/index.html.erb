@@ -27,7 +27,8 @@
 <div ng-repeat="result in results" style="margin-left: 20%;" >    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
     <div class="thumbnail" style="height: 350px;">
-      <%= image_tag("no-img.jpg") %>
+      
+      <img src="{{result.picture_path}}"/>
       <div class="caption">
         <h3>{{result.title}}</h3>
         <p>{{result.description}}</p>
