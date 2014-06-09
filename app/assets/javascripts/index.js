@@ -410,7 +410,7 @@ $scope.DodajRezervacijuNaOglas = function (add, userr, userr_name) {
 };
 
 $scope.IspisiRezervacije = function (){
-$http.get('http://localhost:3000/reservations'), {"user_name"});
+//$http.get('http://localhost:3000/reservations'), {"user_name"});
 };
 
 

@@ -6,7 +6,7 @@
 <body ng-app="CategoryApp">
 <div class="container"> 
     <h2 class="page-header"> Novi oglas </h2><br/>
-<form role="NewAd" ng-controller="CategoryAds" > 
+<form name="NewAd" ng-controller="CategoryAds" > 
     <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
 <select>
 <option>-- Odaberite kategoriju -- </option>
@@ -15,15 +15,15 @@
     
     <h2></h2>
    
-    <input type="text" class="span2 form-control" id="Title" placeholder="Naslov" ng-model="ad.title" style="width: 250px;">
-     <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="price" ng-model="ad.price" placeholder="Cijena">
+    <input type="text" name="title" class="span2 form-control" id="Title" placeholder="Naslov" ng-model="ad.title" style="width: 250px;" required><span class="error"  ng-show="NewAd.title.$error.required">(Required)</span>
+     <input class="form-control" name="price" style=" margin-top: 10px;width: 250px;" type="number" ng-model="ad.price" placeholder="Cijena" required> <span  ng-show="NewAd.price.$error.required">(Number required)</span>
    
     
-    <textarea class="form-control" style="width: 250px;" ng-model="ad.description" rows="6" placeholder="Opis">
-</textarea>
+    <textarea class="form-control" name="opis" style="width: 250px; margin-top: 10px;" ng-model="ad.description" rows="6" placeholder="Opis" required>
+</textarea> <span  ng-show="NewAd.opis.$error.required">(Required)</span>
     
     <br/>
-    <a href="#product_detail" class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="objavi(ad,$files)" style="width: 250px;">Objavi</a>
+    <a href="#product_detail" class="btn btn-primary" style="margin-top:10px; margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="objavi(ad)" style="width: 250px;" ng-disabled="NewAd.$invalid">Objavi</a>
 </form>
     </div>    
 </body>
