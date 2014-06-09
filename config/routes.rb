@@ -44,6 +44,9 @@ post 'users/:id/upload_photo' => 'users#upload_photo'
 get 'ads/delete/:id' => 'ads#destroy'
 post 'ads/:id/upload_photo' => 'ads#upload_photo'
 
+post 'reservations' => 'reservations#create'
+get 'reservations/:id' => 'ads#show'
+
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]

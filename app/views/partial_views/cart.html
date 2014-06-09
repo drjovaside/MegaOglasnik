@@ -24,6 +24,7 @@
 
 
 <b>ID:</b> {{subject.id}} <b>Title:</b> {{subject.title}} <b>Price:</b> {{subject.price}} <button type="button" class="glyphicon glyphicon-remove" ng-click="izbrisiizkorpe(subject.id, subject.title, subject.price);"></button>
+ <button type="button" class="glyphicon glyphicon-ok"  ng-click="DodajRezervacijuNaOglas(subject.id, $localStorage.user_id, $localStorage.username); izbrisiizkorpe(subject.id, subject.title, subject.price);">Rezervisi</button>
 
 
 </div>
@@ -35,15 +36,14 @@ ___________________________________ <br/>
   </br>
   </br>
   <a href="#home"><button type="button" class="btn btn-primary btn-normal" ng-click="">Back to Shop</button></a>
-  <button type="button" class="btn btn-primary btn-normal" ng-click="showPopup()">Chackout</button>
-  <a href="#home"><button type="button" class="btn btn-primary btn-normal" ng-click="">PayPal</button></a>
+   <a href="#home"><button type="button" class="btn btn-primary btn-normal">PayPal</button></a>
 </div>
 
 <div ng-show="isPopupVisible" class="ng-hide">
 </br>
 </br>
 
-
+<!--
 <!doctype html>
 <html ng-app="app" >
 <head>
@@ -147,7 +147,7 @@ ___________________________________ <br/>
     </form>
 </body>
 </html>
-
+-->
 </div>
 
 

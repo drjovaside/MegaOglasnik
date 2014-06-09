@@ -398,6 +398,20 @@ $rootScope.slovo = rijec;
     
 };
 
+$scope.DodajRezervacijuNaOglas = function (add, userr, userr_name) {
+  $http.post('http://localhost:3000/reservations', { "ad_id": add, "user_id": userr, "user_username": userr_name})
+    .success(function(data){
+        $scope.results = data;
+    }).error(function(data){
+        alert(data)});
+
+
+  alert("Uspješno ste rezervisali knjigu!");
+};
+
+$scope.IspisiRezervacije = function (){
+$http.get('http://localhost:3000/reservations'), {"user_name"});
+};
 
 
 $scope.go = function ( path ) {
