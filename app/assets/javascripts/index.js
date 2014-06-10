@@ -230,6 +230,9 @@ CategoryApp.config(['$routeProvider',
     when('/messages', {
         templateUrl: 'partial_views/messages'
       }).
+    when('/show_message', {
+        templateUrl: 'partial_views/show_message'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -252,6 +255,21 @@ CategoryApp.controller('EmailController',['$scope','$http','$localStorage', func
         alert("nije proslo");
     });
     };
+    
+    $scope.populateInbox = function() {
+           
+    $http.get('http://localhost:3000/recieved_messages')
+    .success(function(data){
+         alert(data);
+        $scope.messages=data;
+    }).error(function(data){
+        alert("nije proslo");
+    });
+    };
+    $scope.selectMessage = function (message) {
+    
+    $scope.selectedMessage = message;
+};
     
     $scope.isPopupVisible = false;
             $scope.isComposePopupVisible = false;
@@ -339,9 +357,7 @@ CategoryApp.controller('EmailController',['$scope','$http','$localStorage', func
                 $scope.isPopupVisible = false;
             };
 
-            $http.post("/Home/GetEmails").then(function (response) {
-                $scope.emails = response.data;
-            });
+            ;
     
 }]);
 

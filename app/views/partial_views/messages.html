@@ -17,12 +17,13 @@
             <a ng-click="activeTab='sent'">Sent</a>
         </li>
     </ul>    
-    <table ng-show="activeTab=='inbox'" class="table table-bordered table-condensed">
+    <table data-ng-init="populateInbox()" class="table table-bordered table-condensed">
         <tbody>
-            <tr ng-repeat="email in emails" ng-click="showPopup(email)">
-                <td>{{ email.from }}</td>
-                <td>{{ email.subject }}</td>
-                <td>{{ email.date }}</td>
+            <tr ng-repeat="message in messages">
+                <td>{{ message.user_sender_id }}</td>
+                <td>{{ message.title }}</td>
+                <td><a href="#show_message" class="btn btn-primary" >Show message</a> </td>
+                
             </tr>
         </tbody>
     </table>
@@ -37,45 +38,6 @@
     </table>
     <a href="#new_message" class="btn btn-primary" >Compose message</a>
     
-    <div class="modal" ng-show="isPopupVisible">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closePopup()">&times;</button>
-            <h3>{{selectedEmail.subject}}</h3>
-        </div>
-        <div class="modal-body">
-            <strong>From:</strong> {{selectedEmail.from}}<br />
-            <strong>To:</strong> {{selectedEmail.to}}<br />
-            <strong>Date:</strong> {{selectedEmail.date | date:'MMM d' }}<br />
-            <br />
-            <span style="white-space:pre">{{selectedEmail.body}}</span>
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" ng-click="forward()">Forward</a>
-            <a href="#" class="btn" ng-click="reply()">Reply</a>
-            <a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
-        </div>
-    </div>
-    
-    <div class="modal" ng-show="isComposePopupVisible">
-        <div class="modal-header">
-            <button type="button" class="close" ng-click="closeComposePopup()">&times;</button>
-            <h3>Compose Email</h3>
-        </div>
-        <div class="modal-body">
-            <form>
-                <input type="text" placeholder="To" style="width:95%;"
-                    ng-model="composeEmail.to"><br />
-                <input type="text" placeholder="Subject" style="width:95%;"
-                    ng-model="composeEmail.subject"><br />
-                <textarea style="width:95%;" rows="10" 
-                    ng-model="composeEmail.body"></textarea>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn"ng-click="closeComposePopup()">Close</a>
-            <a href="#" class="btn btn-primary" ng-click="sendEmail()">Send</a>
-        </div>
-    </div>
 </div>
         
 </body>
