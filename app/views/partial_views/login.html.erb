@@ -7,13 +7,13 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="CategoryApp">
-<div style="margin: 20%; margin-top:100px;" ng-controller="CategoryAds" >
+<div style="margin: 20%; margin-top:100px;">
 <h2 class="page-header"> Login </h2><br/>
 <alert style="width: 450px;" ng-repeat="alert in login_alerts" type="{{alert.login_type}}">{{alert.login_msg}}</alert>
-<form role="login" novalidate>
+<form name="loginForm" ng-controller="CategoryAds" novalidate>
      <input type="text" class="span2 form-control" id="inputEmail" placeholder="Email" ng-model="user.email" style="width: 250px;" required>
      <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="password" ng-model="user.password" placeholder="Password" required>
-    <a class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" href="#home" ng-click="login(user)" style="width: 250px;" ng-disabled="login.$invalid"><font color="white">Prijavi se</font></a>
+    <a class="btn btn-primary" style=" margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" href="#home" ng-click="login(user)" style="width: 250px;" ng-disabled="loginForm.$invalid"><font color="white">Prijavi se</font></a>
 </form>
 <br/>
 <h4>Niste registrovani? </h4><a href="#registracija">Registrujte se.</a> 

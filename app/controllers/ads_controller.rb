@@ -39,10 +39,18 @@ class AdsController < ApplicationController
   end
     
  def upload_picture
-  uploaded_io = params[:ad][:picture]
-  File.open(Rails.root.join('app', 'assets', "slika"), 'wb') do |file|
+  uploaded_io = params[:file]
+  @ad=Ad.find(params[:id]) 
+  @naziv_slike =params[:id].to_s
+  @ad.picture_path = "/images/products/product" + @naziv_slike + ".jpg"
+  @ad.save
+    @filename = "product" + @naziv_slike
+  File.delete("#{Rails.root}/public/images/products/#{@filename}") if File.exist?("#{Rails.root}/public/images/users/#{@filename}")
+  File.open(Rails.root.join('public', 'images/products', "product" + @naziv_slike + ".jpg"), 'wb') do |file|
   file.write(uploaded_io.read)
   end
+  
+  render json: @naziv_slike
  end
 
   # POST /ads
