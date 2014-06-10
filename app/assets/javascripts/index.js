@@ -230,6 +230,10 @@ CategoryApp.config(['$routeProvider',
      
   }]);
 
+CategoryApp.config(['$httpProvider', function($httpProvider) {
+    var csrfToken = $('meta[name=csrf-token]').attr('content');
+    $httpProvider.defaults.headers.post['X-CSRF-Token'] = csrfToken;
+}]);
 
 
 

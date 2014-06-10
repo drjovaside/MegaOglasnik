@@ -3,7 +3,13 @@ helper :all
 
 before_filter :set_locale, :add_cors_headers
 skip_before_filter :verify_authenticity_token
-    
+protect_from_forgery
+
+after_filter :set_csrf_cookie_for_ng
+
+def set_csrf_cookie_for_ng
+  cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+end   
 def add_cors_headers
   puts 'ApplicationController.set_headers'
   if request.headers["HTTP_ORIGIN"]     
