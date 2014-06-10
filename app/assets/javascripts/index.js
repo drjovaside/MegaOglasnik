@@ -233,6 +233,9 @@ CategoryApp.config(['$routeProvider',
     when('/show_message', {
         templateUrl: 'partial_views/show_message'
       }).
+    when('/sent', {
+        templateUrl: 'partial_views/sent'
+      }).
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
@@ -260,12 +263,25 @@ CategoryApp.controller('EmailController',['$scope','$http','$localStorage', func
            
     $http.get('http://localhost:3000/recieved_messages')
     .success(function(data){
-         alert(data);
+         
         $scope.messages=data;
     }).error(function(data){
-        alert("nije proslo");
+        
     });
     };
+    
+    $scope.populateSent = function() {
+           
+    $http.get('http://localhost:3000/sent_messages')
+    .success(function(data){
+         
+        $scope.messages=data;
+    }).error(function(data){
+        
+    });
+    };
+    
+    
     $scope.selectMessage = function (message) {
     
     $scope.selectedMessage = message;

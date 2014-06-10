@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
         render json: @messages
         end
     
+    
     def sent
         @messages = Message.where(user_sender_id: session[:user_id]).all
         render json: @messages

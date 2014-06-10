@@ -11,20 +11,20 @@
         <div class="container" ng-app ng-controller="EmailController">
     <ul class="nav nav-tabs">
         <li >
-            <a ng-click="activeTab='inbox'">Inbox</a>
+            <a href="#messages" >Inbox</a>
         </li>
         <li >
-            <a href="#sent" ng-click="activeTab='sent'">Sent</a>
+            <a>Sent</a>
         </li>
     </ul>    
-    <table data-ng-init="populateInbox()" class="table table-bordered table-condensed">
+    <table data-ng-init="populateSent()" class="table table-bordered table-condensed">
         <tbody>
             <tr>
             <td>From</td>
             <td>Title</td>
             </tr>
             <tr ng-repeat="message in messages">
-                <td>{{ message.user_sender_id }}</td>
+                <td>{{ message.reciever_sender_id }}</td>
                 <td>{{ message.title }}</td>
                 <td><a href="#show_message" class="btn btn-primary" >Show message</a> </td>
                 
@@ -38,5 +38,3 @@
         
 </body>
 </html>
-
-

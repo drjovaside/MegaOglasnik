@@ -9,20 +9,22 @@
 
 </head>
 <body ng-app="CategoryApp">
-<div class="container" ng-controller="EmailController">
+<div>
+    <div >
         
-        <div>
-            <form role="ShowMessage">
-                <input type="text" placeholder="To" style="width:95%;"
-                    ng-model="message.to"><br />
-                <input type="text" placeholder="Subject" style="width:95%;"
-                    ng-model="message.title"><br />
-                <textarea style="width:95%;" rows="10" 
-                    ng-model="message.content"></textarea>
-                <a class="btn btn-primary" ng-click="sendMessage(message)">Send</a>
-            </form>
-        </div>
-        
+        <h3>{{selectedMessage.title}}</h3>
     </div>
+    <div class="modal-body">
+        <strong>From:</strong> {{selectedMessage.user_sender_id}} <br />
+        
+        <br />
+        <p>
+           {{selectedMessage.content}} 
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
+    </div>
+</div>
     </body>
     </html>
