@@ -47,6 +47,9 @@ post 'ads/:id/upload_photo' => 'ads#upload_photo'
 post 'reservations' => 'reservations#create'
 get 'reservations/:id' => 'ads#show'
 
+get 'recieved_messages' => 'messages#recieved'
+get 'sent_messages' => 'messages#sent'  
+post 'create_message' => 'messages#write_message'
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]

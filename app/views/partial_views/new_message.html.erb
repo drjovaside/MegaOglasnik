@@ -1,0 +1,28 @@
+<html>
+<head>
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+<%= javascript_include_tag "ui-bootstrap-0.11.0" %>
+<%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+
+   
+
+</head>
+<body ng-app="CategoryApp">
+<div class="container" ng-controller="EmailController">
+        
+        <div>
+            <form role="sendMessage">
+                <input type="text" placeholder="To" style="width:95%;"
+                    ng-model="message.to"><br />
+                <input type="text" placeholder="Subject" style="width:95%;"
+                    ng-model="message.title"><br />
+                <textarea style="width:95%;" rows="10" 
+                    ng-model="message.content"></textarea>
+                <a class="btn btn-primary" ng-click="sendMessage(message)">Send</a>
+            </form>
+        </div>
+        
+    </div>
+    </body>
+    </html>
