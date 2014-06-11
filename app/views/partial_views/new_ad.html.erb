@@ -16,7 +16,11 @@
     <h2></h2>
    
     <input type="text" name="title" class="span2 form-control" id="Title" placeholder="Naslov" ng-model="ad.title" style="width: 250px;" required><span class="error"  ng-show="NewAd.title.$error.required">(Title Required)</span>
-     <input class="form-control" name="price" style=" margin-top: 10px;width: 250px;" type="number" ng-model="ad.price" placeholder="Autor" required> <span  ng-show="NewAd.price.$error.required">(Author required)</span>
+     <input class="form-control" name="price" style=" margin-top: 10px;width: 250px;" type="number" ng-model="ad.price" placeholder="Price" required> <span  ng-show="NewAd.price.$error.required">(Price required)</span>
+    <input type="text" name="Author" class="span2 form-control" id="Author" placeholder="Author" ng-model="ad.author" style="width: 250px;" required><span class="error"  ng-show="NewAd.title.$error.required">(Author Required)</span>
+    </br>
+    </br>
+    <input type="checkbox" ng-model="ad.forexchange" name="forexchange" value="{{ad.forexchange}}">For exchange<br>
    
     
     <textarea class="form-control" name="opis" style="width: 250px; margin-top: 10px;" ng-model="ad.description" rows="6" placeholder="Opis" required>

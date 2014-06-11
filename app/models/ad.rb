@@ -1,5 +1,5 @@
 class Ad < ActiveRecord::Base
-  attr_accessible :category_id, :description, :expirytime,:picture_path, :price, :rating, :sold,:sponsored, :timestamp, :title, :user_id
+  attr_accessible :category_id, :description, :expirytime,:picture_path, :price, :rating, :sold,:sponsored, :timestamp, :title, :user_id, :author, :forexchange
 belongs_to :user
 belongs_to :category
 has_one :item
