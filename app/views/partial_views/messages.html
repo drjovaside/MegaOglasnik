@@ -26,7 +26,7 @@
             <tr ng-repeat="message in messages">
                 <td>{{ message.user_sender_id }}</td>
                 <td>{{ message.title }}</td>
-                <td><a href="#show_message" class="btn btn-primary" >Show message</a> </td>
+                <td><a href="#show_message" class="btn btn-primary" data-ng-init="selectMessage(message)" >Show message</a> </td>
                 
             </tr>
         </tbody>

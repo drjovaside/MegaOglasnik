@@ -9,12 +9,12 @@
 
 </head>
 <body ng-app="CategoryApp">
-<div>
+<div data-ng-init="selectMessage(message)">
     <div >
         
         <h3>{{selectedMessage.title}}</h3>
     </div>
-    <div class="modal-body">
+    <div>
         <strong>From:</strong> {{selectedMessage.user_sender_id}} <br />
         
         <br />
@@ -22,7 +22,7 @@
            {{selectedMessage.content}} 
         </p>
     </div>
-    <div class="modal-footer">
+    <div>
         <a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
     </div>
 </div>
