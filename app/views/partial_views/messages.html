@@ -22,10 +22,12 @@
             <tr>
             <td>From</td>
             <td>Title</td>
+            <td>Date</td>    
             </tr>
             <tr ng-repeat="message in messages">
                 <td>{{ message.user_sender_id }}</td>
                 <td>{{ message.title }}</td>
+                <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
                 <td><a href="#show_message" class="btn btn-primary" data-ng-init="selectMessage(message)" >Show message</a> </td>
                 
             </tr>

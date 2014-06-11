@@ -251,12 +251,13 @@ CategoryApp.controller('EmailController',['$scope','$http','$localStorage', func
     
     $scope.sendMessage = function(message) {
            
-    $http.post('http://localhost:3000/create_message', { "reciever_sender_id": message.to, "title": message.title, "content": message.content, "user_sender_id": $localStorage.user_id })
+    $http.post('http://localhost:3000/create_message', { "reciever_sender_id": message.to, "title": message.title, "content": message.content, "user_sender_id": $localStorage.user_id, "timestamp": message.timestamp})
     .success(function(data){
          alert("proslo");
     }).error(function(data){
         alert("nije proslo");
     });
+        
     };
     
     $scope.populateInbox = function() {
