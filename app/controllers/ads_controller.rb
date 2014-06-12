@@ -45,7 +45,7 @@ class AdsController < ApplicationController
   @ad.picture_path = "/images/products/product" + @naziv_slike + ".jpg"
   @ad.save
     @filename = "product" + @naziv_slike
-  File.delete("#{Rails.root}/public/images/products/#{@filename}") if File.exist?("#{Rails.root}/public/images/users/#{@filename}")
+  File.delete("#{Rails.root}/public/images/products/#{@filename}") if File.exist?("#{Rails.root}/public/images/products/#{@filename}")
   File.open(Rails.root.join('public', 'images/products', "product" + @naziv_slike + ".jpg"), 'wb') do |file|
   file.write(uploaded_io.read)
   end
@@ -108,7 +108,7 @@ class AdsController < ApplicationController
 def upload_photo
   uploaded_io = params[:file]
   @ad=Ad.find(params[:id]) 
-  @naziv_slike =User.find(params[:id]).id.to_s
+  @naziv_slike =params[:id]
   @ad.picture_path = "/images/products/product" + @naziv_slike + ".jpg"
   @ad.save
   @filename = "product" + @naziv_slike

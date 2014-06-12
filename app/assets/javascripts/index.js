@@ -25,7 +25,7 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
     
     
     $scope.pokreni = function() {
-    varijabla = $rootScope.ad_id;
+    varijabla = $localStorage.ad_id;
     $scope.ad = Proizvodi.get({'Id': varijabla}, function (ad){
                 $scope.id=ad.user_id;    
     $scope.korisnik =  Korisnici.get({'Id': $scope.id }, function (korisnik){
@@ -415,6 +415,7 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
         console.log(data);
+        location.reload();
       });
       //.error(...)
      }
@@ -652,7 +653,7 @@ $scope.submitForm = function(isValid) {
 };
     
 $scope.novaFunkcija = function(id) {
-$rootScope.ad_id = id;
+$localStorage.ad_id = id;
 };
     
 $scope.dodajRating = function (rate,id) {
@@ -703,14 +704,15 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];        
       $scope.upload = $upload.upload({
-        url: 'http://localhost:3000/ads/' + $rootScope.ad_id + '/upload_photo', 
-        data: {ad_id: $rootScope.ad_id},
+        url: 'http://localhost:3000/ads/' + $localStorage.ad_id + '/upload_photo', 
+        data: {ad_id: $localStorage.ad_id},
         file: file,
       }).progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
         console.log(data);
+        location.reload();
       });
       //.error(...)
      }
