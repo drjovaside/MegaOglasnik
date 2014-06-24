@@ -64,8 +64,8 @@ class AdsController < ApplicationController
     @ad.rating = 0
     @ad.ratingsum = 0
     @ad.ratingsnumber = 0
-    @ad.sponsored = true
-    @ad.category_id=params[:category_id]
+    @ad.section=params[:section]
+    @ad.academic_year=params[:academic_year]
     @ad.picture_path = "/images/products/product.jpg"
     respond_to do |format|
       if @ad.save

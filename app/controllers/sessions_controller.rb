@@ -61,7 +61,14 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-
+def show
+    unless session[:user_id].nil?
+    @user=User.find(session[:user_id])
+    render json: @user
+    else
+    render json: nil
+    end
+end
 
 
 end

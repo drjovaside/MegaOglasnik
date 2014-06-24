@@ -27,7 +27,8 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
     $scope.pokreni = function() {
     varijabla = $localStorage.ad_id;
     $scope.ad = Proizvodi.get({'Id': varijabla}, function (ad){
-                $scope.id=ad.user_id;    
+                $scope.id=ad.user_id; 
+                $scope.zamjena=ad.forexchange;
     $scope.korisnik =  Korisnici.get({'Id': $scope.id }, function (korisnik){
                                   $rootScope.ime = korisnik.username;
                                   $localStorage.korisnicki_id = korisnik.id;
@@ -383,10 +384,17 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
     $scope.results = null;
     kategorije();
     isLogged();
-   
+    
     function isLogged() {
-        if ($localStorage.user_id == null) {
+        
+    $http.get('http://localhost:3000/session')
+    .success(function(data){
+        var statusSesije = data;
+       
+        
+        if (!statusSesije.id   || $localStorage.user_id == null) {
             $rootScope.reg_and_login_value = false;
+            $localStorage.user_id = null;
             return false;
         }
             else {
@@ -394,6 +402,12 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
             $rootScope.username = $localStorage.username;
             return true;
             }
+    }).error(function(data){
+       alert("Došlo je do greške!");
+    });
+        
+        
+            
     
     }
     
@@ -486,6 +500,8 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
   ];
      
     });
+      
+      isLogged();
         
   };
     
@@ -685,7 +701,7 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $scope.objavi = function(ad) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
-    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $localStorage.user_id, "category_id": ad.category_id, "author": ad.author, "forexchange": ad.forexchange }) .success(function(data){
+    $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $localStorage.user_id, "section": ad.section, "academic_year": ad.academic_year, "author": ad.author, "forexchange": ad.forexchange }) .success(function(data){
         $rootScope.ad_id = data.id;
         $rootScope.new_ad_alerts = [
     { new_ad_type: 'success', new_ad_msg: 'Uspjesno ste objavili oglas!' }

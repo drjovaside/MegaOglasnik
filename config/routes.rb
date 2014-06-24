@@ -50,7 +50,8 @@ get 'reservations/:id' => 'ads#show'
 get 'recieved_messages' => 'messages#recieved'
 get 'sent_messages' => 'messages#sent'  
 post 'create_message' => 'messages#write_message'
-get 'show_messages' => 'messages#index'    
+get 'show_messages' => 'messages#index' 
+get 'session' => 'sessions#show'
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]

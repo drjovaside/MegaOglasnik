@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611192741) do
+ActiveRecord::Schema.define(:version => 20140624164522) do
 
   create_table "actions", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20140611192741) do
     t.string   "picture_path"
     t.string   "author"
     t.boolean  "forexchange"
+    t.string   "section"
+    t.integer  "academic_year"
   end
 
   create_table "carts", :force => true do |t|

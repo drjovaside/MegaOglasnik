@@ -8,9 +8,24 @@
     <h2 class="page-header"> Novi oglas </h2><br/>
 <form name="NewAd" ng-controller="CategoryAds" > 
     <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
-<select>
-<option>-- Odaberite kategoriju -- </option>
-<option ng-model = "ad.category_id" ng-repeat = "category in categories" value="{{category.id}}">{{category.name}} </option>
+<select ng-model = "ad.section">
+<option>-- Odsjek -- </option>
+<option ng-model = "ad.section" value="Automatika">Automatika </option>
+<option ng-model = "ad.section" value="Energetika">Energetika </option>
+<option ng-model = "ad.section" value="RacunarstvoIinformatika">Računarstvo i informatika </option>
+<option ng-model = "ad.section" value="Telekomunikacije">Telekomunikacije </option>
+  </select>
+<br/>
+<br/>
+<select ng-model = "ad.academic_year">
+<option  selected>-- Studijska godina -- </option>
+    
+<option value="1">Prva </option>
+<option value="2">Druga </option>
+<option value="3">Treća </option>
+<option value="4">Četvrta </option>
+<option value="5">Peta </option>
+
   </select>
     
     <h2></h2>
