@@ -205,8 +205,40 @@ CategoryApp.config(['$routeProvider',
         templateUrl: 'partial_views/myprofile'
         //controller: 'ShowOrdersController'
       }).
-      when('/categorie_ads', {
-        templateUrl: 'partial_views/categorie_ads'
+      when('/ae', {
+        templateUrl: 'partial_views/ae'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/ee', {
+        templateUrl: 'partial_views/ee'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/ri', {
+        templateUrl: 'partial_views/ri'
+        //controller: 'ShowOrdersController'
+      }).
+      when('/tk', {
+        templateUrl: 'partial_views/tk'
+        //controller: 'ShowOrdersController'
+      }).
+       when('/1', {
+        templateUrl: 'partial_views/prva_godina'
+        //controller: 'ShowOrdersController'
+      }).
+       when('/2', {
+        templateUrl: 'partial_views/druga_godina'
+        //controller: 'ShowOrdersController'
+      }).
+       when('/3', {
+        templateUrl: 'partial_views/treca_godina'
+        //controller: 'ShowOrdersController'
+      }).
+       when('/4', {
+        templateUrl: 'partial_views/cetvrta_godina'
+        //controller: 'ShowOrdersController'
+      }).
+       when('/5', {
+        templateUrl: 'partial_views/peta_godina'
         //controller: 'ShowOrdersController'
       }).
       when('/contact', {
@@ -390,11 +422,13 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
     $http.get('http://localhost:3000/session')
     .success(function(data){
         var statusSesije = data;
-       
+       $rootScope.korisnik = data;
         
-        if (!statusSesije.id   || $localStorage.user_id == null) {
+        //if (!statusSesije.id || $localStorage.user_id == null) {
+        if (!statusSesije.id ) {
             $rootScope.reg_and_login_value = false;
             $localStorage.user_id = null;
+            //alert($localStorage.user_id);
             return false;
         }
             else {
@@ -436,12 +470,14 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
      };
     
     
-    
+    $scope.pokreniDodavanjeOglasa = function () {
+ $rootScope.prikaziPodmeni = false;
+    };
     
     
     
     $scope.sponsored_ads = function () {
-        
+        $rootScope.prikaziPodmeni = false;
         $http({
         method: 'GET',
         url: 'http://localhost:3000/sponsored_ads.json'
@@ -459,11 +495,36 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
     
     $scope.oglasiIzKategorije = function () {
     
-    $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
+   $scope.results = null;  
+    if ($rootScope.godina == 0) {
+        var url = 'http://localhost:3000/' + $rootScope.odsjek;
+        $http.get(url)
+    .success(function(data){
+        $scope.results = data;
+    }).error(function(data){
+       alert("Došlo je do greške u učitavanju!");
+     
+    });
+    
+    
+    }
+        else {
+        var url = 'http://localhost:3000/' + $rootScope.odsjek + '/' + $rootScope.godina;
+          $http.get(url)
+    .success(function(data){
+        $scope.results = data;
+        if (data == null) { $scope.nemaKnjigaUpozorenje = true; }
+    }).error(function(data){
+       alert("Došlo je do greške u učitavanju!");
+     
+    });  
+        }
         
     };
     
     $scope.latestAds = function() {
+        $rootScope.prikaziPodmeni = false;
+ 
        $http({
         method: 'GET',
         url: 'http://localhost:3000/new_ads.json'
@@ -485,15 +546,16 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
    $http.defaults.headers.post["Accept"] = "application/json";
     $http.post('http://localhost:3000/sessions', { "email": user.email, "password": user.password })
     .success(function(data){
-         $rootScope.user_id=data.id;
+          $rootScope.user_id=data.id;
+          $localStorage.user_id = data.id;
          $rootScope.reg_and_login_value = true;
-        $localStorage.user_id = data.id;
         $localStorage.username = data.username;
+        alert($localStorage.user_id = data.id);
         isLogged();
        $rootScope.login_alerts = [
     { login_type: 'success', login_msg: 'Uspješno ste se prijavili!' }
   ];
-     
+     window.location.href = "#home";
     }).error(function(data){
        $rootScope.login_alerts = [
     { login_type: 'danger', login_msg: 'Unijeli ste pogrešnu email adresu ili password. Pokušajte ponovo.' }
@@ -519,6 +581,15 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
      
  };
     
+$scope.ucitajOdsjekIGodinu = function (odsjek,godina) {
+    $rootScope.odsjek = odsjek;
+    $rootScope.godina = godina;
+    $rootScope.prikaziPodmeni = true;
+};
+    
+$scope.ucitajGodinu = function (godina) {
+   $rootScope.godina = godina;
+};
 $scope.userProfile = function (id) {
      $rootScope.id = id;
  };
@@ -552,12 +623,15 @@ $scope.user =  Korisnici.get({},{'Id':  $rootScope.id });
 
 
 $scope.trazi = function(rijec) {
+ $rootScope.prikaziPodmeni = true;
 $rootScope.slovo = rijec;
     $http.post('http://localhost:3000/search', {"search": $rootScope.slovo })
     .success(function(data){
         $scope.results = data;
+        
     }).error(function(data){
         alert(data)});
+    
     
 };
 

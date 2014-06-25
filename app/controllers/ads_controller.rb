@@ -154,7 +154,45 @@ render json: 1
     
   end
 
+  def ae
+  @ads = Ad.where(section: 'AE').all
+render json: @ads
+  end
+    
+   def ee
+    @ads = Ad.where(section: 'EE').all
+render json: @ads
+  end
 
+     def ri
+    @ads = Ad.where(section: 'RI').all
+render json: @ads
+  end
+    
+     def tk
+    @ads = Ad.where(section: 'TK').all
+render json: @ads
+  end
+    
+    def aegodine
+     @ads = Ad.where("section = ? AND academic_year = ?", 'AE', params[:id]).all
+    render json: @ads
+    end
+    
+    def eegodine
+     @ads = Ad.where("section = ? AND academic_year = ?", 'EE', params[:id]).all
+    render json: @ads
+    end
+    
+    def rigodine
+     @ads = Ad.where("section = ? AND academic_year = ?", 'RI', params[:id]).all
+    render json: @ads
+    end
+    
+    def tkgodine
+     @ads = Ad.where("section = ? AND academic_year = ?", 'TK', params[:id]).all
+    render json: @ads
+    end
   def add_to_cart
     ad = Ad.find(params[:id])
     # @cart = Cart.new

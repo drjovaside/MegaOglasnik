@@ -10,15 +10,7 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds" data-ng-init="oglasiIzKategorije()">
-
-<div class="list-group" style="margin-left: 35px; width: 16%; float: left; ">
-  <a href="" class="list-group-item active" >
-    <%= t :categories %>
-  </a>
-  <div ng-repeat="categorie in categories">
-    <a href="#categorie_ads" class="list-group-item" ng-click="kategorija(categorie.id)">{{categorie.name}}</a>
-</div>
-</div>
+<div style="margin-top: 20px;">
 <div ng-repeat="result in results" style="margin-left: 20%;" >    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
     <div class="thumbnail" style="height: 350px;">
@@ -44,7 +36,7 @@
 
 </div>
 </div>
-
+</div>
 </body>
 </html>
 

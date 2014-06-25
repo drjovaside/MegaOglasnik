@@ -52,6 +52,15 @@ get 'sent_messages' => 'messages#sent'
 post 'create_message' => 'messages#write_message'
 get 'show_messages' => 'messages#index' 
 get 'session' => 'sessions#show'
+get 'ae' => 'ads#ae'
+get 'ee' => 'ads#ee'
+get 'ri' => 'ads#ri'
+get 'tk' => 'ads#tk'
+get 'ae/:id' => 'ads#aegodine'
+get 'ee/:id' => 'ads#eegodine'
+get 'ri/:id' => 'ads#rigodine'
+get 'tk/:id' => 'ads#tkgodine'
+
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije
 #resources :sessions, :only => [:new, :create, :destroy]

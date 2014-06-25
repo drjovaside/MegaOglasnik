@@ -1,19 +1,25 @@
+<!doctype>
+<html>
+<head>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<body ng-app="CategoryApp">
-<div class="container"> 
+<%= javascript_include_tag "angular" %>
+<%= javascript_include_tag "index" %>
+</head>
+<body ng-app="CategoryApp" >
+<div ng-show="reg_and_login_value" style="margin-left: 20%;" ng-controller="CategoryAds" data-ng-init="pokreniDodavanjeOglasa()"> 
     <h2 class="page-header"> Novi oglas </h2><br/>
-<form name="NewAd" ng-controller="CategoryAds" > 
+<form name="NewAd"  > 
     <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
 <select ng-model = "ad.section">
 <option>-- Odsjek -- </option>
-<option ng-model = "ad.section" value="Automatika">Automatika </option>
-<option ng-model = "ad.section" value="Energetika">Energetika </option>
-<option ng-model = "ad.section" value="RacunarstvoIinformatika">Računarstvo i informatika </option>
-<option ng-model = "ad.section" value="Telekomunikacije">Telekomunikacije </option>
+<option ng-model = "ad.section" value="AE">Automatika i elektronika</option>
+<option ng-model = "ad.section" value="EE">Elektroenergetika </option>
+<option ng-model = "ad.section" value="RI">Računarstvo i informatika </option>
+<option ng-model = "ad.section" value="TK">Telekomunikacije </option>
   </select>
 <br/>
 <br/>
@@ -44,6 +50,13 @@
     <br/>
     <a href="#product_detail" class="btn btn-primary" style="margin-top:10px; margin-bottom: 10px; width: 80px; height: 32px; font-size: 13px;" ng-click="objavi(ad)" style="width: 250px;" ng-disabled="NewAd.$invalid">Objavi</a>
 </form>
-    </div>    
+    </div>   
+<div ng-show="!reg_and_login_value" style="margin-left: 20%;">
+    <h4>Morate se prijaviti da bi ste objavili oglas za knjigu. </h4>
+    <br/>
+    <a href="#login">Login</a>
+    <br/>
+    <a href="#registracija">Registracija</a>
+</div>
 </body>
-
+</html>
