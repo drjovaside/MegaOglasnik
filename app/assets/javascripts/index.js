@@ -43,7 +43,16 @@
     ALL_COMMENTS: 'All comments',
     ADD_COMMENT: 'Add comment', 
     COMMENT: 'Comment',
-    YEAR: 'Year'    
+    YEAR: 'Year',
+    VIEW: 'View',
+    ADD_IN_CART: 'Add in cart',
+    TYPE_SOMETHING: 'Type something',
+    INBOX: 'Inbox',
+    SENT: 'Sent',
+    FROM: 'From',
+    DATE: 'Date',
+    SHOW_MESSAGE: 'Show message',
+    COMPOSE_MESSAGE: 'Compose message'    
     };
      
     var translationsDE= {
@@ -88,7 +97,16 @@
     ALL_COMMENTS: 'Svi komentari',
     ADD_COMMENT: 'Dodaj komentar', 
     COMMENT: 'Komentar',
-    YEAR: 'Godina' 
+    YEAR: 'Godina',
+    VIEW: 'Pogledaj',
+    ADD_IN_CART: 'Dodaj u korpu',
+    TYPE_SOMETHING: 'Ukucajte nesto',
+    INBOX: 'Pristigle',
+    SENT: 'Poslane',
+    FROM: 'Od',
+    DATE: 'Datum',
+    SHOW_MESSAGE: 'Prikaži poruku',
+    COMPOSE_MESSAGE: 'Nova poruka'    
     };
 
 

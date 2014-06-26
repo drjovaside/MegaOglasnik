@@ -4,6 +4,7 @@
     <script  src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+<%= javascript_include_tag "angular-translate" %> 
     
 </head>
 <body ng-app="CategoryApp">
@@ -11,10 +12,10 @@
         <div class="container" ng-app ng-controller="EmailController">
     <ul class="nav nav-tabs">
         <li >
-            <a href="#messages" >Inbox</a>
+            <a href="#messages" >{{ 'INBOX' | translate }}</a>
         </li>
         <li >
-            <a>Sent</a>
+            <a>{{ 'SENT' | translate }}</a>
         </li>
         
         
@@ -22,21 +23,21 @@
     <table data-ng-init="populateSent()" class="table table-bordered table-condensed">
         <tbody>
             <tr>
-            <td>From</td>
-            <td>Title</td>
-            c
+            <td>{{ 'FROM' | translate }}</td>
+            <td>{{ 'TITLE' | translate }}</td>
+            <td>{{ 'DATE' | translate }}</td>
             </tr>
             <tr ng-repeat="message in messages" ng-click="selectMessage(message)">
                 <td>{{ message.reciever_sender_id }}</td>
                 <td>{{ message.title }}</td>
                 <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
-                <td><a href="#show_message" class="btn btn-primary" >Show message</a> </td>
+                <td><a href="#show_message" class="btn btn-primary" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>
                 
             </tr>
         </tbody>
     </table>
     
-    <a href="#new_message" class="btn btn-primary" >Compose message</a>
+    <a href="#new_message" class="btn btn-primary" >{{ 'COMPOSE_MESSAGE' | translate }}</a>
     
 </div>
         
