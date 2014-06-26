@@ -16,28 +16,34 @@
      
     <img src="{{ad.picture_path}}" height="200" width="200" style="border: solid;"/>
     <br/>
+    <p ng-show="isOwner">
     Da promijenite sliku, odaberite sliku ispod:
     <br/>
-    <input type="file" ng-file-select="uploadSlikeOglasa($files)" ng-model="file" style="width:120px;" ng-show="isOwner" >
-    <h3>{{ad.title}}</h3>
-        Opis:
+    <input type="file" ng-file-select="uploadSlikeOglasa($files)" ng-model="file" style="width:120px;"  >
+    </p>
+   <p> <b>Naziv knjige: </b> {{ad.title}} </p>
+        <p><b>Cijena: </b> {{ad.price}} KM</p>
+        <p><b>Autor: </b> {{ad.author}}</p>
+        <p><b>Odsjek: </b> {{ad.section}}</p>
+        <p><b>Godina: </b> {{ad.academic_year}}.</p>
+        <p ng-show="zamjena"><b>Zamjena: </b> DA</p>
+        <p ng-show="!zamjena"><b>Zamjena: </b> NE</p>
+        <b>Opis:</b>
         <p>{{ad.description}}</p>
-        <p>Cijena: {{ad.price}} KM</p><br/>
-        <p>Autor: {{ad.author}}</p>
-        <p ng-show="zamjena">Zamjena: DA</p>
-        <p ng-show="!zamjena">Zamjena: NE</p>
+         
     <div ng-controller="CategoryAds">
-   <a href="#profile" ng-click="userProfile(ad.user_id)"> {{ime}} </a>
+    <p><b>Objavio: </b>
+   <a href="#profile" ng-click="userProfile(ad.user_id)"> {{ime}} </a></p>
    <p>Rezervacija:</p> {{usernameREZ}}
     </div>
 <br/>
 <br/>
-<b>Komentari</b>
+<b>Svi komentari</b>
 <br/>
 <br/>
     
 <div ng-repeat="comment in comments" class="list-group" style="width: 40%;">
-  <a href="" class="list-group-item">
+  <a href="#profile" ng-click="userProfile(comment.user_id)" class="list-group-item">
     <h4 class="list-group-item-heading">{{comment.user_username}}</h4>
     
     <p class="list-group-item-text">{{comment.content}}</p>

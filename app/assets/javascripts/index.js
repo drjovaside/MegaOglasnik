@@ -25,14 +25,14 @@ CategoryApp.controller('AdDetail',['$scope','$rootScope', '$http', '$localStorag
     
     
     $scope.pokreni = function() {
-    varijabla = $localStorage.ad_id;
+    varijabla = $rootScope.ad_id;
     $scope.ad = Proizvodi.get({'Id': varijabla}, function (ad){
                 $scope.id=ad.user_id; 
                 $scope.zamjena=ad.forexchange;
     $scope.korisnik =  Korisnici.get({'Id': $scope.id }, function (korisnik){
                                   $rootScope.ime = korisnik.username;
                                   $localStorage.korisnicki_id = korisnik.id;
-                                  if($localStorage.user_id == korisnik.id) {
+                                  if($localStorage.user_id == korisnik.id && $localStorage.user_id != null) {
                                       $scope.isOwner = true;
                                   }
                                   else {
@@ -423,12 +423,13 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
     .success(function(data){
         var statusSesije = data;
        $rootScope.korisnik = data;
-        
+        //alert("status sesije id " + statusSesije.id);
+        //alert("localst user id" + $localStorage.user_id);
         //if (!statusSesije.id || $localStorage.user_id == null) {
         if (!statusSesije.id ) {
             $rootScope.reg_and_login_value = false;
             $localStorage.user_id = null;
-            //alert($localStorage.user_id);
+            //alert("status sesije user_id local storage" + $localStorage.user_id);
             return false;
         }
             else {
@@ -550,8 +551,6 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
           $localStorage.user_id = data.id;
          $rootScope.reg_and_login_value = true;
         $localStorage.username = data.username;
-        alert($localStorage.user_id = data.id);
-        isLogged();
        $rootScope.login_alerts = [
     { login_type: 'success', login_msg: 'Uspješno ste se prijavili!' }
   ];
@@ -562,8 +561,6 @@ CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload',
   ];
      
     });
-      
-      isLogged();
         
   };
     
@@ -743,7 +740,7 @@ $scope.submitForm = function(isValid) {
 };
     
 $scope.novaFunkcija = function(id) {
-$localStorage.ad_id = id;
+$rootScope.ad_id = id;
 };
     
 $scope.dodajRating = function (rate,id) {
