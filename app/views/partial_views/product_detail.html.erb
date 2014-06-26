@@ -5,6 +5,7 @@
 <%= javascript_include_tag "index" %>
 <%= javascript_include_tag "angular-resource" %>
 <%= javascript_include_tag "angular-route.min" %>
+<%= javascript_include_tag "angular-translate" %>    
 
 
 <body  ng-app="CategoryApp">
@@ -17,28 +18,28 @@
     <img src="{{ad.picture_path}}" height="200" width="200" style="border: solid;"/>
     <br/>
     <p ng-show="isOwner">
-    Da promijenite sliku, odaberite sliku ispod:
+    {{ 'CHOOSE' | translate }}
     <br/>
     <input type="file" ng-file-select="uploadSlikeOglasa($files)" ng-model="file" style="width:120px;"  >
     </p>
-   <p> <b>Naziv knjige: </b> {{ad.title}} </p>
-        <p><b>Cijena: </b> {{ad.price}} KM</p>
-        <p><b>Autor: </b> {{ad.author}}</p>
-        <p><b>Odsjek: </b> {{ad.section}}</p>
-        <p><b>Godina: </b> {{ad.academic_year}}.</p>
-        <p ng-show="zamjena"><b>Zamjena: </b> DA</p>
-        <p ng-show="!zamjena"><b>Zamjena: </b> NE</p>
-        <b>Opis:</b>
+   <p> <b>{{ 'BOOK_NAME' | translate }} </b> {{ad.title}} </p>
+        <p><b>{{ 'PRICE' | translate }} </b> {{ad.price}} KM</p>
+        <p><b>{{ 'AUTHOR' | translate }} </b> {{ad.author}}</p>
+        <p><b>{{ 'DEPARTMENT' | translate }} </b> {{ad.section}}</p>
+        <p><b>{{ 'YEAR' | translate }} </b> {{ad.academic_year}}.</p>
+        <p ng-show="zamjena"><b>{{ 'FOR_EXCHANGE' | translate }}: </b> {{ 'YES' | translate }}</p>
+        <p ng-show="!zamjena"><b>{{ 'FOR_EXCHANGE' | translate }}: </b> {{ 'NO' | translate }}</p>
+        <b>{{ 'DESCRIPTION' | translate }}:</b>
         <p>{{ad.description}}</p>
          
     <div ng-controller="CategoryAds">
-    <p><b>Objavio: </b>
+    <p><b>{{ 'PUBLISHED' | translate }}: </b>
    <a href="#profile" ng-click="userProfile(ad.user_id)"> {{ime}} </a></p>
-   <p>Rezervacija:</p> {{usernameREZ}}
+   <p>{{ 'RESERVED' | translate }}:</p> {{usernameREZ}}
     </div>
 <br/>
 <br/>
-<b>Svi komentari</b>
+<b>{{ 'ALL_COMMENTS' | translate }}</b>
 <br/>
 <br/>
     
@@ -56,13 +57,13 @@
 Prijavite se da bi ostavili komentar.
 </div>
 <div ng-show="reg_and_login_value">
-Dodaj komentar:
+{{ 'ADD_COMMENT' | translate }}:
 <br/>
     <br/>
 <textarea rows="4" cols="50" ng-model="comment.content">
-Unesite komentar...</textarea>
+{{ 'ADD_COMMENT' | translate }}...</textarea>
 <br/>
-<button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm">Dodaj komentar</button>
+<button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm">{{ 'ADD_COMMENT' | translate }}</button>
 
 </div>
 
