@@ -1,9 +1,40 @@
 'use strict';
 
 /* Controllers */
+    var translationsEN = {
+    SEARCH: 'Search', 
+    LOGIN:  'Login',
+    REGISTRATION: 'Registration',
+    MESSAGES: 'Messages',
+    LOGOUT: 'Logout',
+    HOME: 'Home',
+    PUBLISH: 'Publish',
+    NEW: 'New!',
+    TOP_RATED: 'Top rated',
+    WISH_LIST: 'Wish list',
+    WELCOME: 'Welcome!',    
+    BUTTON_LANG_DE: 'Bosnian',
+    BUTTON_LANG_EN: 'English'
+    };
+     
+    var translationsDE= {
+    SEARCH: 'Trazi',     
+    LOGIN:  'Prijava',
+    REGISTRATION: 'Registracija',
+    MESSAGES: 'Poruke',
+    LOGOUT: 'Odjava',
+    HOME: 'Početna',
+    PUBLISH: 'Objavi',
+    NEW: 'Novo!',
+    TOP_RATED: 'Najbolje ocijenjene',
+    WISH_LIST: 'Lista želja',
+    WELCOME: 'Dobrodošli!',      
+    BUTTON_LANG_DE: 'Bosanski',
+    BUTTON_LANG_EN: 'Engleski'
+    };
 
 
-var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.bootstrap', 'ngStorage','angularFileUpload']);
+var CategoryApp = angular.module('CategoryApp',['ngRoute','ngResource','ui.bootstrap', 'ngStorage','angularFileUpload','pascalprecht.translate']);
 var varijabla;
 
 var RatingDemoCtrl = function ($scope) {
@@ -161,8 +192,8 @@ CategoryApp.factory("Korisnici", function ($resource) {
 
 
 
-CategoryApp.config(['$routeProvider',
-  function($routeProvider) {
+CategoryApp.config(['$routeProvider','$translateProvider',
+  function($routeProvider,$translateProvider) {
     $routeProvider.
       when('/registration', {
         templateUrl: 'users/new'
@@ -272,6 +303,11 @@ CategoryApp.config(['$routeProvider',
       when('/cart', {
         templateUrl: 'partial_views/cart'
       });
+$translateProvider.translations('en', translationsEN);
+$translateProvider.translations('de', translationsDE);
+$translateProvider.preferredLanguage('en');
+$translateProvider.fallbackLanguage('en');
+    
      
   }]);
 
@@ -412,10 +448,14 @@ CategoryApp.controller('EmailController',['$scope','$http','$localStorage', func
 }]);
 
 
-CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload','$localStorage', 'dataService','Proizvodi','Komentari','Kategorije','Korisnici','OglasiKorisnika', function($scope,$rootScope,$http,$upload, $localStorage, dataService,Proizvodi,Komentari,Kategorije,Korisnici,OglasiKorisnika) {
+CategoryApp.controller('CategoryAds',['$scope','$rootScope', '$http', '$upload','$localStorage', 'dataService','Proizvodi','Komentari','Kategorije','Korisnici','OglasiKorisnika','$translate', function($scope,$rootScope,$http,$upload, $localStorage, dataService,Proizvodi,Komentari,Kategorije,Korisnici,OglasiKorisnika,$translate) {
     $scope.results = null;
     kategorije();
     isLogged();
+    
+     $scope.changeLanguage = function (langKey) {
+$translate.use(langKey);
+};
     
     function isLogged() {
         

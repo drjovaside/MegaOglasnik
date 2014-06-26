@@ -20,6 +20,7 @@
     <%= javascript_include_tag "angular-route" %>
     <%= javascript_include_tag "angular-resource" %>
    <%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+    <%= javascript_include_tag "angular-translate" %>
     
    
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -57,7 +58,7 @@
           
         </div>
         <a href="#search"><button href="#search" style="height: 25px; padding-top: 5px;" type="submit" class="btn btn-default btn-sm" ng-click="trazi(rijec)" style="height: 25px; padding-top: 5px;" ng-disabled="search.$invalid">
-        Traži
+        <p>{{ 'SEARCH' | translate }}</p>
         </button>
         </a>
       </form>
@@ -72,15 +73,18 @@
           
           <li><a class="navbar-brand" href="#/contact"><font color="white">Kontakt</font></a></li>
 -->
-          <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#/messages" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">Messages</font></a></li>
+          <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#/messages" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'MESSAGES' | translate }}</font></a></li>
 
         
-          <li ng-hide="reg_and_login_value"><a href="#login"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">Login</font></a></li>
-          <li ng-hide="reg_and_login_value"><a href="#registracija"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">Registracija</font></a></li>
+          <li ng-hide="reg_and_login_value"><a href="#login"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'LOGIN' | translate }}</font></a></li>
+          <li ng-hide="reg_and_login_value"><a href="#registracija"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'REGISTRATION' | translate }}</font></a></li>
+          <li><a ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">English</a></li>
+          <li><a ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE">Bosanski</a></li>
+          
          <!--><li style="margin-top: 2px;" ng-show="reg_and_login_value"> <img src="{{korisnik.avatar_url}}" height="35px" width="40px"/> </li>
          -->  
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#myprofile" ng-click="myProfile()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px"><b>{{username}}</b></font></a></li>  
-          <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">Logout</font></a></li> 
+          <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'LOGOUT' | translate }}</font></a></li> 
 
 
 
@@ -96,11 +100,11 @@
          </div>
 <div   style="background-color: #212F72;height: 40px; padding-left: 20%; margin-top: 20px;">
 
-<a href="#home"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">Početna</font></a>
-<a href="#objavi" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">Objavite</font></a>
-<a  href="#najnoviji" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">Najnovije</font></a>
-<a  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">Top-rated</font></a>
-<a class="navbar-brand" href="#/wish" style="height: 40px; padding-top: 10px;"><font color="white" >Lista želja</font></a>
+<a href="#home"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'HOME' | translate }}</font></a>
+<a href="#objavi" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'PUBLISH' | translate }}</font></a>
+<a  href="#najnoviji" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'NEW' | translate }}</font></a>
+<a  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'TOP_RATED' | translate }}</font></a>
+<a class="navbar-brand" href="#/wish" style="height: 40px; padding-top: 10px;"><font color="white" >{{ 'WISH_LIST' | translate }}</font></a>
 <a  href="#ae" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('ae',0)">AE</a>
 <a  href="#ee" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('ee',0)">EE</a>
 <a  href="#tk" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('tk',0)">TK</a>
@@ -114,6 +118,8 @@
     <a href="#5" style="margin-left: 15px;" ng-click="ucitajGodinu(5)">Peta</a>
     </div>
 <div style=" padding-bottom: 20px;">    
+    
+    
 
 
 <div ng-view> </div>
