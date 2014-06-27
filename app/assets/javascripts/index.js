@@ -61,7 +61,8 @@
     TEL_NUM: 'Telephone number',
     EDIT_PROFILE: 'Edit profile',
     DELETE: 'Delete',
-    NAME_USER: 'Name'    
+    NAME_USER: 'Name',
+    SEARCH_RESULTS: 'Search results for "'    
     };
      
     var translationsDE= {
@@ -124,7 +125,8 @@
     TEL_NUM: 'Br. tel.',
     EDIT_PROFILE: 'Uredi profil',
     DELETE: 'Izbriši',
-    NAME_USER: 'Ime',    
+    NAME_USER: 'Ime',
+    SEARCH_RESULTS: 'Rezultati pretrage za "'     
     };
 
 
