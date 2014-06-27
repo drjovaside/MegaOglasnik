@@ -6,6 +6,7 @@
 <%= javascript_include_tag "index" %>
 <%= javascript_include_tag "ui-bootstrap-0.11.0" %>
 <%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+<%= javascript_include_tag "angular-translate" %>    
 
    
 
@@ -13,26 +14,26 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds"  data-ng-init="myProfile()">
-<h2 class="page-header" style="margin-left: 20%;"> Dobrodošli na Vaš profil! </h2><br/>
+<h2 class="page-header" style="margin-left: 20%;"> {{ 'WELCOME_PROFILE' | translate }} </h2><br/>
 <div style="">
 <div class="" style="margin-left: 35px; width: 20%; float: left; ">
   
   <img src="{{user.avatar_url}}" height="200" width="200"/>
       <br/>
     <h3></h3>
-    Za promjenu avatara izaberite sliku
+    {{ 'AVATAR_CHANGE' | translate }}
      <h3></h3>
     <input type="file" ng-file-select="onFileSelect($files)" ng-model="file" style="width:120px;" >
       
     <h2>{{user.username}}</h2>
-    <h4>Ime: {{user.firstname}}</h4>
-    <h4>Prezime: {{user.lastname}}</h4>
-    <h4>Email: {{user.email}}</h4>
-    <h4>Grad: {{user.city}}</h4>
-    <h4>Adresa: {{user.adress}}</h4>
-    <h4>Br. tel.: {{user.tel_num}}</h4>
+    <h4>{{ 'NAME_USER' | translate }}: {{user.firstname}}</h4>
+    <h4>{{ 'LAST_NAME' | translate }}: {{user.lastname}}</h4>
+    <h4>{{ 'EMAIL' | translate }}: {{user.email}}</h4>
+    <h4>{{ 'CITY' | translate }}: {{user.city}}</h4>
+    <h4>{{ 'ADRESS' | translate }}: {{user.adress}}</h4>
+    <h4>{{ 'TEL_NUM' | translate }}: {{user.tel_num}}</h4>
     
-    <b><a class="btn btn-default" href="#editprofile">Uredi profil</a></b>
+    <b><a class="btn btn-default" href="#editprofile">{{ 'EDIT_PROFILE' | translate }}</a></b>
 </div>
 <div ng-repeat="result in results" style="margin-left: 25%;">    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
@@ -48,9 +49,9 @@
 </div>
 <br/>
         <!--    <button ng-click="" type="button" class="btn btn-default btn-sm">View</button> -->
-            <a ng-click="novaFunkcija(result.id)" href="#/product_detail" type="button" class="btn btn-default btn-sm" >View</a>
-           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajCijenu(result.price); dodajukorpu(result.id, result.title, result.price); dodajukorpu2(result); PorukaDodanoUkorpu()"><i class=" icon-shopping-cart">Add in cart</button>
-     <button type="button" class="btn btn-primary btn-sm" style="margin-top: 10px; width: 100%;" ng-click="obrisiArtikal(result.id)">Obrisi</button>
+            <a ng-click="novaFunkcija(result.id)" href="#/product_detail" type="button" class="btn btn-default btn-sm" >{{ 'VIEW' | translate }}</a>
+           <button type="button" class="btn btn-primary btn-sm" ng-click="dodajCijenu(result.price); dodajukorpu(result.id, result.title, result.price); dodajukorpu2(result); PorukaDodanoUkorpu()"><i class=" icon-shopping-cart">{{ 'ADD_IN_CART' | translate }}</button>
+     <button type="button" class="btn btn-primary btn-sm" style="margin-top: 10px; width: 100%;" ng-click="obrisiArtikal(result.id)">{{ 'DELETE' | translate }}</button>
           </div>
   </div>
 </div>

@@ -52,7 +52,16 @@
     FROM: 'From',
     DATE: 'Date',
     SHOW_MESSAGE: 'Show message',
-    COMPOSE_MESSAGE: 'Compose message'    
+    COMPOSE_MESSAGE: 'Compose message',
+    WELCOME_PROFILE: 'Welcome to your profile!',
+    AVATAR_CHANGE: 'To change your avatar click below',
+    LAST_NAME: 'Last name',
+    CITY: 'City',
+    ADRESS: 'Adress',
+    TEL_NUM: 'Telephone number',
+    EDIT_PROFILE: 'Edit profile',
+    DELETE: 'Delete',
+    NAME_USER: 'Name'    
     };
      
     var translationsDE= {
@@ -106,7 +115,16 @@
     FROM: 'Od',
     DATE: 'Datum',
     SHOW_MESSAGE: 'Prikaži poruku',
-    COMPOSE_MESSAGE: 'Nova poruka'    
+    COMPOSE_MESSAGE: 'Nova poruka',
+    WELCOME_PROFILE: 'Dobrodošli na vaš profil!',
+    AVATAR_CHANGE: 'Za promjenu avatara kliknite ispod',
+    LAST_NAME: 'Prezime',
+    CITY: 'Grad',
+    ADRESS: 'Adresa',
+    TEL_NUM: 'Br. tel.',
+    EDIT_PROFILE: 'Uredi profil',
+    DELETE: 'Izbriši',
+    NAME_USER: 'Ime',    
     };
 
 
