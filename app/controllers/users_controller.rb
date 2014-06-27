@@ -120,7 +120,7 @@ def upload_photo
   @user.active=true
   @user.save
   session[:user_id]=nil
-  redirect_to '/home'
+  redirect_to '#home'
   flash[:notice] = (t :email_verified)
 end
     def myAds

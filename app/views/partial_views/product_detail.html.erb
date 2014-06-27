@@ -11,17 +11,21 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="AdDetail" data-ng-init="pokreni()" >
+<h3 style="" class="page-header"></h3>
 
 
-<div style="margin-left: 25%;">
-     
-    <img src="{{ad.picture_path}}" height="200" width="200" style="border: solid;"/>
+<div style="">
+ <div class="panel panel-default" style="padding: 10px; height: 300px;">  
+     <div style="float: left; margin-right: 30px;">
+    <img src="{{ad.picture_path}}" height="200" width="200" style="border: solid; "/>
     <br/>
     <p ng-show="isOwner">
     {{ 'CHOOSE' | translate }}
     <br/>
     <input type="file" ng-file-select="uploadSlikeOglasa($files)" ng-model="file" style="width:120px;"  >
     </p>
+    </div>
+    <div>
    <p> <b>{{ 'BOOK_NAME' | translate }} </b> {{ad.title}} </p>
         <p><b>{{ 'PRICE' | translate }} </b> {{ad.price}} KM</p>
         <p><b>{{ 'AUTHOR' | translate }} </b> {{ad.author}}</p>
@@ -35,20 +39,22 @@
     <div ng-controller="CategoryAds">
     <p><b>{{ 'PUBLISHED' | translate }}: </b>
    <a href="#profile" ng-click="userProfile(ad.user_id)"> {{ime}} </a></p>
-   <p>{{ 'RESERVED' | translate }}:</p> {{usernameREZ}}
     </div>
+    </div>
+</div>
 <br/>
 <br/>
 <b>{{ 'ALL_COMMENTS' | translate }}</b>
 <br/>
 <br/>
+<div class="panel panel-default" style="background-color: white;">  
+<div ng-repeat="comment in comments" style="margin: 10px;">
+
+    <b><a href="#profile" ng-click="userProfile(comment.user_id)">{{comment.user_username}}</a></b> | {{ comment.timestamp | date : 'dd/MM/yyyy'}}
     
-<div ng-repeat="comment in comments" class="list-group" style="width: 40%;">
-  <a href="#profile" ng-click="userProfile(comment.user_id)" class="list-group-item">
-    <h4 class="list-group-item-heading">{{comment.user_username}}</h4>
-    
-    <p class="list-group-item-text">{{comment.content}}</p>
-  </a>
+    <div style="width: 100%">{{comment.content}}</div>
+
+</div>
 </div>
 <br/>
 <br/>
@@ -60,10 +66,10 @@ Prijavite se da bi ostavili komentar.
 {{ 'ADD_COMMENT' | translate }}:
 <br/>
     <br/>
-<textarea rows="4" cols="50" ng-model="comment.content">
+<textarea rows="4"  style="width: 100%" ng-model="comment.content">
 {{ 'ADD_COMMENT' | translate }}...</textarea>
 <br/>
-<button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm">{{ 'ADD_COMMENT' | translate }}</button>
+<button ng-click="posaljiKomentar(comment)" class="btn btn-default btn-sm" style="margin-top: 5px;">{{ 'ADD_COMMENT' | translate }}</button>
 
 </div>
 

@@ -8,10 +8,6 @@
 
 
 <link rel="javascripts" href="javascripts/application.js">
-
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
       <%= javascript_include_tag "angular-file-upload" %>
     <%= javascript_include_tag "angular-file-upload-html5-shim" %>
     <%= javascript_include_tag "angular-file-upload-shim" %>
@@ -65,14 +61,6 @@
 
       <ul class="nav navbar-nav navbar-right">
  
-        
-        <a></a>
-<!--
-          <li><a class="navbar-brand" href="#/cart" ng-show="reg_and_login_value"><font color="white"> <span class="glyphicon glyphicon-shopping-cart" ></span>Korpa</font> <font size="1px">{{brojac()}} items</font></a></li> 
-
-          
-          <li><a class="navbar-brand" href="#/contact"><font color="white">Kontakt</font></a></li>
--->
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#/messages" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'MESSAGES' | translate }}</font></a></li>
 
         
@@ -82,8 +70,7 @@
           <li ><a class="navbar-brand" ng-click="changeLanguage('en')" style="height: 40px; padding-top: 10px;"><font color="white" size="2px" >English</font></a></li>
           <li><a class="navbar-brand" ng-click="changeLanguage('de')"  style="height: 40px; padding-top: 10px;"><font  color="white" size="2px">Bosanski</font></a></li>
           
-         <!--><li style="margin-top: 2px;" ng-show="reg_and_login_value"> <img src="{{korisnik.avatar_url}}" height="35px" width="40px"/> </li>
-         -->  
+         <li style="margin-top: 2px;" ng-show="reg_and_login_value"> <img src="{{korisnik.avatar_url}}" height="35px" width="40px"/> </li>  
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#myprofile" ng-click="myProfile()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px"><b>{{username}}</b></font></a></li>  
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'LOGOUT' | translate }}</font></a></li> 
 
@@ -104,8 +91,8 @@
 <a href="#home"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'HOME' | translate }}</font></a>
 <a href="#objavi" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'PUBLISH' | translate }}</font></a>
 <a  href="#najnoviji" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'NEW' | translate }}</font></a>
-<a  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'TOP_RATED' | translate }}</font></a>
-<a class="navbar-brand" href="#/wish" style="height: 40px; padding-top: 10px;"><font color="white" >{{ 'WISH_LIST' | translate }}</font></a>
+<a  href="#" class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white">{{ 'TOP_RATED' | translate }}</font></a>
+<a class="navbar-brand" href="#/cart" style="height: 40px; padding-top: 10px;" ng-show="reg_and_login_value"><font color="white" > <span class="glyphicon glyphicon-shopping-cart" style="margin-right: 5px;"></span>Korpa</font> <font color="white">{{brojac()}} items</font></a>
 <a  href="#ae" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('ae',0)">AE</a>
 <a  href="#ee" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('ee',0)">EE</a>
 <a  href="#tk" class="navbar-brand" style="height: 40px; padding-top: 10px;" ng-click="ucitajOdsjekIGodinu('tk',0)">TK</a>
@@ -118,7 +105,7 @@
     <a href="#4" style="margin-left: 15px;" ng-click="ucitajGodinu(4)">Četvrta</a>
     <a href="#5" style="margin-left: 15px;" ng-click="ucitajGodinu(5)">Peta</a>
     </div>
-<div style=" padding-bottom: 20px;">    
+<div style="padding-bottom: 20px; margin-right: 15%; margin-left: 20%;">    
     
     
 

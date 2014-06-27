@@ -909,11 +909,25 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
   ]; });
     };
     
+    $scope.toprated = function () {
+        $http.get('http://localhost:3000/toprated')
+    .success(function(data){
+       
+         
+        $scope.results=data;
+    }).error(function(data){
+        
+    });
+    
+    };
+    
     $scope.objavi = function(ad) { 
     $http.defaults.headers.post["Content-Type"] = "application/json"; 
     $http.defaults.headers.post["Accept"] = "application/json"; 
     $http.post('http://localhost:3000/ads', { "title": ad.title, "price": ad.price, "description": ad.description, "user_id" : $localStorage.user_id, "section": ad.section, "academic_year": ad.academic_year, "author": ad.author, "forexchange": ad.forexchange }) .success(function(data){
         $rootScope.ad_id = data.id;
+        window.location = "#product_detail";
+        pokreni();
         $rootScope.new_ad_alerts = [
     { new_ad_type: 'success', new_ad_msg: 'Uspjesno ste objavili oglas!' }
   ];})

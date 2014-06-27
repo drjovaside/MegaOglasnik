@@ -14,21 +14,14 @@
     
 
 <h3 style="margin-left: 20%;" class="page-header">{{ 'SEARCH_RESULTS' | translate }}{{rijec}}".</h3>
-<div class="list-group" style="margin-left: 35px; width: 16%; float: left; ">
-  <a href="" class="list-group-item active" >
-    <%= t :categories %>
-  </a>
-  <div ng-repeat="categorie in categories">
-    <a href="#categorie_ads" class="list-group-item" ng-click="kategorija(categorie.id)">{{categorie.name}}</a>
-</div>
-</div>
-<div ng-repeat="result in results" style="margin-left: 20%;" >    
-  <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 17%;  ">
+
+<div ng-repeat="result in results" style="" >    
+  <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 23.25%;  ">
     <div class="thumbnail" style="height: 350px;">
       <img src="{{result.picture_path}}"/>
       <div class="caption">
         <h3>{{result.title}}</h3>
-        <p>{{result.description}}</p>
+        <p>Odsjek: {{result.section}}</p>
         <p>{{ 'PRICE' | translate }}: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
     <rating  data-ng-init="postaviRating(result.rating)" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="dodajRating(rate,result.id)"></rating>

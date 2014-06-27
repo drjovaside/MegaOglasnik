@@ -60,6 +60,7 @@ get 'ae/:id' => 'ads#aegodine'
 get 'ee/:id' => 'ads#eegodine'
 get 'ri/:id' => 'ads#rigodine'
 get 'tk/:id' => 'ads#tkgodine'
+get 'toprated' => 'ads#get_top_rated'
 
 #get 'ads/:id/comments/:idCom' => 'comments#show', as: 'comments'
 #Ruta za sessije

@@ -193,6 +193,13 @@ render json: @ads
      @ads = Ad.where("section = ? AND academic_year = ?", 'TK', params[:id]).all
     render json: @ads
     end
+    
+    def get_top_rated
+        @oglasi = Ad.where("rating >= ?", 9).all
+
+        
+        render json: @oglasi
+    end
   def add_to_cart
     ad = Ad.find(params[:id])
     # @cart = Cart.new
