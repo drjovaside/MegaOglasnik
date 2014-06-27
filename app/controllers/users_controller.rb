@@ -119,7 +119,8 @@ def upload_photo
   @user = User.find(session[:user_id])
   @user.active=true
   @user.save
-  redirect_to login_path
+  session[:user_id]=nil
+  redirect_to '/home'
   flash[:notice] = (t :email_verified)
 end
     def myAds

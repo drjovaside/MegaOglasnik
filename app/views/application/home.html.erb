@@ -78,15 +78,16 @@
         
           <li ng-hide="reg_and_login_value"><a href="#login"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'LOGIN' | translate }}</font></a></li>
           <li ng-hide="reg_and_login_value"><a href="#registracija"  class="navbar-brand" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'REGISTRATION' | translate }}</font></a></li>
-          <li><a ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">English</a></li>
-          <li><a ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE">Bosanski</a></li>
+          
+          <li ><a class="navbar-brand" ng-click="changeLanguage('en')" style="height: 40px; padding-top: 10px;"><font color="white" size="2px" >English</font></a></li>
+          <li><a class="navbar-brand" ng-click="changeLanguage('de')"  style="height: 40px; padding-top: 10px;"><font  color="white" size="2px">Bosanski</font></a></li>
           
          <!--><li style="margin-top: 2px;" ng-show="reg_and_login_value"> <img src="{{korisnik.avatar_url}}" height="35px" width="40px"/> </li>
          -->  
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#myprofile" ng-click="myProfile()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px"><b>{{username}}</b></font></a></li>  
           <li ng-show="reg_and_login_value"><a class="navbar-brand" href="#login" ng-click="logout()" style="height: 40px; padding-top: 10px;"><font color="white" size="2px">{{ 'LOGOUT' | translate }}</font></a></li> 
 
-
+<li> </li>
 
          
       </ul>

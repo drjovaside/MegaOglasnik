@@ -15,8 +15,9 @@
     <h2 class="page-header"> {{ 'NEW_AD' | translate }} </h2><br/>
 <form name="NewAd"  > 
     <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
+Odsjek:<br/>
 <select ng-model = "ad.section">
-<option>-- {{ 'DEPARTMENT' | translate }} -- </option>
+
 <option ng-model = "ad.section" value="AE">{{ 'AUTOMATIC' | translate }}</option>
 <option ng-model = "ad.section" value="EE">{{ 'ENERGETIC' | translate }} </option>
 <option ng-model = "ad.section" value="RI">{{ 'INFORMATIC' | translate }} </option>
@@ -24,9 +25,8 @@
   </select>
 <br/>
 <br/>
+Godina:<br/>
 <select ng-model = "ad.academic_year">
-<option  selected>-- {{ 'YEAR_OF_STUDY' | translate }} -- </option>
-    
 <option value="1">{{ 'FIRST' | translate }} </option>
 <option value="2">{{ 'SECOND' | translate }} </option>
 <option value="3">{{ 'THIRD' | translate }} </option>

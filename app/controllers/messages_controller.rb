@@ -18,8 +18,11 @@ class MessagesController < ApplicationController
         @message = Message.new
         @message.title=params[:title]
         @message.contents=params[:content]
-        @message.reciever_sender_id=params[:reciever_sender_id]
         @message.user_sender_id = params[:user_sender_id]
+        @message.sender_username = params[:sender_username]
+        @message.receiver_username = params[:receiver_username]
+        @user = User.find_by_username(params[:receiver_username])
+        @message.reciever_sender_id = @user.id
         @message.timestamp = Time.now
         @message.save
         render json: @message

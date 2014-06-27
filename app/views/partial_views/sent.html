@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script  src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+  
 <%= javascript_include_tag "angular-translate" %> 
     
 </head>
 <body ng-app="CategoryApp">
 
-        <div class="container" ng-app ng-controller="EmailController">
+        <div ng-controller="EmailController"  style=" margint-left: 20%; width: 70%; padding-left: 20%; padding-top: 10px;">
     <ul class="nav nav-tabs">
         <li >
             <a href="#messages" >{{ 'INBOX' | translate }}</a>
@@ -28,10 +26,10 @@
             <td>{{ 'DATE' | translate }}</td>
             </tr>
             <tr ng-repeat="message in messages" ng-click="selectMessage(message)">
-                <td>{{ message.reciever_sender_id }}</td>
+                <td><a href="#profile" ng-click="userProfile(message.receiver_sender_id)">{{ message.receiver_username }}</a></td>
                 <td>{{ message.title }}</td>
                 <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
-                <td><a href="#show_message" class="btn btn-primary" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>
+                <td><a href="#show_message" class="btn btn-primary" ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>
                 
             </tr>
         </tbody>

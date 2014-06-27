@@ -412,17 +412,21 @@ CategoryApp.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.post['X-CSRF-Token'] = csrfToken;
 }]);
 
-CategoryApp.controller('EmailController',['$scope','$http','$localStorage', function($scope,$http,$localStorage){
+CategoryApp.controller('EmailController',['$scope','$rootScope','$http','$localStorage', function($scope,$rootScope,$http,$localStorage){
     
     $scope.sendMessage = function(message) {
-           
-    $http.post('http://localhost:3000/create_message', { "reciever_sender_id": message.to, "title": message.title, "content": message.content, "user_sender_id": $localStorage.user_id, "timestamp": message.timestamp})
+        alert(message.receiver_username);
+    $http.post('http://localhost:3000/create_message', {  "title": message.title, "content": message.content, "user_sender_id": $localStorage.user_id, "timestamp": message.timestamp,"sender_username": $localStorage.username,"receiver_username": message.receiver_username})
     .success(function(data){
-         alert("proslo");
+         alert("poslata poruka");
     }).error(function(data){
         alert("nije proslo");
     });
         
+    };
+    
+    $scope.otvoriPoruku = function(message) {
+    $rootScope.message = message;
     };
     
     $scope.populateInbox = function() {
@@ -945,6 +949,10 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     $scope.pokreniIzmjenuProfila = function () {
          $scope.user =  Korisnici.get({},{'Id': $localStorage.user_id });
         
+    };
+    
+    $scope.pokreniSlanjePorukeKorisniku = function (username) {
+    $rootScope.message = username;
     };
     
     
