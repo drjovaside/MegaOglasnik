@@ -23,7 +23,7 @@
             <td>{{ 'DATE' | translate }}</td>    
             </tr>
             <tr ng-repeat="message in messages">
-                <td>{{ message.sender_username }}</td>
+                <td> <a href="#profile" ng-click="userProfile(message.user_sender_id)">{{ message.sender_username }}</a></td>
                 <td>{{ message.title }}</td>
                 <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
                 <td><a href="#show_message"  ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>

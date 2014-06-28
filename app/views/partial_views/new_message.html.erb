@@ -4,6 +4,7 @@
 <%= javascript_include_tag "index" %>
 <%= javascript_include_tag "ui-bootstrap-0.11.0" %>
 <%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+<%= javascript_include_tag "angular-translate" %>    
 
    
 
@@ -13,16 +14,16 @@
         
         <div>
             <form role="sendMessage">
-                To:
+                {{ 'TO' | translate }}:
                 <input type="text" placeholder="{{message}}" style="width:95%;"
-                    ng-model="message.receiver_username" ng-disabled="true"><br />
-                Subject:
+                    ng-model="message.receiver_username"><br />
+                {{ 'TITLE' | translate }}:
                 <input type="text" placeholder="No Subject" style="width:95%;"
                     ng-model="message.title" required><br />
-                Content:
+                {{ 'CONTENTS' | translate }}:
                 <textarea style="width:95%;" rows="10" 
                     ng-model="message.content" required></textarea>
-                <a  class="btn btn-primary" ng-click="sendMessage(message)" ng-disabled="sendMessage.$invalid">Send</a>
+                <a href="#sent" class="btn btn-primary" ng-click="sendMessage(message)" ng-disabled="sendMessage.$invalid">{{ 'SEND' | translate }}</a>
             </form>
         </div>
         

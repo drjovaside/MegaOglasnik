@@ -5,6 +5,7 @@
 <%= javascript_include_tag "index" %>
 <%= javascript_include_tag "ui-bootstrap-0.11.0" %>
 <%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
+<%= javascript_include_tag "angular-translate" %>    
 
    
 
@@ -12,7 +13,7 @@
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds"  data-ng-init="toprated()">
-<h3 style="" class="page-header">Dobrodošli!</h3>
+<h3 style="" class="page-header">{{ 'WELCOME' | translate }}</h3>
 
 
 <div style="">
@@ -22,7 +23,7 @@
       <img src="{{result.picture_path}}"/>
       <div class="caption">
         <h3>{{result.title}}</h3>
-        <p>Odsjek: {{result.section}}</p>
+        <p>{{ 'DEPARTMENT' | translate }}: {{result.section}}</p>
         <p>{{ 'PRICE' | translate }}: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
     <rating  data-ng-init="postaviRating(result.rating)" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="dodajRating(rate,result.id)"></rating>

@@ -9,7 +9,7 @@
     LOGOUT: 'Logout',
     HOME: 'Home',
     PUBLISH: 'Publish',
-    NEW: 'New!',
+    NEW: 'New books!',
     TOP_RATED: 'Top rated',
     WISH_LIST: 'Wish list',
     WELCOME: 'Welcome!',
@@ -62,7 +62,16 @@
     EDIT_PROFILE: 'Edit profile',
     DELETE: 'Delete',
     NAME_USER: 'Name',
-    SEARCH_RESULTS: 'Search results for "'    
+    SEARCH_RESULTS: 'Search results for "',
+    NOT_REGISTERED: 'Not registered',
+    REGISTER: 'Register',
+    PASSWORD: 'Password',
+    CONTENTS: 'Contents',
+    CLOSE: 'Close',
+    REPLY: 'Reply',
+    SEND: 'Send',
+    TO: 'To',
+    SEND_MESSAGE: 'Send message'    
     };
      
     var translationsDE= {
@@ -73,7 +82,7 @@
     LOGOUT: 'Odjava',
     HOME: 'Početna',
     PUBLISH: 'Objavi',
-    NEW: 'Novo!',
+    NEW: 'Nove knjige!',
     TOP_RATED: 'Najbolje ocijenjene',
     WISH_LIST: 'Lista želja',
     WELCOME: 'Dobrodošli!',
@@ -126,7 +135,16 @@
     EDIT_PROFILE: 'Uredi profil',
     DELETE: 'Izbriši',
     NAME_USER: 'Ime',
-    SEARCH_RESULTS: 'Rezultati pretrage za "'     
+    SEARCH_RESULTS: 'Rezultati pretrage za "',
+    NOT_REGISTERED: 'Niste registrovani',
+    REGISTER: 'Registrujte se',
+    PASSWORD: 'Zaporka',
+    CONTENTS: 'Sadržaj',
+    CLOSE: 'Zatvori',
+    REPLY: 'Odgovori',
+    SEND: 'Pošalji',
+    TO: 'Ka',
+    SEND_MESSAGE: 'Pošalji poruku'     
     };
 
 
@@ -415,12 +433,12 @@ CategoryApp.config(['$httpProvider', function($httpProvider) {
 CategoryApp.controller('EmailController',['$scope','$rootScope','$http','$localStorage', function($scope,$rootScope,$http,$localStorage){
     
     $scope.sendMessage = function(message) {
-        alert(message.receiver_username);
+        
     $http.post('http://localhost:3000/create_message', {  "title": message.title, "content": message.content, "user_sender_id": $localStorage.user_id, "timestamp": message.timestamp,"sender_username": $localStorage.username,"receiver_username": message.receiver_username})
     .success(function(data){
-         alert("poslata poruka");
+        
     }).error(function(data){
-        alert("nije proslo");
+        
     });
         
     };

@@ -13,27 +13,32 @@
 <div  style=" padding-top: 10px;" ng-controller="EmailController" >
     
 
-        <h3>{{message.title}}</h3>
+        <h3><strong>{{ 'TITLE' | translate }}</strong>: {{message.title}}</h3>
     
-        <strong>From:</strong> {{message.sender_username}} <br />
+        <strong>{{ 'FROM' | translate }}:</strong> {{message.sender_username}} <br />
         
         <br />
-        <p>
+        <p> <strong>{{ 'CONTENTS' | translate }}: </strong> <br>
            {{message.contents}} 
         </p>
     
         <a href="#messages" class="btn btn-primary">Close</a>
 
     <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+    <h3><strong>{{ 'REPLY' | translate }}:</strong></h3>
            <form role="sendMessage"> 
-        To:
+        {{ 'TO' | translate }}:
         <input class="form-control" style="margin-bottom: 15px; margin-top: 10px;width: 250px;" type="text" ng-model="message.receiver_username" placeholder="{{message.sender_username}}" disabled>
-       Subject:
+       {{ 'TITLE' | translate }}:
                 <input class="form-control" type="text"  ng-model="message.title" placeholder="Re: {{poruka.title}}" required><br />
-       Content:
+       {{ 'CONTENTS' | translate }}:
                 <textarea class="form-control" style="width:95%;" rows="10" 
                     ng-model="message.content" required></textarea>
-                <a  class="btn btn-primary" ng-click="sendMessage(message)" ng-disabled="sendMessage.$invalid">Send</a>
+                <a  class="btn btn-primary" ng-click="sendMessage(message)" ng-disabled="sendMessage.$invalid">{{ 'SEND' | translate }}</a>
             </form>
 
 </div>

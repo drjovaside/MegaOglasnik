@@ -27,7 +27,7 @@
     <h5><b>{{ 'ADRESS' | translate }}:</b> {{user.adress}}</h5>
     <h5><b>{{ 'TEL_NUM' | translate }}:</b> {{user.tel_num}}</h5>
     
-    <a href="#new_message" ng-click="pokreniSlanjePorukeKorisniku(user.username)">Pošalji poruku</a>
+    <a href="#new_message" ng-click="pokreniSlanjePorukeKorisniku(user.username)">{{ 'SEND_MESSAGE' | translate }}</a>
     </div>
 </div>
 <div ng-repeat="result in results" style="" >    
