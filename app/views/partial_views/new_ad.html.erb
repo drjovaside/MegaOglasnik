@@ -11,7 +11,7 @@
     <h2 class="page-header"> {{ 'NEW_AD' | translate }} </h2><br/>
 <form name="NewAd"  > 
     <alert style="width: 450px;"ng-repeat="alert in new_ad_alerts" type="{{alert.new_ad_type}}">{{alert.new_ad_msg}}</alert>
-Odsjek:<br/>
+{{ 'DEPARTMENT' | translate }}:<br/>
 <select ng-model = "ad.section" class="form-control" style="width: 250px; margin-top: 5px; ">
 
 <option ng-model = "ad.section" value="AE">{{ 'AUTOMATIC' | translate }}</option>
@@ -21,7 +21,7 @@ Odsjek:<br/>
   </select>
 <br/>
 
-Godina:
+{{ 'YEAR' | translate }}:
 <select ng-model = "ad.academic_year" class="form-control" style="width: 250px; margin-top: 5px; ">
 <option value="1">{{ 'FIRST' | translate }} </option>
 <option value="2">{{ 'SECOND' | translate }} </option>
@@ -32,18 +32,18 @@ Godina:
   </select>
 <br/>
 
-     Naziv:
+     {{ 'TITLE' | translate }}:
     <input type="text" name="title" class="span2 form-control" id="Title" placeholder="{{ 'TITLE' | translate }}" ng-model="ad.title" style="width: 250px;  margin-top: 5px; " required>
     <br/>
-    Cijena:
+    {{ 'PRICE' | translate }}:
      <input class="form-control" name="price" style=" margin-top: 5px;width: 250px;" type="number" ng-model="ad.price" placeholder="{{ 'PRICE' | translate }}" required>
     <br/>
-    Autor:
+    {{ 'AUTHOR' | translate }}:
     <input type="text" name="Author" class="span2 form-control" id="Author" placeholder="{{ 'AUTHOR' | translate }}" ng-model="ad.author" style="width: 250px;  margin-top: 5px; " required>
     <br/>
     <input type="checkbox" ng-model="ad.forexchange" name="forexchange" value="{{ad.forexchange}}" style="margin-bottom: 10px;">{{ 'FOR_EXCHANGE' | translate }}
     <br/>
-    Opis:
+    {{ 'DESCRIPTION' | translate }}:
     <textarea class="form-control" name="opis" style="width: 250px; margin-top: 5px;" ng-model="ad.description" rows="6" placeholder="{{ 'DESCRIPTION' | translate }}" required>
 </textarea> 
     <br/>
