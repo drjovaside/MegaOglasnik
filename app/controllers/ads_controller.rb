@@ -117,7 +117,7 @@ def upload_photo
   file.write(uploaded_io.read)
   end
   
-  render json: @naziv_slike
+  render json: @ad
  end
   
   # DELETE /ads/1

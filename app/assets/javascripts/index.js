@@ -603,8 +603,9 @@ $translate.use(langKey);
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
+        window.location="#myprofile";
         console.log(data);
-        location.reload();
+        
       });
       //.error(...)
      }
@@ -910,6 +911,7 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     };
     
     $scope.toprated = function () {
+    $rootScope.prikaziPodmeni = false;
         $http.get('http://localhost:3000/toprated')
     .success(function(data){
        
@@ -945,15 +947,18 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];        
       $scope.upload = $upload.upload({
-        url: 'http://localhost:3000/ads/' + $localStorage.ad_id + '/upload_photo', 
-        data: {ad_id: $localStorage.ad_id},
+        url: 'http://localhost:3000/ads/' + $rootScope.ad_id + '/upload_photo', 
+        data: {ad_id: $rootScope.ad_id},
         file: file,
       }).progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config) {
         // file is uploaded successfully
+        $rootScope.ad_id = data.id;
+        
         console.log(data);
-        location.reload();
+        window.location="#product_detail";
+        
       });
       //.error(...)
      }
