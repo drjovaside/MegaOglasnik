@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%= javascript_include_tag "angular-translate" %>    
     
 </head>
 <body ng-app="CategoryApp">
@@ -9,28 +8,34 @@
         <div ng-controller="EmailController"  style=" padding-top: 10px;">
     <ul class="nav nav-tabs" >
         <li >
-            <a ng-click="activeTab='inbox'">{{ 'INBOX' | translate }}</a>
+            <a ng-click="activeTab='inbox'"><strong>{{ 'INBOX' | translate }}</strong></a>
         </li>
         <li >
             <a href="#sent" ng-click="activeTab='sent'">{{ 'SENT' | translate }}</a>
         </li>
     </ul>    
-    <table  class="table table-bordered table-condensed" data-ng-init="populateInbox()">
-        <tbody>
-            <tr>
-            <td>{{ 'FROM' | translate }}</td>
-            <td>{{ 'TITLE' | translate }}</td>
-            <td>{{ 'DATE' | translate }}</td>    
+        
+      <div class="panel panel-default" data-ng-init="populateInbox()">
+  <!-- Default panel contents -->
+
+  
+
+  <!-- Table -->
+  <table class="table">
+    <tr class="panel-heading">
+            <td style="width: 25%;">{{ 'FROM' | translate }}</td>
+            <td style="width: 25%;">{{ 'TITLE' | translate }}</td>
+            <td style="width: 25%;">{{ 'DATE' | translate }}</td>
             </tr>
-            <tr ng-repeat="message in messages">
-                <td> <a href="#profile" ng-click="userProfile(message.user_sender_id)">{{ message.sender_username }}</a></td>
+    <tr ng-repeat="message in messages" ng-click="selectMessage(message)">
+                <td><a href="#profile" ng-click="userProfile(message.receiver_sender_id)">{{ message.receiver_username }}</a></td>
                 <td>{{ message.title }}</td>
                 <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
-                <td><a href="#show_message"  ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>
+                <td style="border: none;"><a style="" href="#show_message" class="btn btn-primary" ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a></td>
                 
             </tr>
-        </tbody>
-    </table>
+  </table>
+</div>
     
     <a href="#new_message" class="btn btn-primary" >{{ 'COMPOSE_MESSAGE' | translate }}</a>
     

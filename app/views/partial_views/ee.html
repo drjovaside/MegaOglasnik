@@ -1,18 +1,12 @@
 <!doctype>
 <html>
 <head>
-<%= javascript_include_tag "angular" %>
-<%= javascript_include_tag "index" %>
-<%= javascript_include_tag "angular-resource" %>
-<%= javascript_include_tag "angular-route.min" %>
-<%= javascript_include_tag "angular-translate" %>    
-
 
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds" data-ng-init="oglasiIzKategorije()">
 <div style="">
-<h3 style="" class="page-header">Elektroenergetika</h3>
+<h3 style="" class="page-header">{{ 'ENERGETIC' | translate }}</h3>
 
 <div ng-repeat="result in results" style="" >    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 23.25%;  ">
@@ -20,7 +14,7 @@
       <img src="{{result.picture_path}}"/>
       <div class="caption">
         <h3>{{result.title}}</h3>
-        <p>Odsjek: {{result.section}}</p>
+        <p>{{ 'DEPARTMENT' | translate }}: {{result.section}}</p>
         <p>{{ 'PRICE' | translate }}: {{result.price}} KM</p>
     <div ng-controller="RatingDemoCtrl">
     <rating  data-ng-init="postaviRating(result.rating)" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="dodajRating(rate,result.id)"></rating>

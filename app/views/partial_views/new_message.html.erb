@@ -1,28 +1,22 @@
 <html>
 <head>
-<%= javascript_include_tag "angular" %>
-<%= javascript_include_tag "index" %>
-<%= javascript_include_tag "ui-bootstrap-0.11.0" %>
-<%= javascript_include_tag "ui-bootstrap-tpls-0.11.0" %>
-<%= javascript_include_tag "angular-translate" %>    
-
-   
+ 
 
 </head>
 <body ng-app="CategoryApp">
-<div  ng-controller="EmailController" style="padding-top: 10px;">
-        
+<div  ng-controller="EmailController" style=" margin-top: 20px;">
+     <h3 style="" class="page-header">{{ 'COMPOSE_MESSAGE' | translate }} </h3>   
         <div>
             <form role="sendMessage">
                 {{ 'TO' | translate }}:
-                <input type="text" placeholder="{{message}}" style="width:95%;"
-                    ng-model="message.receiver_username"><br />
+                <input type="text" class="span2 form-control" placeholder="{{message}}" style="width:20%; margin-bottom: 5px;"
+                    ng-model="message.receiver_username" required><br />
                 {{ 'TITLE' | translate }}:
-                <input type="text" placeholder="No Subject" style="width:95%;"
+                <input type="text" class="span2 form-control" placeholder="No Subject" style="width:20%;margin-bottom: 5px;"
                     ng-model="message.title" required><br />
                 {{ 'CONTENTS' | translate }}:
-                <textarea style="width:95%;" rows="10" 
-                    ng-model="message.content" required></textarea>
+                <textarea style="width:95%;" rows="10" class="span2 form-control" 
+                    ng-model="message.content" required></textarea><br/>
                 <a href="#sent" class="btn btn-primary" ng-click="sendMessage(message)" ng-disabled="sendMessage.$invalid">{{ 'SEND' | translate }}</a>
             </form>
         </div>

@@ -1,18 +1,12 @@
 <!doctype>
 <html>
 <head>
-<%= javascript_include_tag "angular" %>
-<%= javascript_include_tag "index" %>
-<%= javascript_include_tag "angular-resource" %>
-<%= javascript_include_tag "angular-route.min" %>
-<%= javascript_include_tag "angular-translate" %>    
-
 
 <body  ng-app="CategoryApp">
 
 <div ng-controller="CategoryAds" data-ng-init="oglasiIzKategorije()">
 <div style="">
-<h3 style="" class="page-header">Telekomunikacije</h3>
+<h3 style="" class="page-header">{{ 'TELECOMUNICATION' | translate }}</h3>
 
 <div ng-repeat="result in results" style="" >    
   <div class="row" style="float: left;margin: 15px;margin-top: 0px;margin-left: 0;  width: 23.25%;  ">

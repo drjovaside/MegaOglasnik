@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-<%= javascript_include_tag "angular-translate" %> 
-    
+   
 </head>
 <body ng-app="CategoryApp">
 
@@ -13,27 +11,34 @@
             <a href="#messages" >{{ 'INBOX' | translate }}</a>
         </li>
         <li >
-            <a>{{ 'SENT' | translate }}</a>
+            <a ><strong>{{ 'SENT' | translate }}</strong></a>
         </li>
         
         
     </ul>    
-    <table data-ng-init="populateSent()" class="table table-bordered table-condensed">
-        <tbody>
-            <tr>
-            <td>{{ 'FROM' | translate }}</td>
-            <td>{{ 'TITLE' | translate }}</td>
-            <td>{{ 'DATE' | translate }}</td>
+    
+            
+    <div class="panel panel-default" data-ng-init="populateSent()">
+  <!-- Default panel contents -->
+
+  
+
+  <!-- Table -->
+  <table class="table">
+    <tr class="panel-heading">
+            <td style="width: 25%;">{{ 'TO' | translate }}</td>
+            <td style="width: 25%;">{{ 'TITLE' | translate }}</td>
+            <td style="width: 25%;">{{ 'DATE' | translate }}</td>
             </tr>
-            <tr ng-repeat="message in messages" ng-click="selectMessage(message)">
+    <tr ng-repeat="message in messages" ng-click="selectMessage(message)">
                 <td><a href="#profile" ng-click="userProfile(message.receiver_sender_id)">{{ message.receiver_username }}</a></td>
                 <td>{{ message.title }}</td>
                 <td>{{ message.timestamp | date : 'MM/dd/yyyy'}}</td>
-                <td><a href="#show_message" class="btn btn-primary" ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a> </td>
+                <td style="border: none;"><a style="" href="#show_message" class="btn btn-primary" ng-click="otvoriPoruku(message)" >{{ 'SHOW_MESSAGE' | translate }}</a></td>
                 
             </tr>
-        </tbody>
-    </table>
+  </table>
+</div>
     
     <a href="#new_message" class="btn btn-primary" >{{ 'COMPOSE_MESSAGE' | translate }}</a>
     
