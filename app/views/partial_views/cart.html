@@ -1,22 +1,18 @@
 <!doctype>
 <html>
 <head>
-<%= javascript_include_tag "angular" %>
-<%= javascript_include_tag "index" %>
-<%= javascript_include_tag "angular-resource" %>
-<%= javascript_include_tag "angular-route.min" %>
 
 <body  ng-app="CategoryApp">
 
-<div ng-controller="CategoryAds" style="margin: 20%; margin-top:100px;">
+<div ng-controller="CategoryAds" style="">
 
 <!-- ng-init="ads = [{title:'golf2', price:'10000'}]"  -->
 
 
-<div style="margin-top: 30px; ">
+<div style=" ">
     
+<h3 style="" class="page-header">Shopping cart</h3>
 
-<h2>Your Shopping Cart:</h2>
 </br>
 
 
@@ -43,111 +39,15 @@ ___________________________________ <br/>
 </br>
 </br>
 
-<!--
-<!doctype html>
-<html ng-app="app" >
-<head>
-  <meta charset="utf-8">
-  <title>AngularJS Credit Card Validation Example</title>
-  <script>document.write('<base href="' + document.location + '" />');</script>
-  
-  <script src="http://code.angularjs.org/1.1.4/angular.js"></script>
-  <script src="app.js"></script>
-</head>
-<body ng-controller="MainCtrl">
-  <form novalidate name="paymentForm">
-    <div class="form-group">
-      <label>First Name:</label>
-    <input type="text" placeholder="First Name">
-	</div>
-  <div class="form-group">
-      <label>Last Name:</label>
-	<input type="text" placeholder="Last Name">
-	</div>
-  <div class="form-group">
-      <label>Credit Card:</label>
-    <input
-      type="text"
-      name="creditCard"
-      ng-model="ccinfo.number"
-      required
-      data-credit-card-type
-      data-ng-pattern="/^[0-9]+$/"
-      data-ng-minlength="15"
-      maxlength="19"
-      placeholder="Card Number" >{{ccinfo.type}}
-    </div>
-    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
-      <li ng-show="paymentForm.creditCard.$error.minlength">Credit card must be 15-19 digits</li>
-      <li ng-show="paymentForm.creditCard.$error.pattern">Credit card must consist of only numbers</li>
-      <li ng-show="paymentForm.creditCard.$error.invalid">Credit card must be a valid Amex, Visa, Discover, or Master Card</li>
-      <li ng-show="paymentForm.creditCard.$error.required">Credit card required</li>
-    </ul>
-    <div class="form-group">
-      <label>Security Code:</label>
-    <input
-      type="text"
-      name="securityCode"
-      ng-model="ccinfo.securityCode"
-      placeholder="CCV"
-      required
-      data-ng-pattern="/^[0-9]+$/"
-      data-ng-minlength="3"
-      maxlength="4">
-    </div>
-    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
-      <li ng-show="paymentForm.securityCode.$error.pattern">Security code must contain only numbers</li>
-      <li ng-show="paymentForm.securityCode.$error.minlength">Security code must be 3-4 digits</li>
-      <li ng-show="paymentForm.securityCode.$error.required">Security code required</li>
-    </ul>
-    <div class="form-group">
-      <label>Expiration date:</label>
-    <select ng-model="ccinfo.month" name="month" data-card-expiration required>
-      <option disabled selected value="">Month</option>
-      <option value="1">1</option>
-       <option value="2">2</option>
-       <option value="3">3</option>
-       <option value="4">4</option>
-       <option value="5">5</option>
-       <option value="6">6</option>
-       <option value="7">7</option>
-       <option value="8">8</option>
-       <option value="9">9</option>
-       <option value="10">10</option>
-       <option value="11">11</option>
-       <option value="12">12</option>
-    </select>
-     / 
-    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
-      <li ng-show="paymentForm.month.$error.required">Expiration month required</li>
-    </ul>
-    <select ng-model="ccinfo.year" name="year" required>
-      <option disabled selected value="">Year</option>
-      <option value="2014">2014</option>
-       <option value="2015">2015</option>
-       <option value="2016">2016</option>
-       <option value="2017">2017</option>
-       <option value="2018">2018</option>
-       <option value="2019">2019</option>
-       <option value="2020">2020</option>
-       <option value="2021">2021</option>
-       <option value="2022">2022</option>
-       <option value="2023">2023</option>
-       <option value="2024">2024</option>
-       <option value="2025">2025</option>
-    </select>
-    <br/>
-    <ul ng-show="paymentForm.submitAttempt && !paymentForm.$valid">
-      <li ng-show="paymentForm.year.$error.required">Expiration year required</li>
-      <li ng-show="paymentForm.month.$error.invalid">Provided expiration date is invalid</li>
-    </ul>
+</div>
 
-    <br/>
-    <button ng-click="paymentForm.submitAttempt=true;save(ccinfo)" style="width: 220px;" type="submit" class="btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-euro"></span>Pay with Credit Card</button>
-    </form>
-</body>
-</html>
--->
+
+<div data-ng-init="cart()">
+<div ng-repeat="item in items">
+    
+    </div>
+
+
 </div>
 
 

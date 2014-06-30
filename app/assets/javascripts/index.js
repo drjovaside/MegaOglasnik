@@ -831,7 +831,7 @@ $scope.$localStorage = $localStorage.$default({
 
 $scope.subjects = $localStorage.subjects;
 $scope.dodajukorpu = function (id, title, price) {
-
+    alert("Uspješno ste dodali u korpu!");
     $rootScope.AdID=id;
     $rootScope.AdTitle=title;
     $rootScope.AdPrice=price;
@@ -1025,4 +1025,15 @@ $scope.results = Kategorije.get({},{'Id': $rootScope.categorieId});
     });
     
     };
+    
+    $scope.cart = function () {
+    $http.get('http://localhost:3000/reservated')
+    .success(function(data){
+        $scope.items=data;
+    }).error(function(data){
+        
+    });
+    
+    };
+    
 }]);

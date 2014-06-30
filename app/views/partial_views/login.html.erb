@@ -1,15 +1,10 @@
  <html>
 <%= javascript_include_tag "angular-translate" %>      
  <head>
- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="CategoryApp">
-<div style="margin: 20%; margin-top:100px;">
-<h2 class="page-header"> {{ 'LOGIN' | translate }} </h2><br/>
+<div style="">
+<h3 class="page-header"> {{ 'LOGIN' | translate }} </h3><br/>
 <alert style="width: 450px;" ng-repeat="alert in login_alerts" type="{{alert.login_type}}">{{alert.login_msg}}</alert>
 <form name="loginForm" ng-controller="CategoryAds" novalidate>
      <input type="text" class="span2 form-control" id="inputEmail" placeholder="{{ 'Email' | translate }}" ng-model="user.email" style="width: 250px;" required>

@@ -208,6 +208,12 @@ render json: @ads
     # session[:cart] = @cart
     redirect_to(:action => 'show_cart' )  
   end
+ 
+    def reservated
+    @id = session[:user_id]
+    @ads = Reservation.where(user_id: @id).all
+    render json: @ads
+    end
 
   def show_cart
     # @cart = session[:cart]
